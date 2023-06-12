@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+/* base */
+:root {
+    --bg-clr-1: #000000e4;
+    --bg-clr-2: rgb(66, 65, 65);
+    --nav-clr: #ffffff1c;
+    --txt-clr-1: #f8efef;
+    --txt-clr-2: #f1efef;
+    --nav-text: Comfortaa;
+}
+body {
+    background: var(--bg-clr-1);
+}
+.parallax {
+    background: linear-gradient(-64deg, var(--bg-clr-1), var(--bg-clr-2));
+    background-size: 300vw;
+    animation: radiance 16s linear infinite;
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+}
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* nav */
+#nav {
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    background: var(--nav-clr);
+    padding: .5rem;
+    padding-bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title {
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    padding: 0.5rem;
+    color: var(--txt-clr-1);
+    font-size: 30px;
+    font-family: Kalam, cursive;
+}
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: fit-content;
+    padding: 0.5rem;
+    color: var(--txt-clr-2);
+    font-size: 20px;
+}
+.nav-item {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--nav-text);
+    font-weight: 600;
+    padding: 0 .5em;
+}
+.nav-link {
+    color: var(--txt-clr-2) !important;
+    transition: filter 400ms;
+}
+.nav-link:not(.nav-link.active):hover {
+    filter: brightness(.8);
+    transition: filter 400ms;
+}
+.slide {
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+    transform-origin: center;
+    filter: brightness(.8);
+}
+.nav-link.active ~.slide {
+    animation: border-anim 300ms forwards;
+    filter: brightness(1);
+}
+.nav-link:hover ~.slide {
+    animation: border-anim 300ms forwards;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
+/* animations */
+@keyframes radiance {
+    0%, 100% {
+        background-position: 0%;
+    }
+    25% {
+        background-position: 50%
+    }
+    50% {
+        background-position: 100%;
+    }
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes border-anim {
+    0% {
+        background-image: linear-gradient(90deg, transparent 39%, var(--txt-clr-2) 40%, var(--txt-clr-2) 60%, transparent 61%);
+    }
+    10% {
+        background-image: linear-gradient(90deg, transparent 34%, var(--txt-clr-2) 35%, var(--txt-clr-2) 65%, transparent 66%);
+    }
+    20% {
+        background-image: linear-gradient(90deg, transparent 29%, var(--txt-clr-2) 30%, var(--txt-clr-2) 70%, transparent 71%);
+    }
+    30% {
+        background-image: linear-gradient(90deg, transparent 24%, var(--txt-clr-2) 25%, var(--txt-clr-2) 75%, transparent 76%);
+    }
+    40% {
+        background-image: linear-gradient(90deg, transparent 19%, var(--txt-clr-2) 20%, var(--txt-clr-2) 80%, transparent 81%);
+    }
+    50% {
+        background-image: linear-gradient(90deg, transparent 14%, var(--txt-clr-2) 15%, var(--txt-clr-2) 85%, transparent 86%);
+    }
+    60% {
+        background-image: linear-gradient(90deg, transparent 9%, var(--txt-clr-2) 10%, var(--txt-clr-2) 90%, transparent 91%);
+    }
+    70% {
+        background-image: linear-gradient(90deg, transparent 14%, var(--txt-clr-2) 15%, var(--txt-clr-2) 85%, transparent 86%);
+    }
+    80% {
+        background-image: linear-gradient(90deg, transparent 19%, var(--txt-clr-2) 20%, var(--txt-clr-2) 80%, transparent 81%);
+    }
+    90% {
+        background-image: linear-gradient(90deg, transparent 24%, var(--txt-clr-2) 25%, var(--txt-clr-2) 75%, transparent 76%);
+    }
+    100% {
+        background-image: linear-gradient(90deg, transparent 29%, var(--txt-clr-2) 30%, var(--txt-clr-2) 70%, transparent 71%);
+    }
 }
