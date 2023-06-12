@@ -1,21 +1,24 @@
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
 
 /* base */
 :root {
     --bg-clr-1: #000000e4;
-    --bg-clr-2: rgb(66, 65, 65);
+    --bg-clr-2: #3e3b33;
+    --bg-clr-3: #655e56;
     --nav-clr: #ffffff1c;
     --txt-clr-1: #f8efef;
     --txt-clr-2: #f1efef;
+    --accent-clr-1: #dfdede;
     --nav-text: Comfortaa;
 }
 body {
     background: var(--bg-clr-1);
 }
-.parallax {
-    background: linear-gradient(-64deg, var(--bg-clr-1), var(--bg-clr-2));
+#parallax {
+    background: linear-gradient(-.64turn, var(--bg-clr-1), var(--bg-clr-2), var(--bg-clr-3));
     background-size: 300vw;
     animation: radiance 16s linear infinite;
     position: fixed;
@@ -93,6 +96,42 @@ a {
     animation: border-anim 300ms forwards;
 }
 
+/* home */
+#main {
+    margin-top: 3%;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* quote */
+#quote {
+    display: inline-flex;
+    padding-bottom: 0;
+    color: var(--txt-clr-2);
+}
+.quote-start, .quote-end {
+    display: inline-flex;
+    font-size: 5rem;
+    font-family: "Cherry Bomb One";
+}
+.quote-text {
+    display: inline-flex;
+    font-size: 30px;
+    align-self: center;
+    font-family: Kalam, cursive;
+}
+.quote-start {
+    padding-right: .4rem;
+    align-self: flex-start;
+    margin-top: -.3em;
+}
+.quote-end {
+    padding-left: .4rem;
+    align-self: flex-end;
+    margin-bottom: -.2em;
+}
 
 /* animations */
 @keyframes radiance {

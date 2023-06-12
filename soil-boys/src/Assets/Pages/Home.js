@@ -6,7 +6,11 @@ function Home() {
     return(
         <div id="main">
             <>
-                
+                <div id="quote">
+                    <span className="quote-start">“</span>
+                    <p className="quote-text">If you can see it, you can shoot it.</p>
+                    <span className="quote-end">”</span>
+                </div>
             </>
         </div>
     )
