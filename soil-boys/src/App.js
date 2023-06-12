@@ -8,6 +8,7 @@ import About from './Assets/Pages/About'
 import './App.css'
 
 function App() {
+  
   return (
     <>
       <Nav />
@@ -15,8 +16,8 @@ function App() {
       {/* <Breadcrumbs /> */}
       <Routes>
         <Route path="/" exact element={<Home />} />
-        {/* <Route path="/gallery" exact element={<Gallery />} />
-				<Route path="/about" element={<About />} /> */}
+        <Route path="/gallery" exact element={<Gallery />} />
+				<Route path="/about" element={<About />} />
       </Routes>
     </>
   )
