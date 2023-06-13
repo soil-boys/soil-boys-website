@@ -7,14 +7,14 @@ import About from "../Pages/About";
 function Nav() {
 
     const tabs = [
-        { name: "Home", to: "/" },
-        { name: "Gallery", to: "/gallery"},
+        { name: "Gallery", to: "/gallery" },
         { name: "About", to: "/about"},
+        { name: "Contact", to: "/contact"},
     ]
 
     return(
         <div id="nav" select="false">
-            <div className="title">Soil Boys</div>
+            <NavLink className="title" to="/">Soil Boys</NavLink>
             <nav className="navbar">
                 {tabs.map((tab) => (
                     <div className="nav-item">
