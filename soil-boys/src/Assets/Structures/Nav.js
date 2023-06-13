@@ -3,7 +3,7 @@ import React from "react";
 function Nav() {
 
     return(
-        <div id="nav">
+        <div id="nav" select="false">
             <div className="title">Soil Boys</div>
             <nav className="navbar">
                 <div className="nav-item">
