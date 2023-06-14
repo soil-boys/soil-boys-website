@@ -213,7 +213,6 @@ section .content {
 carousel {
     width: 100%;
     max-height: 500px;
-    height: 500px;
     display: flex;
     flex-direction: row;
     overflow-x: hidden;
@@ -279,28 +278,13 @@ carousel:hover .carousel-wrapper {
     flex-shrink: 0;
     max-width: 25%;
     width: 25%;
-    height: 500px;
+    aspect-ratio: 1;
     background-color: #655e5693;
     backdrop-filter: blur(2px);
     /* border: 3px solid var(--accent-clr-1); */
     background-clip: content-box;
 }
-carousel::after {
-    background: linear-gradient(to right);
-    content: '';
-    height: 500px;
-    position: absolute;
-    width: 15%;
-    z-index: 5;
-}
-carousel::before {
-    background: linear-gradient(to left);
-    content: '';
-    height: 500px;
-    position: absolute;
-    width: 15%;
-    z-index: 5;
-}
+
 
 /* animations */
 @keyframes radiance {
