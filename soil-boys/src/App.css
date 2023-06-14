@@ -23,6 +23,7 @@
     --body-txt: Lora;
     --heading-txt: "Libre Caslon Text";
     --carousel-padding: 4rem;
+    --carousel-const: -50%;
 }
 body {
     background: var(--bg-clr-1);
@@ -58,6 +59,7 @@ button {
 }
 [select="false"], [select="false"] * {
     user-select: none !important;
+    -webkit-user-drag: none !important;
     -webkit-user-drag: none !important;
 }
 
@@ -210,7 +212,7 @@ section .content {
 }
 
 /* carousel */
-carousel {
+.carousel {
     width: 100%;
     max-height: 500px;
     display: flex;
@@ -337,13 +339,19 @@ carousel:hover .carousel-wrapper {
     0% {
         transform: translateX(0);
     }
+    50% {
+        transform: translateX(calc(var(--carousel-const) / 2));
+    }
     100% {
-        transform: translateX(calc(50%));
+        transform: translateX(calc(var(--carousel-const)));
     }
 }
 
 /* media queries */
 @media (max-width: 700px) {
+    :root {
+        --carousel-const: -200% !important;
+    }
     #main {
         padding: 0 2rem;
     }
@@ -353,10 +361,6 @@ carousel:hover .carousel-wrapper {
     .nav-link:not(.title) {
         padding-left: .6rem;
         padding-right: .6rem;
-    }
-    .carousel-box {
-        width: 100%;
-        max-width: 100%;
     }
     #quote {
         flex-direction: column;
@@ -379,6 +383,13 @@ carousel:hover .carousel-wrapper {
     .quote-end {
         margin-right: -50%;
         margin-top: -1.2rem;
+    }
+    .carousel-wrapper {
+        animation-duration: 5s;
+    }
+    .carousel-box {
+        width: 100%;
+        max-width: 100%;
     }
     section .content-wrapper {
         margin-left: 2%;

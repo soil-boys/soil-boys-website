@@ -13,12 +13,14 @@ function App() {
     <>
       <Nav />
       <div id='parallax'></div>
+      <div id="main">
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/gallery" exact element={<Gallery />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
       {/* <Breadcrumbs /> */}
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/gallery" exact element={<Gallery />} />
-				<Route path="/about" element={<About />} />
-      </Routes>
     </>
   )
 }
