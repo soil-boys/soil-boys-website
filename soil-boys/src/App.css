@@ -224,6 +224,9 @@ carousel:hover .handle {
     filter: opacity(1);
     transition: filter 250ms ease-in-out;
 }
+carousel:hover .carousel-wrapper {
+    animation-play-state: paused;
+}
 .handle {
     width: max-content;
     background-color: rgba(255, 255, 255, 0.22);
@@ -267,6 +270,7 @@ carousel:hover .handle {
     width: calc(100% - 2 * var(--carousel-padding));
     justify-content: center;
     /* transform: translateX(calc(var(--slider-index) * -100%)); */
+    animation: scroll 20s linear infinite;
 }
 .carousel-box {
     display: inline-flex;
@@ -343,6 +347,14 @@ carousel::before {
     }
     100% {
         background-image: linear-gradient(90deg, transparent 29%, var(--txt-clr-2) 30%, var(--txt-clr-2) 70%, transparent 71%);
+    }
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(50%));
     }
 }
 
