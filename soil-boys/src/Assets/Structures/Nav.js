@@ -1,8 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Home from "../Pages/Home";
-import Gallery from "../Pages/Gallery";
-import About from "../Pages/About";
 
 function Nav() {
 

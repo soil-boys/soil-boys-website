@@ -157,14 +157,30 @@ section {
 section {
     margin-top: 4rem;
 }
+.heading-container {
+    display: flex;
+}
 h2.heading {
     color: var(--txt-clr-2);
-    font-family: var(--nav-text);
+    font-family: var(--heading-txt);
     font-weight: bolder;
     font-size: 3em;
+    letter-spacing: 3px;
+}
+h2.heading-hash {
+    color: var(--accent-clr-1);
+    font-family: var(--heading-txt);
+    font-weight: bolder;
+    font-size: 3em;
+    letter-spacing: 3px;
 }
 section .content-wrapper {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+section .content-wrapper .section-part {
+    display: inline-flex;
     flex-direction: row;
     padding-left: 2%;
     gap: 10px;
@@ -221,11 +237,11 @@ section .content {
     justify-content: space-between;
     align-items: center;
 }
-carousel:hover .handle {
+.carousel:hover .handle, .carousel:focus .handle, .carousel:focus-within .handle {
     filter: opacity(1);
     transition: filter 250ms ease-in-out;
 }
-carousel:hover .carousel-wrapper {
+.carousel:hover .carousel-wrapper, .carousel:focus .carousel-wrapper, .carousel:focus-within .carousel-wrapper {
     animation-play-state: paused;
 }
 .handle {
@@ -240,9 +256,9 @@ carousel:hover .carousel-wrapper {
     filter: opacity(0) brightness(1);
     transition: filter 250ms ease-in-out;
 }
-.handle:hover span {
+.handle:hover span, .handle:focus span {
     transform: scale(1.2);
-    filter: brightness(1.2);
+    color: #fff;
     transition: all 300ms ease;
 }
 .handle span {
@@ -287,6 +303,55 @@ carousel:hover .carousel-wrapper {
     background-clip: content-box;
 }
 
+/* latest section */
+.section-2 {
+    padding: 0 3rem;
+}
+.section-2 .content-wrapper {
+    justify-content: center;
+}
+.section-2 .section-part {
+    padding: 0 5% !important;
+    justify-content: space-between;
+}
+.section-part.odd {
+    flex-direction: row-reverse !important;
+}
+.section-2 .section-part .content {
+    display: flex;
+    width: 100%;
+}
+.section-2 .section-part.even .content {
+    flex-direction: row !important;
+}
+.section-2 .section-part .side-bar {
+    min-width: 0 !important;
+    transition: min-width 250ms ease-out;
+}
+.section-2 .section-part:hover .side-bar, .section-2 .section-part:focus .side-bar {
+    min-width: 3px !important;
+    transition: min-width 250ms ease-out;
+}
+.section-2 .content {
+    gap: 1rem;
+    align-items: center;
+}
+.img-container, .details {
+    display: inline-flex;
+}
+.img-container {
+    /* aspect-ratio: auto; */
+    max-width: 500px;
+    width: 500px;
+    aspect-ratio: 2/1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #655e5693;
+}
+.section-2 .section-part .details {
+    display: flex;
+    flex-direction: column;
+}
 
 /* animations */
 @keyframes radiance {
@@ -385,7 +450,7 @@ carousel:hover .carousel-wrapper {
         margin-top: -1.2rem;
     }
     .carousel-wrapper {
-        animation-duration: 5s;
+        /* animation-duration: 20s; */
     }
     .carousel-box {
         width: 100%;
@@ -393,5 +458,11 @@ carousel:hover .carousel-wrapper {
     }
     section .content-wrapper {
         margin-left: 2%;
+    }
+    .img-container {
+        max-width: 250px;
+    }
+    .section-2 .details {
+        position: absolute;
     }
 }
