@@ -14,5 +14,4 @@ window.addEventListener('resize', (e) => {
         return;
     }
     else return
-
 })
