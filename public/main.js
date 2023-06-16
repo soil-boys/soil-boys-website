@@ -4,7 +4,7 @@ window.addEventListener('resize', (e) => {
     if (!nav || !nav_btn) return
 
     if (
-        e.target.innerHeight >= 700 &&
+        e.target.innerHeight >= 600 &&
         nav.classList.contains('menu') &&
         nav_btn.classList.contains('menu-active')
         )
