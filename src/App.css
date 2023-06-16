@@ -617,6 +617,28 @@ section .content {
     #main {
         padding: 0 3rem;
     }
+    #quote {
+        flex-direction: column;
+    }
+    .quote-text {
+        font-size: calc(var(--size) - 0.3em);
+        padding: 0;
+        margin: 0;
+    }
+    .quote-start, .quote-end {
+        margin: 0;
+        padding: 0;
+        align-self: center;
+        font-size: calc(var(--size) - 0.3em);
+    }
+    .quote-start {
+        margin-left: -50%;
+        margin-bottom: -2.2rem;
+    }
+    .quote-end {
+        margin-right: -50%;
+        margin-top: -1.2rem;
+    }
     .carousel-box {
         width: 50%;
         max-width: 50%;
