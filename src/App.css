@@ -1,5 +1,4 @@
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
@@ -10,7 +9,7 @@
     --bg-clr-1: #000000e4;
     --bg-clr-2: #3e3b33;
     --bg-clr-3: #655e56;
-    --nav-clr: rgba(255, 255, 255, 0.136);
+    --nav-clr: rgba(255, 255, 255, 0.20);
     --txt-clr-1: #f0f0f0;
     --txt-clr-2: #f1efef;
     --txt-clr-3: #ddf0f6e7;
@@ -19,16 +18,16 @@
     --accent-clr-3: #838383c5;
     --accent-clr-4: #ffffffd5;
     --accent-clr-5: #2f2e2e72;
-    --nav-text: Comfortaa;
-    --body-txt: Lora;
-    --heading-txt: "Libre Caslon Text";
+    --txt-1: Comfortaa;
+    --txt-2: Lora;
+    --txt-3: "Libre Caslon Text";
     --carousel-padding: 4rem;
     --carousel-const: -50%;
 }
 body {
     background: var(--bg-clr-1);
     scroll-behavior: smooth;
-    font-family: var(--body-txt);
+    font-family: var(--txt-2);
     overflow-x: hidden;
     margin: 0;
 }
@@ -88,7 +87,7 @@ button {
     padding: 0.5rem;
     color: var(--txt-clr-1) !important;
     font-size: 30px;
-    font-family: var(--nav-text);
+    font-family: var(--txt-1);
     transform: scale(1);
     transition: transform 250ms;
 }
@@ -166,7 +165,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: var(--nav-text);
+    font-family: var(--txt-1);
     font-weight: 600;
     padding: .2em !important;
 }
@@ -265,7 +264,7 @@ section .content {
     display: inline-flex;
     font-size: var(--size);
     align-self: center;
-    font-family: var(--heading-txt);
+    font-family: var(--txt-3);
 }
 .quote-start, .quote-end {
     --size: 5rem;
@@ -409,7 +408,7 @@ section .content {
     display: flex;
     gap: 1rem;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* max-width: max-content !important; */
 }
 .img-container, .details {
@@ -417,23 +416,63 @@ section .content {
     flex-direction: column;
 }
 .img-container {
-    /* aspect-ratio: auto; */
-    max-width: 500px;
-    width: 500px;
-    aspect-ratio: 2/1;
+    aspect-ratio: auto;
+    max-width: 50%;
+    /* min-height: 100%; */
+    /* aspect-ratio: 2/1; */
     flex-grow: 0;
     flex-shrink: 0;
     background-color: #655e5693;
 }
+.img-container img {
+    width: 100%;
+    /* height: 100%; */
+    aspect-ratio: auto;
+    display: flex;
+}
 .section-2 .section-part .details {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    aspect-ratio: 2/1;
 }
 .section-2 .odd .details {
     text-align: right;
 }
 .section-2 .even .details {
     text-align: left;
+}
+.section-2 .details .post-name {
+    font-size: 140%;
+    padding-bottom: 20%;
+    font-family: var(--txt-2);
+}
+.section-2 .details .post-credit {
+    padding: 0 0 2% 0;
+    font-family: var(--txt-1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.section-2 .even .details .post-credit {
+    justify-content: flex-start;
+}
+.section-2 .odd .details .post-credit {
+    justify-content: flex-end;
+}
+.section-2 .details .post-credit .post-credit-line {
+    color: var(--accent-clr-1);
+    font-size: 30px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.section-2 .details .post-credit .post-credit-author {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.section-2 .details .post-equipment {
+    font-family: var(--txt-1);
 }
 
 /* animations */
@@ -590,11 +629,11 @@ section .content {
         gap: 10px;
     }
     .section-2 .odd .content {
-        border-bottom-right-radius: 15%;
+        border-bottom-right-radius: 50px;
     }
     .section-2 .even .content {
         flex-direction: column-reverse;
-        border-bottom-left-radius: 15%;
+        border-bottom-left-radius: 50px
     }
     .section-2 .details {
         padding-bottom: 10px;
@@ -608,6 +647,11 @@ section .content {
     .section-2 .even .details {
         text-align: right;
     }
+    .section-2 .even .details .post-credit, 
+    .section-2 .odd .details .post-credit {
+        flex-direction: row-reverse;
+    }
+    /* .section-2 .content .img-container img {} */
 }
 @media all and (max-width: 767px) and (min-width: 576px) {
     :root {
@@ -704,11 +748,11 @@ section .content {
         gap: 10px;
     }
     .section-2 .odd .content {
-        border-bottom-right-radius: 15%;
+        border-bottom-right-radius: 50px;
     }
     .section-2 .even .content {
         flex-direction: column-reverse;
-        border-bottom-left-radius: 15%;
+        border-bottom-left-radius: 50px
     }
     .section-2 .details {
         padding-bottom: 10px;
@@ -721,6 +765,12 @@ section .content {
     }
     .section-2 .even .details {
         text-align: right;
+    }
+    .section-2 .even .details .post-credit {
+        flex-direction: row;
+    }
+    .section-2 .odd .details .post-credit {
+        flex-direction: row-reverse;
     }
 }
 
@@ -788,11 +838,11 @@ section .content {
         backdrop-filter: blur(3px);
     }
     .section-2 .odd .content {
-        border-bottom-right-radius: 15%;
+        border-bottom-right-radius: 50px;
     }
     .section-2 .even .content {
         flex-direction: column-reverse;
-        border-bottom-left-radius: 15%;
+        border-bottom-left-radius: 50px
     }
     .section-2 .details {
         padding-bottom: 10px;
@@ -806,14 +856,19 @@ section .content {
     .section-2 .even .details {
         text-align: right;
     }
+    .section-2 .even .details .post-credit {
+        flex-direction: row;
+    }
+    .section-2 .odd .details .post-credit {
+        flex-direction: row-reverse;
+    }
 }
 @media all and (min-width: 1200px) {
     .section-2 .content-wrapper {
         align-items: center;
     }
     .section-2 .section-part .content {
-        justify-content: center;
-        gap: 10rem;
+        justify-content: space-between;
     }
     .section-2 .section-part {
         max-width: max-content;
@@ -821,7 +876,7 @@ section .content {
     .section-2 .section-part .details {
         width: max-content;
     }
-    .section-2 .section-part .content .details * {
+    .section-2 .section-part .content .details > * {
         word-wrap: normal;
         min-width: 5em;
     }
