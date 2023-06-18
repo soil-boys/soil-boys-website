@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 
 function Home() {
+
+    const [images, setImages] = useState([])
+
+    const fetchData = async () => {
+        try {
+            const url = "https://api.unsplash.com/photos?page=1&per_page=20"
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': 'Client-ID eDyJr4X3MDuPISfgHCAUDyZ49BlIrosNA_shUgy9i9k'
+                }
+            })
+            const res = await response.json()
+            setImages(res)
+            console.log(res)
+        } catch (err) {
+            return
+        }
+    }
+    useEffect(() => { fetchData() }, [])
 
     return(
         <>
@@ -15,16 +35,11 @@ function Home() {
                         <span className="material-symbols-rounded">navigate_before</span>
                     </button>
                     <div className="carousel-wrapper" select="false">
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
-                        <div className="carousel-box"></div>
+                        {images.map((image) => (
+                            <div key={image.id} className="carousel-box">
+                                <img src={image.urls.small_s3} alt="" />
+                            </div>
+                        ))}
                     </div>
                     <button className="handle right">
                         <span className="material-symbols-rounded">navigate_next</span>
@@ -40,7 +55,7 @@ function Home() {
                         <span className="side-bar"></span>
                         <div className="content">
                             <div className="img-container">
-                                <img src="https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" srcset="" />
+                                <img src="https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                             </div>
                             <div className="details">
                                 <div className="post-name">Name</div>
@@ -63,7 +78,7 @@ function Home() {
                                 <div className="post-equipment">canon eos 1500d with 18-55mm lens</div>
                             </div>
                             <div className="img-container">
-                                <img src="https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" srcset="" />
+                                <img src="https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                             </div>
                         </div>
                         <span className="side-bar"></span>
@@ -72,7 +87,7 @@ function Home() {
                         <span className="side-bar"></span>
                         <div className="content">
                             <div className="img-container">
-                                <img src="https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" srcset="" />
+                                <img src="https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                             </div>
                             <div className="details">
                                 <div className="post-name">Name</div>
