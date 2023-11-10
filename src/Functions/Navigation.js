@@ -1,4 +1,4 @@
-function navigation() {
+const navigation = () => {
     const nav_btn = document.querySelector('.nav-btn')
     const nav = document.getElementById('nav')
     if (!nav_btn) return

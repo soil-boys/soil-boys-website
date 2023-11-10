@@ -1,4 +1,5 @@
 window.addEventListener('resize', (e) => {
+
     const nav = document.getElementById('nav')
     const nav_btn = document.querySelector('.nav-btn')
     if (!nav || !nav_btn) return

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Autoscroll from "../../Functions/Autoscroll";
 
 function Home() {
 
@@ -7,7 +7,7 @@ function Home() {
 
     const fetchData = async () => {
         try {
-            const url = "https://api.unsplash.com/photos?page=1&per_page=20"
+            const url = "https://api.unsplash.com/photos?page=1&per_page=10"
             const response = await fetch(url, {
                 headers: {
                     'Authorization': 'Client-ID eDyJr4X3MDuPISfgHCAUDyZ49BlIrosNA_shUgy9i9k'
@@ -15,7 +15,6 @@ function Home() {
             })
             const res = await response.json()
             setImages(res)
-            console.log(res)
         } catch (err) {
             return
         }
@@ -31,19 +30,18 @@ function Home() {
             </div>
             <section className="section-1">
                 <div className="carousel">
-                    <button className="handle left">
-                        <span className="material-symbols-rounded">navigate_before</span>
-                    </button>
                     <div className="carousel-wrapper" select="false">
                         {images.map((image) => (
                             <div key={image.id} className="carousel-box">
                                 <img src={image.urls.small_s3} alt="" />
                             </div>
                         ))}
+                        {images.map((image) => (
+                            <div key={image.id} className="carousel-box">
+                                <img src={image.urls.small_s3} alt="" />
+                            </div>
+                        ))}
                     </div>
-                    <button className="handle right">
-                        <span className="material-symbols-rounded">navigate_next</span>
-                    </button>
                 </div>
             </section>
             <section className="section-2">
@@ -110,7 +108,7 @@ function Home() {
                                 <div className="post-equipment">Canon EOS M50 Mark II with 15-45mm lens</div>
                             </div>
                             <div className="img-container">
-                                <img src="https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" srcset="  " />
+                                <img src="https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" srcSet="  " />
                             </div>
                         </div>
                         <span className="side-bar"></span>

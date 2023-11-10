@@ -22,7 +22,6 @@
     --txt-2: Lora;
     --txt-3: "Libre Caslon Text";
     --carousel-padding: 4rem;
-    --carousel-const: -50%;
 }
 body {
     background: var(--bg-clr-1);
@@ -205,7 +204,7 @@ button {
     gap: 2rem;
 }
 .section-1 {
-    margin-top: 2rem;
+    margin-top: 0;
 }
 section {
     width: 100%;
@@ -286,21 +285,37 @@ section .content {
 /* carousel */
 .carousel {
     width: 100%;
+    max-width: 100%;
     max-height: 500px;
     display: flex;
     flex-direction: row;
     overflow-x: hidden;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem 0;
+    mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+    );
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+    );
 }
-.carousel:hover .handle, .carousel:focus .handle, .carousel:focus-within .handle {
+/* .carousel:hover .handle, .carousel:focus .handle, .carousel:focus-within .handle {
     filter: opacity(1);
     transition: filter 250ms ease-in-out;
-}
-.carousel:hover .carousel-wrapper, .carousel:focus .carousel-wrapper, .carousel:focus-within .carousel-wrapper {
+} */
+.carousel-wrapper:hover, .carousel-wrapper:focus, .carousel-wrapper:focus-within {
     animation-play-state: paused;
 }
-.handle {
+/* .handle {
     width: max-content;
     background-color: rgba(255, 255, 255, 0.22);
     height: 70px;
@@ -335,33 +350,43 @@ section .content {
 }
 .handle.right span {
     padding-left: 0.2rem;
-}
+} */
 .carousel-wrapper {
-    --slider-index: 0;
+    --carousel-const: 50%;
     display: flex;
     flex-direction: row;
-    width: calc(100% - 2 * var(--carousel-padding));
-    justify-content: center;
-    /* transform: translateX(calc(var(--slider-index) * -100%)); */
-    animation: scroll 20s linear infinite;
+    gap: 1rem;
+    width: max-content;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+.carousel-wrapper {
+    animation: autoscroll 20s linear infinite;
+    overflow-y: visible;
 }
 .carousel-box {
+    --default-img-size: 330px;
     display: inline-flex;
-    padding: 0 0.25rem;
     flex-grow: 0;
     flex-shrink: 0;
-    max-width: 25%;
-    /* width: 25%; */
+    max-width: var(--default-img-size);
     aspect-ratio: 1;
     background-color: #655e5693;
     backdrop-filter: blur(2px);
-    /* border: 3px solid var(--accent-clr-1); */
     background-clip: content-box;
     overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 10px var(--accent-clr-2);
+    transition: transform 100ms linear;
+}
+.carousel-box:hover {
+    transform: scale(1.1);
+    transition: transform 250ms linear;
+    z-index: 999;
 }
 .carousel-box img {
     width: 100%;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 /* latest section */
@@ -534,23 +559,14 @@ section .content {
         background-image: linear-gradient(90deg, transparent 29%, var(--txt-clr-2) 30%, var(--txt-clr-2) 70%, transparent 71%);
     }
 }
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(calc(var(--carousel-const) / 2));
-    }
-    100% {
-        transform: translateX(calc(var(--carousel-const)));
+@keyframes autoscroll {
+    to {
+        transform: translateX(calc(var(--carousel-const) * -1));
     }
 }
 
 /* media queries */
 @media all and (max-width: 575px) {
-    :root {
-        --carousel-const: -300% !important;
-    }
     #main {
         padding: 0 1rem;
     }
@@ -603,12 +619,8 @@ section .content {
         margin-right: -50%;
         margin-top: -1.2rem;
     }
-    .carousel-wrapper {
-        /* animation-duration: 20s; */
-    }
     .carousel-box {
-        /* width: 100%; */
-        max-width: 100%;
+        --default-img-size: 320px;
     }
     section .content-wrapper {
         margin-left: 1%;
@@ -666,9 +678,6 @@ section .content {
     /* .section-2 .content .img-container img {} */
 }
 @media all and (max-width: 767px) and (min-width: 576px) {
-    :root {
-        --carousel-const: -200% !important;
-    }
     #main {
         padding: 0 2rem;
     }
@@ -721,12 +730,8 @@ section .content {
         margin-right: -50%;
         margin-top: -1.2rem;
     }
-    .carousel-wrapper {
-        /* animation-duration: 20s; */
-    }
     .carousel-box {
-        /* width: 100%; */
-        max-width: 100%;
+        --default-img-size: 350px;
     }
     section .content-wrapper {
         margin-left: 2%;
@@ -787,9 +792,6 @@ section .content {
 }
 
 @media all and (max-width: 991px) and (min-width: 768px) {
-    :root {
-        --carousel-const: -200% !important;
-    }
     #main {
         padding: 0 3rem;
     }
@@ -816,8 +818,7 @@ section .content {
         margin-top: -1.2rem;
     }
     .carousel-box {
-        /* width: 50%; */
-        max-width: 50%;
+        --default-img-size: 200px
     }
     section .content-wrapper {
         margin-left: 4%;
@@ -876,6 +877,9 @@ section .content {
     }
 }
 @media all and (min-width: 1200px) {
+    .carousel-wrapper {
+        --carousel-const: 50% !important;
+    }
     .section-2 .content-wrapper {
         align-items: center;
     }
