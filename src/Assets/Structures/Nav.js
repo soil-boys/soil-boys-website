@@ -7,8 +7,8 @@ function Nav() {
 
     const tabs = [
         { name: "Gallery", to: "/gallery" },
+        { name: "Code", to: "/code" },
         { name: "About", to: "/about" },
-        { name: "Contact", to: "/contact" },
     ]
 
     return(
