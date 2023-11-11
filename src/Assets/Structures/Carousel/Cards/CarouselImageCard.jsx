@@ -2,9 +2,9 @@ import React from 'react'
 
 import './CarouselImageCard.styles.css'
 
-function CarouselImageCard(image) {
+function CarouselImageCard(image, ariaHidden = false) {
   return (
-    <div key={image.id} className="carousel-box image-card">
+    <div key={image.id} aria-hidden={ariaHidden} className="carousel-box image-card">
         <img src={image.urls.small_s3} alt="" />
     </div>
   )

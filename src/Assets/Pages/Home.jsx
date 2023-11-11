@@ -39,6 +39,39 @@ function Home() {
 
     }, [])
 
+    const content = [
+        {
+            id: 1,
+            cover: true,
+            stars: 256,
+            forks: 200
+        },
+        {
+            id: 2,
+            cover: false,
+            stars: 222,
+            forks: 1000
+        },
+        {
+            id: 3,
+            cover: true,
+            stars: 2226,
+            forks: 2500
+        },
+        {
+            id: 4,
+            cover: true,
+            stars: 100,
+            forks: 200
+        },
+        {
+            id: 5,
+            cover: true,
+            stars: 521,
+            forks: 500
+        },
+    ]
+
     return(
         <>
             <div id="quote" select="false">
@@ -46,7 +79,7 @@ function Home() {
                 <p className="quote-text">Innovation begins with the idea of change.</p>
                 <span className="quote-end">”</span>
             </div>
-            <section className='section-1' ref={section1}>
+            <section className='section-1' style={{ '--speed': '20s' }} ref={section1}>
                 <Carousel content={images} />
                 <div className="heading-container">
                     <h2 className="heading" select="false">Clicks</h2>
@@ -57,8 +90,8 @@ function Home() {
                 <span className="dot"></span>
                 <span className="line right"></span>
             </div>
-            <section className='section-2' ref={section2}>
-                <Carousel content={images} type="repo" />
+            <section className='section-2' style={{ '--speed': '10s' }} ref={section2}>
+                <Carousel content={content} type="repo" />
                 <div className="heading-container">
                     <h2 className="heading" select="false">Projects</h2>
                 </div>

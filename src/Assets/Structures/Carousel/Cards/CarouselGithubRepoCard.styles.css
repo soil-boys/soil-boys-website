@@ -1,6 +1,7 @@
 .project-card {
     display: flex;
     aspect-ratio: 4 / 3 !important;
+    min-width: 330px;
 }
 
 .project-card .banner {
@@ -59,16 +60,30 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    font-size: 1.6rem;
-    color: var(--accent-clr-4);
+    font-size: 1.55rem;
     letter-spacing: 1.5px;
     font-family: var(--txt-3);
+}
+.project-title-container .project-title {
+    display: inline-flex;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--accent-clr-4);
+}
+.project-title span:nth-child(1), .project-title span:nth-child(3) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.project-title span:nth-child(2) {
+    opacity: 0.8;
+    font-size: 1.7rem;
+    font-style: italic;
 }
 
 .repo-img {
     display: inline-flex;
+    object-fit: cover;
     width: 100%;
-    object-fit: fill;
 }
 
 .project-card:hover .banner {
@@ -86,7 +101,7 @@
     backdrop-filter: unset;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 4.5rem;
     margin-bottom: -30%;
     transition: gap 300ms ease-in;
 }

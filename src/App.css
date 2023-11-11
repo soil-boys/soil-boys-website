@@ -276,7 +276,7 @@ h2.heading {
 
 @keyframes autoscroll {
     to {
-        transform: translateX(calc(var(--carousel-const) * -1));
+        transform: translateX(calc(-50% - .5rem));
     }
 }
 
@@ -447,11 +447,5 @@ h2.heading {
     }
     section .content-wrapper {
         margin-left: 4%;
-    }
-}
-
-@media all and (min-width: 1200px) {
-    .carousel-wrapper {
-        --carousel-const: 50% !important;
     }
 }
