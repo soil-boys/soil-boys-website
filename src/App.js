@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Nav from './Assets/Structures/Nav'
+import Nav from './Assets/Structures/Nav/Nav'
 // import Breadcrumbs from './Assets/Structures/Breadcrumbs'
 import Home from './Assets/Pages/Home'
 import Gallery from './Assets/Pages/Gallery'
