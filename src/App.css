@@ -172,13 +172,6 @@ h2.heading {
     transform: translateX(20%);
 }
 
-/* gallery */
-.gallery-section {
-    background-color: red;
-    width: 100%;
-    padding: 2rem 2rem;
-}
-
 /* divider */
 #divider {
     margin: 2rem 0;
@@ -258,21 +251,50 @@ h2.heading {
 }
 .section-3 .side-bar {
     display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 0;
     flex-shrink: 0;
-    min-height: 0;
+    gap: 1rem;
     min-width: 3px !important;
-    border-radius: 40px;
-    transform-origin: bottom;
-    background-color: var(--accent-clr-4);
-    transition: min-height 2s ease-out;
+    padding-top: 1.5%;
+    /* transition: min-height 2s ease-out; */
 }
 .section-3.visible .side-bar {
     position: sticky;
     top: 6rem;
-    min-height: 100vh;
-    transition: min-height 2s ease-out;
 }
+.section-3 .side-bar .line {
+    min-width: 3px !important;
+    min-height: 0;
+    border-radius: 100px;
+    background: var(--accent-clr-1);
+    opacity: 1;
+    transition: all 1s ease-in;
+}
+.section-3.visible .side-bar .line {
+    min-height: 100vh;
+    background: var(--accent-clr-1);
+    opacity: 0.8;
+    transition: all 1s ease-in;
+}
+.section-3 .side-bar .dot {
+    aspect-ratio: 1;
+    width: 1.4em;
+    border-radius: 100%;
+    background: var(--accent-clr-1);
+    transform-origin: center;
+    transition: all 1s ease-in-out;
+}
+
+.section-3.visible .side-bar .dot {
+    opacity: 0.4;
+    width: .7em;
+    transition: all 1s ease-in-out;
+    animation: beat 1s infinite alternate;
+}
+
 .section-3 .section-container {
     display: flex;
     height: 100%;
@@ -288,7 +310,7 @@ h2.heading {
     justify-content: center;
     overflow-y: hidden;
     gap: 20vh;
-    padding-bottom: 20vh;
+    /* padding-bottom: 40vh; */
     width: 70%;
     max-width: 70%;
 }
@@ -544,12 +566,33 @@ h2.heading {
     .section-3 {
         width: 100%;
     }
+    .section-3 .heading-container {
+        width: 100%;
+    }
     .section-3 .content-wrapper {
-        width: 95%;
+        width: 97%;
         padding: 0;
     }
+    .section-3 .section-container {
+        flex-flow: column;
+        gap: 10px;
+    }
     .section-3 .picture-section {
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .section-3 .details-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: max-content !important;
+        bottom: 0;
+        justify-content: flex-end !important;
+    }
+    .section-3 .details-section .details {
+        padding: 1rem;
+        border-top-right-radius: 20px;
+        background: var(--accent-clr-5);
+        backdrop-filter: blur(10px);
     }
 }
 

@@ -53,7 +53,7 @@ function Home() {
 
         const pictureObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) updateDetails(entries[0].target, details.current)
-        }, { threshold: 0.4 })
+        }, { threshold: .4, rootMargin: '-20%' })
         pictureRefArr.forEach(ref => {
             pictureObserver.observe(ref.current)
         });
@@ -97,28 +97,28 @@ function Home() {
         {
             id: 0,
             img: 'https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            post_name: 'Name',
+            post_name: 'Secrets in the foilage',
             post_author: 'Anubhab Baruah',
             post_equipment: 'fujifilm xt200 with 15-45mm kit lens'
         },
         {
             id: 1,
             img: 'https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            post_name: 'Name',
+            post_name: 'Sun setting into the red sky',
             post_author: 'Angad Sankhla',
             post_equipment: 'canon eos 1500d with 18-55mm lens'
         },
         {
             id: 2,
             img: 'https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            post_name: 'Name',
+            post_name: 'Life as a monotone aesthetic',
             post_author: 'Krishnav Barman',
             post_equipment: 'kodak ultramax (exp 2011) on pentax zoom 280p'
         },
         {
             id: 3,
             img: 'https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            post_name: 'Name',
+            post_name: 'Camera',
             post_author: 'Daksh Singh Minhas',
             post_equipment: 'Canon EOS M50 Mark II with 15-45mm lens'
         },
@@ -153,7 +153,10 @@ function Home() {
                     <h2 className="heading" select="false">Latest</h2>
                 </div>
                 <div className="content-wrapper">
-                    <span className="side-bar"></span>
+                    <div className="side-bar">
+                        <span className="dot"></span>
+                        <span className="line"></span>
+                    </div>
                     <div className="section-container">
                         <div className="picture-section">
                             {
