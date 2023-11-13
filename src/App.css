@@ -289,8 +289,8 @@ h2.heading {
     overflow-y: hidden;
     gap: 20vh;
     padding-bottom: 20vh;
-    width: 60%;
-    max-width: 60%;
+    width: 70%;
+    max-width: 70%;
 }
 .img-container {
     max-width: fit-content;
@@ -312,8 +312,8 @@ h2.heading {
     opacity: 0;
     transition: all 850ms linear;
     position: sticky;
-    width: 40%;
-    max-width: 40%;
+    width: 30%;
+    max-width: 30%;
 }
 .section-3.visible .section-container .details-section {
     top: 6rem;
@@ -330,7 +330,7 @@ h2.heading {
 }
 .section-3 .details .post-name {
     font-size: 2rem;
-    padding-bottom: 5vmax;
+    margin-bottom: 5vmax;
     font-family: var(--txt-2);
 }
 .section-3 .details .post-credit {
@@ -368,11 +368,30 @@ h2.heading {
 .section-3 .details .post-equipment {
     font-family: var(--txt-1);
     color: var(--accent-clr-1);
+    display: flex;
+    flex-direction: column;
 }
-.section-3 .details .post-equipment span {
+.section-3 .details .post-equipment span:first-child {
     font-family: var(--txt-1);
     color: var(--accent-clr-4);
     padding-right: 6px;
+}
+.section-3 .details [maskable='true'] {
+    display: inline;
+    position: relative;
+}
+
+.section-3 [maskable='true']::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--accent-clr-1);
+}
+.section-3 .active-mask::after {
+    animation: shift 1s cubic-bezier(0.19, 1, 0.22, 1) normal forwards running 1;
 }
 
 /* animations */
@@ -440,6 +459,21 @@ h2.heading {
 @keyframes beat {
     to {
         opacity: 1;
+    }
+}
+
+@keyframes shift {
+    0% {
+        right: 0;
+        width: 0;
+    }
+    50% {
+        right: 0;
+        width: 100%;
+    }
+    100% {
+        right: 100%;
+        width: 0;
     }
 }
 
