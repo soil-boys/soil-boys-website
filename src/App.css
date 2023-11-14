@@ -37,8 +37,8 @@ body {
     background-size: 300vw;
     animation: radiance 30s linear infinite;
     position: fixed;
-    width: 100%;
-    min-height: 100vh;
+    width: 100vw;
+    min-height: 100%;
     z-index: -1;
 }
 a {
@@ -113,7 +113,7 @@ h2.heading {
     font-family: var(--txt-4);
     text-transform: uppercase;
     font-weight: bolder;
-    font-size: 4.5em;
+    font-size: 10vmin;
     letter-spacing: 3px;
     margin: 0;
 }
@@ -230,10 +230,11 @@ h2.heading {
     max-width: 90%;
 }
 .section-3.visible {
-    top: 3.5rem;
+    /* top: 3.5rem; */
     padding: 3rem 0 0 0;
     transition: all 750ms linear;
-    position: sticky;
+    position: relative;
+    /* position: sticky; */
 }
 .section-3 .heading-container {
     border-top-left-radius: 40px;
@@ -561,7 +562,7 @@ h2.heading {
     }
     .heading-container {
         margin-top: -3.5rem;
-        font-size: .8rem !important;
+        font-size: .7rem !important;
     }
     .section-3 {
         width: 100%;
@@ -657,17 +658,38 @@ h2.heading {
     }
     .heading-container {
         margin-top: -3.5rem;
-        font-size: .8rem !important;
+        font-size: .7rem !important;
     }
     .section-3 {
         width: 100%;
     }
+    .section-3 .heading-container {
+        width: 100%;
+    }
     .section-3 .content-wrapper {
-        width: 95%;
+        width: 97%;
         padding: 0;
     }
+    .section-3 .section-container {
+        flex-flow: column;
+        gap: 10px;
+    }
     .section-3 .picture-section {
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .section-3 .details-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: max-content !important;
+        bottom: 0;
+        justify-content: flex-end !important;
+    }
+    .section-3 .details-section .details {
+        padding: 1rem;
+        border-top-right-radius: 20px;
+        background: var(--accent-clr-5);
+        backdrop-filter: blur(10px);
     }
 }
 

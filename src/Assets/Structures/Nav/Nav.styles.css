@@ -1,13 +1,13 @@
 /* nav */
 #nav {
     display: flex;
-    align-items: center;
     min-height: 3.5rem;
     background: var(--nav-clr);
     padding: 0 .5rem .5rem .5rem;
     padding-bottom: 0;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 9999999;
@@ -27,7 +27,7 @@
     transform: scale(1);
     transition: transform 250ms;
 }
-.active {
+#nav .active {
     pointer-events: none;
 }
 .title:hover {
