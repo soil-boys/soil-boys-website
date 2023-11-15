@@ -505,33 +505,6 @@ h2.heading {
     #main {
         padding: 0 1rem;
     }
-    #nav.menu {
-        position: fixed;
-        width: 100%;
-        min-height: 100vh;
-        justify-content: space-evenly;
-        flex-direction: column;
-        backdrop-filter: blur(10px);
-        transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
-    }
-    #nav:not(.menu) .navbar {
-        display: none;
-        opacity: 0;
-    }
-    #nav.menu .navbar {
-        display: flex;
-        flex-direction: column;
-    }
-    .nav-btn {
-        display: flex;
-    }
-    .nav-item {
-        padding: 0;
-    }
-    .nav-link:not(.title) {
-        padding-left: .6rem;
-        padding-right: .6rem;
-    }
     #quote {
         flex-direction: column;
     }
@@ -563,6 +536,9 @@ h2.heading {
     .heading-container {
         margin-top: -3.5rem;
         font-size: .7rem !important;
+    }
+    h2.heading {
+        font-size: 12vmin;
     }
     .section-3 {
         width: 100%;
@@ -600,33 +576,6 @@ h2.heading {
 @media all and (max-width: 767px) and (min-width: 576px) {
     #main {
         padding: 0 2rem;
-    }
-    #nav.menu {
-        position: fixed;
-        width: 100%;
-        min-height: 100vh;
-        justify-content: space-evenly;
-        flex-direction: column;
-        backdrop-filter: blur(10px);
-        transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
-    }
-    #nav:not(.menu) .navbar {
-        display: none;
-        opacity: 0;
-    }
-    #nav.menu .navbar {
-        display: flex;
-        flex-direction: column;
-    }
-    .nav-btn {
-        display: flex;
-    }
-    .nav-item {
-        padding: 0;
-    }
-    .nav-link:not(.title) {
-        padding-left: .6rem;
-        padding-right: .6rem;
     }
     #quote {
         flex-direction: column;

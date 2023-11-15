@@ -53,7 +53,7 @@ function Home() {
 
         const pictureObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) updateDetails(entries[0].target, details.current)
-        }, { threshold: .4, rootMargin: '-20%' })
+        }, { threshold: .4, rootMargin: '-15%' })
         pictureRefArr.forEach(ref => {
             pictureObserver.observe(ref.current)
         });

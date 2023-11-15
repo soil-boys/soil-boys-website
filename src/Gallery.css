@@ -87,6 +87,12 @@
 /* media queries */
 @media all and (max-width: 575px) {
     #gallery {
-        --min-const: 200px
+        --min-const: 60px
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    #gallery {
+        --min-const: 120px
     }
 }

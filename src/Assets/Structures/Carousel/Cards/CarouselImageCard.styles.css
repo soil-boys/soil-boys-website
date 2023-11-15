@@ -4,13 +4,14 @@
 }
 
 
-.carousel-box.carousel-box.image-card {
+.carousel-box.image-card {
     --default-img-size: 330px;
     display: inline-flex;
     flex-grow: 0;
     flex-shrink: 0;
     max-width: var(--default-img-size);
     aspect-ratio: 1;
+    width: var(--default-img-size);
     background-color: #655e5693;
     backdrop-filter: blur(2px);
     background-clip: content-box;
