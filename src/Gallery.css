@@ -87,7 +87,7 @@
 /* media queries */
 @media all and (max-width: 575px) {
     #gallery {
-        --min-const: 60px
+        --min-const: 70px
     }
 }
 
