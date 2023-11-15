@@ -133,7 +133,7 @@
 @media all and (max-width: 575px) {
     #nav.menu {
         position: fixed;
-        width: 100%;
+        width: 100vw;
         min-height: 100vh;
         justify-content: space-evenly;
         flex-direction: column;
