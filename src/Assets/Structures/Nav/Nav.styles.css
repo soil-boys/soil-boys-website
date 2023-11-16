@@ -12,7 +12,7 @@
     top: 0;
     z-index: 9999999;
     backdrop-filter: blur(4px);
-    box-shadow: 2px 2px 2px 2px var(--accent-clr-5);
+    box-shadow: 0 1px 20px 2px var(--bg-clr-1);
     transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-out;
 }
 

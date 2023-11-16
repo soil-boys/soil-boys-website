@@ -1,10 +1,13 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+
 import Nav from './Assets/Structures/Nav/Nav'
-// import Breadcrumbs from './Assets/Structures/Breadcrumbs'
+import Footer from './Assets/Structures/Footer/Footer'
+
 import Home from './Assets/Pages/Home'
 import Gallery from './Assets/Pages/Gallery'
 import About from './Assets/Pages/About'
+
 import './App.css'
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
+      <Footer />
       {/* <Breadcrumbs /> */}
     </>
   )
