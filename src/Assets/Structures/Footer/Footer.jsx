@@ -24,8 +24,8 @@ const socials = [
     },
     {
         id: 4,
-        alt: 'twitter',
-        link: 'https://twitter.com/risuleia',
+        alt: 'twitter-x',
+        link: 'https://twitter.com/',
         img: '/Resources/twitter.svg'
     }
 ]
@@ -65,7 +65,7 @@ function Footer() {
             </div>
         </div>
         <div className="copyright-bar" select="false">
-            © Soil Boys 2023 
+            © Soil Boys {new Date().getFullYear()}
         </div>
     </div>
   )
