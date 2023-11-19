@@ -9,7 +9,6 @@
     overflow: hidden;
     background: #0000007d;
     background-clip: padding-box;
-    box-shadow: 2px 2px 2px 2px var(--accent-clr-5);
     box-shadow: 0 2px 10px 5px var(--bg-clr-1);
     align-items: center;
     justify-content: flex-end;

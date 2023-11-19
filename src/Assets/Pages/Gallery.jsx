@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import '../../Gallery.css'
+import '../Styles/Gallery.css'
 
 function Gallery() {
 

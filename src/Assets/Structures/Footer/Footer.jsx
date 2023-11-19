@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './Footer.styles.css'
+import { useNavigate } from 'react-router-dom'
 
 const socials = [
     {
@@ -31,44 +32,59 @@ const socials = [
 ]
 
 function Footer() {
-  return (
-    <div id='footer'>
-        <div className="footer-parallax">
-            <span className="dot"></span>
-            <span className="dot"></span>
-        </div>
-        <div className="footer-content">
-            <div className="column-1">
-                <div className="logo" select="false">
-                    <img src="/logo-transparent.png" alt="" srcset="" />
-                </div>
+
+    const navigate = useNavigate()
+
+    const [clickTimes, setClickTimes] = useState(0)
+    
+    useEffect(() => {
+        if (clickTimes === 10) {
+            navigate('/login')
+            setClickTimes(0)
+        }
+    }, [clickTimes])
+
+
+    return (
+        <div id='footer'>
+            <div className="footer-parallax">
+                <span className="dot"></span>
+                <span className="dot"></span>
             </div>
-            <div className="column-2">
-                <a href='mailto:hreethgupta2006@gmail.com' className="contact-btn">
-                    <span>Contact Us</span>
-                </a>
-                <div className="socials-bar" select="false">
-                    <div className="socials-heading-container">
-                        <h5 className="socials-heading">Connect with us</h5>
-                        <span className="socials-heading-line"></span>
-                    </div>
-                    <div className="socials">
-                        {
-                            socials.map(social => (
-                                <a key={social.id} href={social.link} className="social">
-                                    <img src={social.img} alt={social.alt} />
-                                </a>
-                            ))
-                        }
+            <div className="footer-content">
+                <div className="column-1">
+                    <div className="logo" select="false">
+                        <img src="/logo-transparent.png" alt="logo" />
                     </div>
                 </div>
+                <div className="column-2">
+                    <a href='mailto:hreethgupta2006@gmail.com' className="contact-btn" select="false">
+                        <span>Contact Us</span>
+                    </a>
+                    <div className="socials-bar" select="false">
+                        <div className="socials-heading-container">
+                            <h5 className="socials-heading">Connect with us</h5>
+                            <span className="socials-heading-line"></span>
+                        </div>
+                        <div className="socials">
+                            {
+                                socials.map(social => (
+                                    <a key={social.id} href={social.link} className="social">
+                                        <img src={social.img} alt={social.alt} />
+                                    </a>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="copyright-bar" select="false">
+                <span onClick={() => setClickTimes(clickTimes + 1)}>
+                    © Soil Boys {new Date().getFullYear()}
+                </span>
             </div>
         </div>
-        <div className="copyright-bar" select="false">
-            © Soil Boys {new Date().getFullYear()}
-        </div>
-    </div>
-  )
+    )
 }
 
 export default Footer

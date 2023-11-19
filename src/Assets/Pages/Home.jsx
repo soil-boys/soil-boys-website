@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../Structures/Carousel/Carousel";
 import updateDetails from "../../Functions/UpdateDetails";
+import navigatetodashboard from "../../Functions/NavigateToDashboard";
 
 function Home() {
-
+    
     const [images, setImages] = useState([])
+
     const section1 = useRef(null)
     const section2 = useRef(null)
     const divider = useRef(null)
@@ -57,6 +59,7 @@ function Home() {
         pictureRefArr.forEach(ref => {
             pictureObserver.observe(ref.current)
         });
+
 
     }, [])
 
