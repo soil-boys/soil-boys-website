@@ -79,7 +79,6 @@
     aspect-ratio: 1;
     width: 200px;
     overflow: hidden;
-    padding-bottom: 1rem;
 }
 .footer-content .column-1 .logo img {
     width: 100%;
@@ -180,8 +179,7 @@
         gap: 3rem;
     }
     .footer-content .column-1 .logo {
-        width: 150px;
-        padding-bottom: 4rem !important;
+        width: 190px;
     }
     .footer-content .column-2 .socials-bar .socials {
         display: grid;
@@ -203,8 +201,7 @@
         gap: 3rem;
     }
     .footer-content .column-1 .logo {
-        width: 150px;
-        padding-bottom: 4rem !important;
+        width: 190px;
     }
     .footer-content .column-2 .socials-bar .socials {
         gap: 2rem;
