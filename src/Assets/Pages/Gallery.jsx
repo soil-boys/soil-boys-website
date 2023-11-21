@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { motion } from "framer-motion";
 
 import '../Styles/Gallery.css'
 
@@ -16,7 +17,12 @@ function Gallery() {
     const dateYear = useRef(null)
 
     return(
-        <div id="gallery">
+        <motion.div
+            id="gallery"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="gallery-sections">
                 <div className="gallery-section" data-day="18" data-month="06" data-year="2023">
                     <h3 className="date">
@@ -91,7 +97,7 @@ function Gallery() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 
 }

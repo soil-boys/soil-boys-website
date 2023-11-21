@@ -41,6 +41,7 @@ function Footer() {
         if (clickTimes === 10) {
             navigate('/login')
             setClickTimes(0)
+            window.scroll(0, 0)
         }
     }, [clickTimes])
 

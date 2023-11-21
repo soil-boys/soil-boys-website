@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from 'framer-motion'
+
+import '../Styles/Home.css'
+
 import Carousel from "../Structures/Carousel/Carousel";
 import updateDetails from "../../Functions/UpdateDetails";
-import navigatetodashboard from "../../Functions/NavigateToDashboard";
 
 function Home() {
     
@@ -128,7 +131,12 @@ function Home() {
     ]
 
     return(
-        <>
+        <motion.div
+            id="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div id="quote" select="false">
                 <span className="quote-start">“</span>
                 <p className="quote-text">Innovation begins with the idea of change.</p>
@@ -214,7 +222,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-        </>
+        </motion.div>
     )
 
 }
