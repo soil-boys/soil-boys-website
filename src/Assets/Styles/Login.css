@@ -100,7 +100,7 @@
     padding: 10px;
     outline: none !important;
 }
-.label-container .input-container input {
+.label-container .input-container .input {
     border: none !important;
     outline: none !important;
     background: none !important;
@@ -111,6 +111,48 @@
     font-size: 1.1rem;
     transition: all 300ms linear;
 }
+.label-container.password-container .input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+.label-container.label-container.password-container .input-container .password-toggle-container {
+    display: inline-flex;
+    flex-direction: column;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+    filter: brightness(.85);
+    transition: filter 250ms ease-out;
+}
+.label-container.label-container.password-container .input-container .password-toggle-container:hover {
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    filter: brightness(1);
+    transition: filter 250ms ease-out;
+}
+.eye {
+    display: inline-flex;
+    position: absolute;
+    aspect-ratio: 1;
+    width: 1.6rem;
+    pointer-events: none;
+    color: var(--accent-clr-4);
+}
+.label-container.password-container .input-container #password-toggle {
+    display: inline-flex;
+    opacity: 0;
+    aspect-ratio: 1;
+    width: 1.8rem;
+    cursor: pointer;
+}
+
 .label-container .label {
     display: inline-flex;
     font-size: 1.4rem;
@@ -135,6 +177,15 @@
     max-width: max-content;
     opacity: .85;
 }
+.login-btn:disabled {
+    background-color: var(--accent-clr-1);
+    border-color: var(--accent-clr-1);
+    opacity: .5;
+    cursor: not-allowed;
+}
+.login-btn:disabled span {
+    color: var(--bg-clr-1);
+}
 .login-btn span {
     font-size: 1.3rem;
     font-family: var(--txt-1);
@@ -145,11 +196,11 @@
     transition: all 350ms linear;
 }
 
-.login-btn:hover {
+.login-btn:not(:disabled):hover {
     background: var(--txt-clr-3);
     transition: all 350ms linear;
 }
-.login-btn:hover span {
+.login-btn:not(:disabled):hover span {
     color: var(--bg-clr-1);
     transition: all 350ms linear;
 }

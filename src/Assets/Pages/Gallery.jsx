@@ -27,15 +27,15 @@ function Gallery() {
                 <div className="gallery-section" data-day="18" data-month="06" data-year="2023">
                     <h3 className="date">
                         <div className="date-container">
-                            <span ref={dateDay}>13</span>
+                            <span ref={dateDay}>18</span>
                             <span> / </span>
-                            <span ref={dateMonth}>11</span>
+                            <span ref={dateMonth}>06</span>
                             <span> / </span>
                             <span ref={dateYear}>2023</span>
                         </div>
                     </h3>
                     <div className="img-wrapper">
-                        {Array(8).fill(0).map(img => (
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
                             <div className="gallery-img">
                                 <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
                             </div>
@@ -45,15 +45,15 @@ function Gallery() {
                 <div className="gallery-section" data-day="17" data-month="06" data-year="2023">
                     <h3 className="date">
                         <div className="date-container">
-                            <span ref={dateDay}>12</span>
+                            <span ref={dateDay}>17</span>
                             <span> / </span>
-                            <span ref={dateMonth}>11</span>
+                            <span ref={dateMonth}>06</span>
                             <span> / </span>
                             <span ref={dateYear}>2023</span>
                         </div>
                     </h3>
                     <div className="img-wrapper">
-                        {Array(8).fill(0).map(img => (
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
                             <div className="gallery-img">
                                 <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
                             </div>
@@ -63,15 +63,15 @@ function Gallery() {
                 <div className="gallery-section" data-day="16" data-month="06" data-year="2023">
                     <h3 className="date">
                         <div className="date-container">
-                            <span ref={dateDay}>11</span>
+                            <span ref={dateDay}>16</span>
                             <span> / </span>
-                            <span ref={dateMonth}>11</span>
+                            <span ref={dateMonth}>06</span>
                             <span> / </span>
                             <span ref={dateYear}>2023</span>
                         </div>
                     </h3>
                     <div className="img-wrapper">
-                        {Array(8).fill(0).map(img => (
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
                             <div className="gallery-img">
                                 <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
                             </div>
@@ -81,15 +81,87 @@ function Gallery() {
                 <div className="gallery-section" data-day="15" data-month="06" data-year="2023">
                     <h3 className="date">
                         <div className="date-container">
-                            <span ref={dateDay}>10</span>
+                            <span ref={dateDay}>15</span>
                             <span> / </span>
-                            <span ref={dateMonth}>11</span>
+                            <span ref={dateMonth}>06</span>
                             <span> / </span>
                             <span ref={dateYear}>2023</span>
                         </div>
                     </h3>
                     <div className="img-wrapper">
-                        {Array(8).fill(0).map(img => (
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
+                            <div className="gallery-img">
+                                <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="gallery-section" data-day="14" data-month="06" data-year="2023">
+                    <h3 className="date">
+                        <div className="date-container">
+                            <span ref={dateDay}>14</span>
+                            <span> / </span>
+                            <span ref={dateMonth}>06</span>
+                            <span> / </span>
+                            <span ref={dateYear}>2023</span>
+                        </div>
+                    </h3>
+                    <div className="img-wrapper">
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
+                            <div className="gallery-img">
+                                <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="gallery-section" data-day="13" data-month="06" data-year="2023">
+                    <h3 className="date">
+                        <div className="date-container">
+                            <span ref={dateDay}>13</span>
+                            <span> / </span>
+                            <span ref={dateMonth}>06</span>
+                            <span> / </span>
+                            <span ref={dateYear}>2023</span>
+                        </div>
+                    </h3>
+                    <div className="img-wrapper">
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
+                            <div className="gallery-img">
+                                <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="gallery-section" data-day="12" data-month="06" data-year="2023">
+                    <h3 className="date">
+                        <div className="date-container">
+                            <span ref={dateDay}>12</span>
+                            <span> / </span>
+                            <span ref={dateMonth}>06</span>
+                            <span> / </span>
+                            <span ref={dateYear}>2023</span>
+                        </div>
+                    </h3>
+                    <div className="img-wrapper">
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
+                            <div className="gallery-img">
+                                <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="gallery-section" data-day="11" data-month="06" data-year="2023">
+                    <h3 className="date">
+                        <div className="date-container">
+                            <span ref={dateDay}>11</span>
+                            <span> / </span>
+                            <span ref={dateMonth}>06</span>
+                            <span> / </span>
+                            <span ref={dateYear}>2023</span>
+                        </div>
+                    </h3>
+                    <div className="img-wrapper">
+                        {Array(Math.floor(Math.random() * 16) + 1).fill(0).map(img => (
                             <div className="gallery-img">
                                 <img src={imgArr[Math.floor(Math.random() * imgArr.length)]} alt="" />
                             </div>

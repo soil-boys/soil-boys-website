@@ -55,7 +55,7 @@ function Footer() {
             <div className="footer-content">
                 <div className="column-1">
                     <div className="logo" select="false">
-                        <img src="/Logo with Title.svg" alt="logo" />
+                        <img src="/logo_with_title_transparent.svg" alt="logo" />
                     </div>
                 </div>
                 <div className="column-2">
