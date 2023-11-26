@@ -1,0 +1,113 @@
+#gallery {
+    --min-const: 250px;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6%;
+}
+
+.date {
+    font-size: xx-large;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem;
+    color: var(--txt-clr-1);
+    font-family: Montserrat;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: sticky;
+    top: 6rem;
+    left: 4rem;
+    margin: 0;
+    border-top-left-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(
+        90deg,
+        var(--accent-clr-3) 1%,
+        transparent
+    );
+    mask: linear-gradient(
+        0deg,
+        transparent,
+        white 80%
+    );
+    -webkit-mask: linear-gradient(
+        0deg,
+        transparent,
+        white 80%
+    );
+}
+.date-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+.date span:nth-child(2), .date span:nth-child(4) {
+    opacity: .6;
+}
+.gallery-sections {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    gap: 4rem;
+}
+
+.gallery-section {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+.img-wrapper {
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit, minmax(var(--min-const), 1fr)); */
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    /* grid-auto-rows: var(--min-const);
+    grid-auto-flow: dense; */
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.gallery-img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: var(--min-const);
+    max-height: var(--min-const);
+    display: inline-grid;
+    width: var(--min-const);
+    height: var(--min-const);
+    overflow: hidden;
+    border-radius: 5px;
+}
+.gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    #gallery {
+        --min-const: 70px
+    }
+    .img-wrapper {
+        gap: 5px;
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    #gallery {
+        --min-const: 120px
+    }
+    .img-wrapper {
+        gap: 5px;
+    }
+}

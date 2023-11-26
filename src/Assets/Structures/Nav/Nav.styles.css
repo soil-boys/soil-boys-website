@@ -1,0 +1,191 @@
+/* nav */
+#nav {
+    display: flex;
+    min-height: 3.5rem;
+    background: var(--nav-clr);
+    padding: 0 .5rem .5rem .5rem;
+    padding-bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 9999999;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 20px 2px var(--bg-clr-1);
+    transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-out;
+}
+
+.title {
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    padding: 0.5rem;
+    color: var(--txt-clr-1) !important;
+    font-size: 30px;
+    font-family: var(--txt-1);
+    transform: scale(1);
+    transition: transform 250ms;
+}
+#nav .active {
+    pointer-events: none;
+}
+.title:hover {
+    transform: scale(1.05);
+    filter: brightness(.9);
+    transition: transform 250ms ease-out;
+}
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: fit-content;
+    padding: 0.5rem;
+    color: var(--txt-clr-2);
+    font-size: 20px;
+}
+.nav-btn {
+    display: none;
+    gap: 5px;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    aspect-ratio: 1;
+    background-color: transparent;
+    font-size: 2rem;
+    color: var(--accent-clr-4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0.5rem 1rem 0 0;
+}
+.nav-btn .line {
+    display: inline-flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100%;
+    min-height: 2.5px;
+    max-height: 2.5px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.line-1 {
+    transform-origin: top left;
+    transition: transform 300ms ease-in;
+}
+.line-3 {
+    transform-origin: bottom left;
+    transition: transform 300ms ease-in;
+}
+.line-2 {
+    filter: opacity(1);
+    transition: filter 150ms ease-in;
+}
+.nav-btn.menu-active .line-1 {
+    width: 81%;
+    transform: rotate(45deg);
+    transition: transform 300ms ease-in;
+}
+.nav-btn.menu-active .line-3 {
+    width: 81%;
+    transform: rotate(-45deg);
+    transition: transform 300ms ease-in;
+}
+.nav-btn.menu-active .line-2 {
+    filter: opacity(0);
+    transition: filter 150ms ease-in;
+}
+.nav-item {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--txt-1);
+    font-weight: 600;
+    padding: .2em !important;
+}
+.nav-link {
+    color: var(--txt-clr-2) !important;
+    padding-bottom: 3px;
+    transition: filter 400ms;
+}
+.nav-link:not(.nav-link.active):hover {
+    filter: brightness(.8);
+    transition: filter 400ms;
+}
+.slide {
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+    transform-origin: center;
+    filter: brightness(.8);
+}
+.nav-link.active ~.slide {
+    animation: border-anim 300ms forwards;
+    filter: brightness(1);
+}
+.nav-link:hover ~.slide {
+    animation: border-anim 300ms forwards;
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    #nav.menu {
+        position: fixed;
+        width: 100vw;
+        min-height: 100vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+        transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
+    }
+    #nav:not(.menu) .navbar {
+        display: none;
+        opacity: 0;
+    }
+    #nav.menu .navbar {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-btn {
+        display: flex;
+    }
+    .nav-item {
+        padding: 0;
+    }
+    .nav-link:not(.title) {
+        padding-left: .6rem;
+        padding-right: .6rem;
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    #nav.menu {
+        position: fixed;
+        width: 100vw;
+        min-height: 100vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+        transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
+    }
+    #nav:not(.menu) .navbar {
+        display: none;
+        opacity: 0;
+    }
+    #nav.menu .navbar {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-btn {
+        display: flex;
+    }
+    .nav-item {
+        padding: 0;
+    }
+    .nav-link:not(.title) {
+        padding-left: .6rem;
+        padding-right: .6rem;
+    }
+}
