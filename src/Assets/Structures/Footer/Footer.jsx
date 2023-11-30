@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import './Footer.styles.css'
-import { useNavigate } from 'react-router-dom'
 
 const socials = [
     {
@@ -35,15 +35,17 @@ function Footer() {
 
     const navigate = useNavigate()
 
+    const location = useLocation()
+
     const [clickTimes, setClickTimes] = useState(0)
     
     useEffect(() => {
-        if (clickTimes === 10) {
-            navigate('/login')
+        if (clickTimes >= 10 && ['/login', '/dashboard'].some(__ => __ !== location.pathname)) {
+            navigate('/dashboard')
             setClickTimes(0)
             window.scroll(0, 0)
         }
-    }, [clickTimes])
+    }, [clickTimes, navigate])
 
 
     return (
