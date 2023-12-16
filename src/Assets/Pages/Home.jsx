@@ -5,10 +5,11 @@ import '../Styles/Home.css'
 
 import Carousel from "../Structures/Carousel/Carousel";
 import updateDetails from "../../Functions/UpdateDetails";
+import getClicks from "../../Functions/getClicks";
 
 function Home() {
     
-    const [images, setImages] = useState([])
+    const [images, setImages] = useState(Array(10).fill(0))
 
     const section1 = useRef(null)
     const section2 = useRef(null)
@@ -23,22 +24,12 @@ function Home() {
     const pictureRefArr = [picture1, picture2, picture3, picture4]
 
     const fetchData = async () => {
-        try {
-            const url = "https://api.unsplash.com/photos?page=1&per_page=10"
-            const response = await fetch(url, {
-                headers: {
-                    'Authorization': 'Client-ID eDyJr4X3MDuPISfgHCAUDyZ49BlIrosNA_shUgy9i9k'
-                }
-            })
-            const res = await response.json()
-            setImages(res)
-        } catch (err) {
-            return
-        }
+        const data = await getClicks()
+        setImages(data)
     }
     useEffect(() => {
         fetchData()
-
+        
         const observer = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: .9 })
@@ -50,21 +41,21 @@ function Home() {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: 1 })
         divisionObserver.observe(divider.current)
-
+        
         const latestObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: 0.18 })
         latestObserver.observe(section3.current)
-
+        
         const pictureObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) updateDetails(entries[0].target, details.current)
         }, { threshold: .4, rootMargin: '-15%' })
-        pictureRefArr.forEach(ref => {
-            pictureObserver.observe(ref.current)
-        });
-
-
-    }, [])
+    pictureRefArr.forEach(ref => {
+        pictureObserver.observe(ref.current)
+    });
+    
+    
+}, [])
 
     const content = [
         {
@@ -98,7 +89,7 @@ function Home() {
             forks: 500
         },
     ]
-
+    
     const latestContent = [
         {
             id: 0,
@@ -129,13 +120,13 @@ function Home() {
             post_equipment: 'Canon EOS M50 Mark II with 15-45mm lens'
         },
     ]
-
+    
     return(
         <motion.div
-            id="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+        id="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         >
             <div id="quote" select="false">
                 <span className="quote-start">“</span>
@@ -173,12 +164,12 @@ function Home() {
                             {
                                 latestContent.map(item => (
                                     <div
-                                        key={item.id}
-                                        className="img-container"
-                                        ref={pictureRefArr[item.id]}
-                                        data-name={item.post_name}
-                                        data-author={item.post_author}
-                                        data-equip={item.post_equipment}    
+                                    key={item.id}
+                                    className="img-container"
+                                    ref={pictureRefArr[item.id]}
+                                    data-name={item.post_name}
+                                    data-author={item.post_author}
+                                    data-equip={item.post_equipment}    
                                     >
                                         <img src={item.img} alt="" />
                                     </div>
@@ -194,30 +185,6 @@ function Home() {
                                 </a>
                                 <div className="post-equipment"><span>Shot on</span><span maskable="true">equipment used</span></div>
                             </div>
-                            {/* <div className="details">
-                                <div className="post-name">Name</div>
-                                <div className="post-credit">
-                                    <span className="post-credit-line">~</span>
-                                    <span className="post-credit-author">Angad Sankhla</span>
-                                </div>
-                                <div className="post-equipment">canon eos 1500d with 18-55mm lens</div>
-                            </div>
-                            <div className="details">
-                                <div className="post-name">Name</div>
-                                <div className="post-credit">
-                                    <span className="post-credit-line">~</span>
-                                    <span className="post-credit-author">Krishnav Barman</span>
-                                </div>
-                                <div className="post-equipment">kodak ultramax (exp 2011) on pentax zoom 280p</div>
-                            </div>
-                            <div className="details">
-                                <div className="post-name">Name</div>
-                                <div className="post-credit">
-                                    <span className="post-credit-line">~</span>
-                                    <span className="post-credit-author">Daksh Singh Minhas</span>
-                                </div>
-                                <div className="post-equipment">Canon EOS M50 Mark II with 15-45mm lens</div>
-                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -228,3 +195,17 @@ function Home() {
 }
 
 export default Home
+
+
+// try {
+//     const url = "https://api.unsplash.com/photos?page=1&per_page=10"
+//     const response = await fetch(url, {
+//         headers: {
+//             'Authorization': 'Client-ID eDyJr4X3MDuPISfgHCAUDyZ49BlIrosNA_shUgy9i9k'
+//         }
+//     })
+//     const res = await response.json()
+//     setImages(res)
+// } catch (err) {
+//     return
+// }

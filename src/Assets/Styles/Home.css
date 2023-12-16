@@ -43,7 +43,7 @@
     --direction: forwards;
     --heading-align: left;
 }
-.section-1 .heading-container {
+.section-1 .heading-container:not([animate="false"]) {
     border-bottom-left-radius: 40px;
     transform: translateX(-20%);
 }
@@ -55,7 +55,7 @@
     --heading-align: right;
     justify-content: flex-end;
 }
-.section-2 .heading-container {
+.section-2 .heading-container:not([animate="false"]) {
     border-bottom-right-radius: 40px;
     transform: translateX(20%);
 }

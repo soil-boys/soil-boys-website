@@ -8,7 +8,7 @@
 /* base */
 :root {
     --bg-clr-1: #000000e4;
-    --bg-clr-2: #3e3b33;
+    --bg-clr-2: #41414198;
     --bg-clr-3: #655e56;
     --nav-clr: #ffffff33;
     --txt-clr-1: #f0f0f0;
@@ -20,6 +20,8 @@
     --accent-clr-4: #ffffffd5;
     --accent-clr-5: #2f2e2e72;
     --accent-clr-6: #ff9794d5;
+    --btn-clr-1: #75ed75;
+    --btn-clr-2: #ef6363;
     --txt-1: Comfortaa;
     --txt-2: Lora;
     --txt-3: "Libre Caslon Text";
@@ -64,6 +66,9 @@ button {
     -webkit-user-drag: none !important;
     -webkit-user-drag: none !important;
 }
+[animate='false'], [animate='false'] * {
+    animation: none !important;
+}
 
 /* main */
 #main {
@@ -88,8 +93,6 @@ section.visible .heading-container {
 .heading-container {
     display: flex;
     align-items: center;
-    opacity: 0;
-    margin-top: -4rem;
     padding: 0 1rem;
     width: 100%;
     justify-content: var(--heading-align);
@@ -108,6 +111,10 @@ section.visible .heading-container {
         transparent,
         white 80%
     );
+}
+.heading-container:not([animate="false"]) {
+    opacity: 0;
+    margin-top: -4rem;
 }
 h2.heading {
     display: inline-flex;

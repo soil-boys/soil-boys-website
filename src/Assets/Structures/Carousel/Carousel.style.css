@@ -36,7 +36,7 @@
     flex-shrink: 0;
 }
 .carousel-wrapper {
-    animation: autoscroll var(--speed, 20s) linear infinite;
+    animation: autoscroll 20s linear infinite;
     animation-direction: var(--direction);
     overflow-y: visible;
 }

@@ -4,8 +4,8 @@ import './CarouselImageCard.styles.css'
 
 function CarouselImageCard(image, ariaHidden = false) {
   return (
-    <div key={image.id} aria-hidden={ariaHidden} className="carousel-box image-card">
-        <img src={image.urls.small_s3} alt="" />
+    <div key={crypto.randomUUID()} aria-hidden={ariaHidden} className="carousel-box image-card">
+        <img src={image.url ? image.url : ''} alt="" />
     </div>
   )
 }

@@ -9,7 +9,7 @@ import './CarouselGithubRepoCard.styles.css'
 
 function CarouselGithubRepoCard(item, ariaHidden = false) {
   return (
-    <div key={item.id} aria-hidden={ariaHidden} className="carousel-box project-card">
+    <div key={crypto.randomUUID()} aria-hidden={ariaHidden} className="carousel-box project-card">
         <div className="banner">
           <div className="project-title-container">
             <a href='https://github.com/soil-boys/Mentis' className="project-title">
