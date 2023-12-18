@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { arrayUnion, collection, getDocs } from 'firebase/firestore'
 import { motion } from 'framer-motion'
 
 import Carousel from '../Structures/Carousel/Carousel'
@@ -10,7 +9,7 @@ import getClicks from '../../Functions/getClicks'
 
 function Dashboard() {
 
-    const [changes, setChanges] = useState({ clicks: [] })
+    // const [changes, setChanges] = useState({ clicks: [] })
     const [images, setImages] = useState(Array(10).fill(0))
     const [tempFiles, setTempFiles] = useState([])
 
@@ -29,7 +28,7 @@ function Dashboard() {
         // cleanup
         e.target.value = null
     }
-    
+    console.log(images)
     const fill = (arr: Array) => {
         if (arr.length < 10) {
             const filler = Array(10 - arr.length).fill(0)
@@ -55,7 +54,7 @@ function Dashboard() {
                         <span className='material-icons-round settings-icon'>settings</span>
                         <h2 className="heading settings-heading">Clicks</h2>
                     </div>
-                    <div className={`editing-container${(tempFiles.length === 10) ? ' disabled' : ''}`}>
+                    <div className={`editing-container${(tempFiles.length === 10 || images.length === 10) ? ' disabled' : ''}`}>
                         <div className="image-column">
                             <div className="image-list">
                                 {fill(images).map((img, index) => (
@@ -66,6 +65,7 @@ function Dashboard() {
                                         index={index + 1}
                                         images={images}
                                         setImages={setImages}
+                                        reference={img.reference}
                                     />
                                 ))}
                             </div>
@@ -78,6 +78,9 @@ function Dashboard() {
                                         cleanup="true"
                                         tempFiles={tempFiles}
                                         setTempFiles={setTempFiles}
+                                        images={images}
+                                        setImages={setImages}
+                                        temp="true"
                                     />)
                                 )}
                             </div>
@@ -91,9 +94,9 @@ function Dashboard() {
                                     id="dropper"
                                     onChange={handleFiles}
                                     ref={dropper}
-                                    disabled={tempFiles.length === 10}
+                                    disabled={tempFiles.length === 10 || images.length === 10}
                                 />
-                                <span className="placeholder" select="none">Drop your images here</span>
+                                <span className="placeholder" select="false">Drop your images here</span>
                             </div>
                         </div>
                     </div>

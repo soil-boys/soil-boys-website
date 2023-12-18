@@ -12,7 +12,8 @@ async function getClicks(images = null) {
     
     const promises = imgs.map(async img => ({
         order: img.order,
-        url: await getDownloadURI(img.ref)
+        url: await getDownloadURI(img.ref),
+        reference: img.ref
     }))
     
     const functionalImgs = await Promise.all(promises)

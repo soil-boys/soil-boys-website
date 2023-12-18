@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import { useAuth } from '../../Contexts/AuthContext'
-import { auth } from '../../Firebase'
 
 import '../Styles/Login.css'
 
@@ -15,7 +14,6 @@ function Login() {
     
     const [passVisible, setPassVisible] = useState(false)
     const [filled, setFilled] = useState({ email: false, pass: false })
-    // const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     
     const btn = useRef()

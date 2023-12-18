@@ -30,7 +30,6 @@
 }
 body {
     background: var(--bg-clr-1);
-    scroll-behavior: smooth;
     font-family: var(--txt-2);
     overflow-x: hidden;
     margin: 0;
@@ -64,7 +63,9 @@ button {
 [select="false"], [select="false"] * {
     user-select: none !important;
     -webkit-user-drag: none !important;
-    -webkit-user-drag: none !important;
+}
+[data-draggable="true"] {
+    -webkit-user-drag: element !important;
 }
 [animate='false'], [animate='false'] * {
     animation: none !important;
