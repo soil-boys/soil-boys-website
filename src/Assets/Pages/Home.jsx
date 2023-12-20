@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from 'framer-motion'
 
-import '../Styles/Home.css'
-
 import Carousel from "../Structures/Carousel/Carousel";
 import updateDetails from "../../Functions/UpdateDetails";
 import getClicks from "../../Functions/getClicks";
 import useFeed from "../../Hooks/useFeed";
+
+import '../Styles/Home.css'
 
 function Home() {
     
@@ -59,7 +59,7 @@ function Home() {
         
         const latestObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
-        }, { threshold: 0.18 })
+        }, { threshold: 0.2 })
         latestObserver.observe(section3.current)
         
         
@@ -68,9 +68,9 @@ function Home() {
     useEffect(() => {
         const pictureObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) updateDetails(entries[0].target, details.current)
-        }, { threshold: 1, rootMargin: '-15%' })
+        }, { threshold: 1 })
         if (feed) {
-                pictureRefArr.forEach(ref => {
+            pictureRefArr.forEach(ref => {
                 pictureObserver.observe(ref.current)
             });
         }
@@ -162,7 +162,7 @@ function Home() {
         >
             <div id="quote" select="false">
                 <span className="quote-start">“</span>
-                <p className="quote-text">Innovation begins with the idea of change.</p>
+                <p className="quote-text">Technology, Photography, and Innovation for Positive Impact.</p>
                 <span className="quote-end">”</span>
             </div>
             <section className='section-1' style={{ '--speed': '20s' }} ref={section1}>

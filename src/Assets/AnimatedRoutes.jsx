@@ -9,6 +9,7 @@ import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import AuthProvider, { useAuth } from '../Contexts/AuthContext'
 import PrivateRoute from './PrivateRoute'
+import Code from './Pages/Code'
 
 function AnimatedRoutes() {
 
@@ -19,6 +20,7 @@ function AnimatedRoutes() {
             <AuthProvider>
                 <Routes location={location} key={location.pathname}>
                     <Route path="/" exact element={<Home />} />
+                    <Route path="/code" exact element={<Code />} />
                     <Route path="/gallery" exact element={<Gallery />} />
                     <Route path="/about" exact element={<About />} />
 
