@@ -44,6 +44,7 @@ function Footer() {
     const location = useLocation()
 
     const [clickTimes, setClickTimes] = useState(0)
+    const [height, setHeight] = useState('auto')
     
     useEffect(() => {
         if (clickTimes >= 10 && ['/login', '/dashboard'].some(__ => __ !== location.pathname)) {
@@ -53,10 +54,17 @@ function Footer() {
         }
     }, [clickTimes, navigate])
 
+    useEffect(() => {
+        window.addEventListener('resize', (e) => {
+            setHeight(`${document.querySelector('#footer').clientHeight}px`)  
+        })
+        setHeight(`${document.querySelector('#footer').clientHeight}px`)
+    }, [])
+
 
     return (
         <div id='footer'>
-            <div className="footer-parallax">
+            <div className="footer-parallax" style={{ height: height }}>
                 <span className="dot"></span>
                 <span className="dot"></span>
             </div>
@@ -67,7 +75,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="column-2">
-                    <a href='mailto:hreethgupta2006@gmail.com' className="contact-btn" select="false">
+                    <a href='mailto:soilboys.dev@gmail.com' className="contact-btn" select="false">
                         <span>Contact Us</span>
                     </a>
                     <div className="socials-bar" select="false">

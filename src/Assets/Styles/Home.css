@@ -269,6 +269,7 @@
     text-underline-offset: 4px;
     text-decoration: none;
     transition: all 250ms ease-out;
+    letter-spacing: .3px;
 }
 .section-3 .details .post-credit:hover .post-credit-author,
 .section-3 .details .post-credit:active .post-credit-author,
@@ -304,4 +305,177 @@
 }
 .section-3 .active-mask::after {
     animation: shift 1s cubic-bezier(0.19, 1, 0.22, 1) normal forwards running 1;
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    #quote {
+        flex-direction: column;
+    }
+    .quote-text {
+        font-size: calc(var(--size) - 50%);
+        padding: 0;
+        margin: 0;
+    }
+    .quote-start, .quote-end {
+        margin: 0;
+        padding: 0;
+        align-self: center;
+        font-size: calc(var(--size) - 0.3em);
+    }
+    .quote-start {
+        margin-left: -50%;
+        margin-bottom: -2.2rem;
+    }
+    .quote-end {
+        margin-right: -50%;
+        margin-top: -1.2rem;
+    }
+    .carousel-box {
+        --default-img-size: 320px;
+    }
+    section .content-wrapper {
+        margin-left: 1%;
+    }
+    .heading-container {
+        margin-top: -3.5rem;
+        font-size: .7rem !important;
+    }
+    h2.heading {
+        font-size: 12vmin;
+    }
+    .section-3 {
+        width: 100%;
+    }
+    .section-3 .heading-container {
+        width: 100%;
+    }
+    .section-3 .content-wrapper {
+        width: 97%;
+        padding: 0;
+    }
+    .section-3 .section-container {
+        flex-flow: column;
+        gap: 10px;
+    }
+    .section-3 .picture-section {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .section-3 .details-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: max-content !important;
+        bottom: 0;
+        justify-content: flex-end !important;
+    }
+    .section-3 .details-section .details {
+        padding: 1rem;
+        border-top-right-radius: 20px;
+        background: var(--accent-clr-5);
+        backdrop-filter: blur(10px);
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    #main {
+        padding: 0 2rem;
+    }
+    #quote {
+        flex-direction: column;
+    }
+    .quote-text {
+        font-size: calc(var(--size) - 40%);
+        padding: 0;
+        margin: 0;
+    }
+    .quote-start, .quote-end {
+        margin: 0;
+        padding: 0;
+        align-self: center;
+        font-size: calc(var(--size) - 0.3em);
+    }
+    .quote-start {
+        margin-left: -50%;
+        margin-bottom: -2.2rem;
+    }
+    .quote-end {
+        margin-right: -50%;
+        margin-top: -1.2rem;
+    }
+    .carousel-box {
+        --default-img-size: 350px;
+    }
+    section .content-wrapper {
+        margin-left: 2%;
+    }
+    .heading-container {
+        margin-top: -3.5rem;
+        font-size: .7rem !important;
+    }
+    .section-3 {
+        width: 100%;
+    }
+    .section-3 .heading-container {
+        width: 100%;
+    }
+    .section-3 .content-wrapper {
+        width: 97%;
+        padding: 0;
+    }
+    .section-3 .section-container {
+        flex-flow: column;
+        gap: 10px;
+    }
+    .section-3 .picture-section {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .section-3 .details-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: max-content !important;
+        bottom: 0;
+        justify-content: flex-end !important;
+    }
+    .section-3 .details-section .details {
+        padding: 1rem;
+        border-top-right-radius: 20px;
+        background: var(--accent-clr-5);
+        backdrop-filter: blur(10px);
+    }
+}
+
+@media all and (max-width: 991px) and (min-width: 768px) {
+    #main {
+        padding: 0 3rem;
+    }
+    #quote {
+        flex-direction: column;
+    }
+    .quote-text {
+        font-size: calc(var(--size) - 40%);
+        padding: 0;
+        margin: 0;
+    }
+    .quote-start, .quote-end {
+        margin: 0;
+        padding: 0;
+        align-self: center;
+        font-size: calc(var(--size) - 0.3em);
+    }
+    .quote-start {
+        margin-left: -50%;
+        margin-bottom: -2.2rem;
+    }
+    .quote-end {
+        margin-right: -50%;
+        margin-top: -1.2rem;
+    }
+    .carousel-box {
+        --default-img-size: 200px
+    }
+    section .content-wrapper {
+        margin-left: 4%;
+    }
 }
