@@ -7,6 +7,8 @@ import Gallery from  './Pages/Gallery'
 import About from './Pages/About'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
+import AuthProvider, { useAuth } from '../Contexts/AuthContext'
+import PrivateRoute from './PrivateRoute'
 
 function AnimatedRoutes() {
 
@@ -14,14 +16,20 @@ function AnimatedRoutes() {
 
     return (
         <AnimatePresence>
-            <Routes location={location} key={location.pathname}>
-                <Route path="/" exact element={<Home />} />
-                <Route path="/gallery" exact element={<Gallery />} />
-                <Route path="/about" exact element={<About />} />
+            <AuthProvider>
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/" exact element={<Home />} />
+                    <Route path="/gallery" exact element={<Gallery />} />
+                    <Route path="/about" exact element={<About />} />
 
-                <Route path='/login' exact element={<Login />} />
-                <Route path='/dashboard'  element={<Dashboard />} />
-            </Routes>
+                    <Route path='/dashboard' exact element={
+                        <PrivateRoute>
+                            <Dashboard/>
+                        </PrivateRoute>    
+                    } />
+                    <Route path='/login' exact element={<Login />} />
+                </Routes>
+            </AuthProvider>
         </AnimatePresence>
     )
 }

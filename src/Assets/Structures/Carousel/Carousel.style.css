@@ -36,7 +36,7 @@
     flex-shrink: 0;
 }
 .carousel-wrapper {
-    animation: autoscroll var(--speed, 20s) linear infinite;
+    animation: autoscroll 20s linear infinite;
     animation-direction: var(--direction);
     overflow-y: visible;
 }
@@ -54,4 +54,5 @@
     border-radius: 10px;
     box-shadow: 0 10px 10px 10px var(--accent-clr-2);
     transition: transform 100ms linear;
+    animation: none;
 }

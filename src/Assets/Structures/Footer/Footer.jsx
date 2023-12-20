@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import './Footer.styles.css'
-import { useNavigate } from 'react-router-dom'
 
 const socials = [
     {
@@ -12,7 +12,7 @@ const socials = [
     },
     {
         id: 2,
-        alt: 'insta',
+        alt: 'instagram',
         link: 'https://www.instagram.com/soil.boys',
         img: '/Resources/instagram.svg'
 
@@ -26,8 +26,14 @@ const socials = [
     {
         id: 4,
         alt: 'twitter-x',
-        link: 'https://twitter.com/',
+        link: 'https://twitter.com/TheSoilboys_',
         img: '/Resources/twitter.svg'
+    },
+    {
+        id: 5,
+        alt: 'linkedin',
+        link: 'https://www.linkedin.com/company/thesoilboys?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BI1iJq4x%2FQEGVlgpyrLtu4g%3D%3D',
+        img: '/Resources/linkedin.svg'
     }
 ]
 
@@ -35,15 +41,17 @@ function Footer() {
 
     const navigate = useNavigate()
 
+    const location = useLocation()
+
     const [clickTimes, setClickTimes] = useState(0)
     
     useEffect(() => {
-        if (clickTimes === 10) {
-            navigate('/login')
+        if (clickTimes >= 10 && ['/login', '/dashboard'].some(__ => __ !== location.pathname)) {
+            navigate('/dashboard')
             setClickTimes(0)
             window.scroll(0, 0)
         }
-    }, [clickTimes])
+    }, [clickTimes, navigate])
 
 
     return (
@@ -70,7 +78,13 @@ function Footer() {
                         <div className="socials">
                             {
                                 socials.map(social => (
-                                    <a key={social.id} href={social.link} className="social">
+                                    <a
+                                        key={social.id}
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className='social'
+                                    >
                                         <img src={social.img} alt={social.alt} />
                                     </a>
                                 ))

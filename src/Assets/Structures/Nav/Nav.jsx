@@ -8,9 +8,9 @@ import './Nav.styles.css'
 function Nav() {
 
     const tabs = [
-        { name: "Gallery", to: "/gallery" },
-        { name: "Code", to: "/code" },
-        { name: "About", to: "/about" },
+        { id: 1, name: "Gallery", to: "/gallery" },
+        { id: 2, name: "Code", to: "/code" },
+        { id: 3, name: "About", to: "/about" },
     ]
 
     return(
@@ -18,7 +18,7 @@ function Nav() {
             <NavLink className="title" to="/" onClick={ () => { navigationonroutechange() } }>Soil Boys</NavLink>
             <nav className="navbar">
                 {tabs.map((tab) => (
-                    <div className="nav-item">
+                    <div key={tab.id} className="nav-item">
                         <NavLink className="nav-link" to={tab.to} relative="path" onClick={ () => { navigationonroutechange() } }>{tab.name}</NavLink>
                         <span className="slide"></span>
                     </div>
