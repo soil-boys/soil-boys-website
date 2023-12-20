@@ -149,11 +149,11 @@
     gap: 1rem;
     min-width: 3px !important;
     padding-top: 1.5%;
-    /* transition: min-height 2s ease-out; */
 }
 .section-3.visible .side-bar {
     position: sticky;
     top: 6rem;
+    z-index: 100;
 }
 .section-3 .side-bar .line {
     min-width: 3px !important;
@@ -226,6 +226,7 @@
     position: sticky;
     width: 30%;
     max-width: 30%;
+    z-index: 100;
 }
 .section-3.visible .section-container .details-section {
     top: 6rem;
@@ -342,7 +343,7 @@
         font-size: .7rem !important;
     }
     h2.heading {
-        font-size: 12vmin;
+        font-size: 13vmin !important;
     }
     .section-3 {
         width: 100%;
