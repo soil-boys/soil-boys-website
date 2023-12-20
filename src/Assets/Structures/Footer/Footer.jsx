@@ -28,6 +28,12 @@ const socials = [
         alt: 'twitter-x',
         link: 'https://twitter.com/TheSoilboys_',
         img: '/Resources/twitter.svg'
+    },
+    {
+        id: 5,
+        alt: 'linkedin',
+        link: 'https://www.linkedin.com/company/thesoilboys?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BI1iJq4x%2FQEGVlgpyrLtu4g%3D%3D',
+        img: '/Resources/linkedin.svg'
     }
 ]
 

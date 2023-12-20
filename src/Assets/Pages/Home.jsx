@@ -65,11 +65,10 @@ function Home() {
         
     }, [])
     
-    
     useEffect(() => {
         const pictureObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) updateDetails(entries[0].target, details.current)
-        }, { threshold: .4, rootMargin: '-15%' })
+        }, { threshold: 1, rootMargin: '-15%' })
         if (feed) {
                 pictureRefArr.forEach(ref => {
                 pictureObserver.observe(ref.current)

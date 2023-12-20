@@ -171,6 +171,7 @@
 @media all and (max-width: 575px) {
     #footer {
         height: 350px;
+        margin-top: 5%;
     }
     #footer .footer-parallax {
         height: 350px;
@@ -184,8 +185,8 @@
     }
     .footer-content .column-2 .socials-bar .socials {
         display: grid;
-        grid-template-columns: repeat(2, 2.2rem);
-        grid-template-rows: repeat(2, 2.2rem);
+        grid-template-columns: repeat(auto-fit, minmax(2.2rem, 1fr));
+        grid-auto-rows: 2.2rem;
         gap: 2rem;
     }
 }
@@ -193,6 +194,7 @@
 @media all and (max-width: 767px) and (min-width: 576px) {
     #footer {
         height: 350px;
+        margin-top: 5%;
     }
     #footer .footer-parallax {
         height: 350px;
