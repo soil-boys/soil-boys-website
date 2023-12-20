@@ -54,4 +54,5 @@
     border-radius: 10px;
     box-shadow: 0 10px 10px 10px var(--accent-clr-2);
     transition: transform 100ms linear;
+    animation: none;
 }

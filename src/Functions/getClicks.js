@@ -1,5 +1,5 @@
 import getData from "../Server/getData"
-import getDownloadURI from "../Server/getDownloadURI"
+import getBlobURI from "../Server/getBlobURI"
 
 async function getClicks(images = null) {
 
@@ -12,8 +12,9 @@ async function getClicks(images = null) {
     
     const promises = imgs.map(async img => ({
         order: img.order,
-        url: await getDownloadURI(img.ref),
-        reference: img.ref
+        url: URL.createObjectURL(await getBlobURI(img.ref)),
+        reference: img.ref,
+        blob: await getBlobURI(img.ref)
     }))
     
     const functionalImgs = await Promise.all(promises)

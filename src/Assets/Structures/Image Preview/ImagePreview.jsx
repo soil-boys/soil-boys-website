@@ -2,7 +2,20 @@ import React, { useRef, useState } from 'react'
 
 import '../Image Preview/ImagePreview.styles.css'
 
-function ImagePreview({ id, order = null, img, reference = null, index = null, tempFiles = null, setTempFiles = null, images = null, setImages = null, temp = false }) {
+function ImagePreview({
+    id,
+    order = null,
+    img,
+    reference = null,
+    index = null,
+    tempFiles = null,
+    setTempFiles = null,
+    images = null,
+    setImages = null,
+    temp = false,
+    changes = null,
+    setChanges = null
+}) {
 
     const [empty, setEmpty] = useState(img ? false : true)
     const image = useRef(null)
@@ -17,7 +30,7 @@ function ImagePreview({ id, order = null, img, reference = null, index = null, t
         if (!index && images?.length === 10) return
         e.target.classList.remove('dragging')
 
-        const dropables = [...document.querySelectorAll('.image-list .img-holder')]
+        const dropables = [...document.querySelectorAll('.image-list .img-holder:not(.empty)')]
 
         if (e.target.classList.contains('temp')) {
             e.target.classList.remove('temp')
@@ -30,15 +43,35 @@ function ImagePreview({ id, order = null, img, reference = null, index = null, t
                 url: dropables[index].querySelector('.temp-img').src,
                 reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
             })))
+            setChanges(prevState => ({
+                clicks: {
+                    initial: prevState.clicks.initial,
+                    final: dropables.map((_, index) => ({
+                        order: index + 1,
+                        reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+                    }))
+                }
+            }))
+            console.log(changes)
             setTempFiles(prevState => prevState?.filter(_ => _.id !== id))
             return
         }
 
-        setImages(prevState => prevState?.map((_, index) => ({
+        setImages(prevState => dropables?.map((_, index) => ({
             order: index + 1,
             url: dropables[index].querySelector('.temp-img').src,
             reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
         })))
+        setChanges(prevState => ({
+            clicks: {
+                initial: prevState.clicks.initial,
+                final: dropables?.map((_, index) => ({
+                    order: index + 1,
+                    reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+                }))
+            }
+        }))
+        console.log(changes)
     }
 
     function handleDragOver(e) {
@@ -75,6 +108,16 @@ function ImagePreview({ id, order = null, img, reference = null, index = null, t
                 url: _.url,
                 reference: reference
             })))
+            setChanges(prevState => ({
+                clicks: {
+                    initial: prevState.clicks.initial,
+                    final: images?.filter(__ => __.order !== order)?.map((_, index) => ({
+                        order: index + 1,
+                        reference: reference
+                    }))
+                }
+            }))
+            console.log(changes)
             image.current.src = ''
         }
         else {

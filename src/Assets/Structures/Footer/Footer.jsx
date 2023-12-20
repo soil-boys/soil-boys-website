@@ -12,7 +12,7 @@ const socials = [
     },
     {
         id: 2,
-        alt: 'insta',
+        alt: 'instagram',
         link: 'https://www.instagram.com/soil.boys',
         img: '/Resources/instagram.svg'
 
@@ -26,7 +26,7 @@ const socials = [
     {
         id: 4,
         alt: 'twitter-x',
-        link: 'https://twitter.com/',
+        link: 'https://twitter.com/TheSoilboys_',
         img: '/Resources/twitter.svg'
     }
 ]
@@ -72,7 +72,13 @@ function Footer() {
                         <div className="socials">
                             {
                                 socials.map(social => (
-                                    <a key={social.id} href={social.link} className="social">
+                                    <a
+                                        key={social.id}
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className='social'
+                                    >
                                         <img src={social.img} alt={social.alt} />
                                     </a>
                                 ))

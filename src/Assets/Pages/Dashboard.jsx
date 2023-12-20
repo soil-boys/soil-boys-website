@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
+import useChanges from '../../Hooks/useChanges'
+
 import Carousel from '../Structures/Carousel/Carousel'
 import ImagePreview from '../Structures/Image Preview/ImagePreview'
 
-import '../Styles/Dashboard.css'
 import getClicks from '../../Functions/getClicks'
+import fill from '../../Functions/fill'
+
+import '../Styles/Dashboard.css'
 
 function Dashboard() {
 
-    // const [changes, setChanges] = useState({ clicks: [] })
+    const { changes, setChanges } = useChanges()
+
     const [images, setImages] = useState(Array(10).fill(0))
     const [tempFiles, setTempFiles] = useState([])
 
@@ -27,14 +32,6 @@ function Dashboard() {
 
         // cleanup
         e.target.value = null
-    }
-    console.log(images)
-    const fill = (arr: Array) => {
-        if (arr.length < 10) {
-            const filler = Array(10 - arr.length).fill(0)
-            const filledArr = arr.concat(filler)
-            return filledArr
-        } else return arr
     }
 
     const fetchData = async () => {
@@ -66,6 +63,8 @@ function Dashboard() {
                                         images={images}
                                         setImages={setImages}
                                         reference={img.reference}
+                                        changes={changes}
+                                        setChanges={setChanges}
                                     />
                                 ))}
                             </div>
@@ -81,6 +80,8 @@ function Dashboard() {
                                         images={images}
                                         setImages={setImages}
                                         temp="true"
+                                        changes={changes}
+                                        setChanges={setChanges}
                                     />)
                                 )}
                             </div>
@@ -110,7 +111,7 @@ function Dashboard() {
                     <span className="dot"></span>
                     <span className="line right"></span>
                 </div>
-                <div className="dialog-container">
+                {(changes.clicks.initial !== changes.clicks.final) && <div className="dialog-container">
                     <div className="unsaved-changes-dialog-box" select="false">
                         <div className="dialog-text">You have unsaved changes.</div>
                         <div className="btn-container">
@@ -118,7 +119,7 @@ function Dashboard() {
                             <button className="dialog-btn reset-btn">Reset</button>
                         </div>
                     </div>
-                </div>
+                </div>}
             </div>
         </motion.div>
     )

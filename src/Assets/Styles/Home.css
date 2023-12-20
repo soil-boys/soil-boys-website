@@ -19,6 +19,7 @@
     font-size: var(--size);
     align-self: center;
     font-family: var(--txt-3);
+    text-align: center;
 }
 .quote-start, .quote-end {
     --size: 5rem;
