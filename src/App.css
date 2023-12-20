@@ -28,9 +28,6 @@
     --txt-4: Montserrat;
     --carousel-padding: 4rem;
 }
-html {
-    overflow-x: hidden;
-}
 body {
     background: var(--bg-clr-1);
     font-family: var(--txt-2);
@@ -92,7 +89,7 @@ section {
     animation: fadeIn 1.2s reverse;
 }
 section.visible .heading-container {
-    animation: fadeIn 1.2s forwards;
+    animation: popDown 1.2s linear forwards;
 }
 .heading-container {
     display: flex;
@@ -188,7 +185,13 @@ h2.heading {
 
 @keyframes fadeIn {
     to {
-        transform: translateX(0);
+        width: 100%;
+        opacity: 80%;
+    }
+}
+@keyframes popDown {
+    to {
+        transform: translate(0);
         opacity: 80%;
     }
 }
