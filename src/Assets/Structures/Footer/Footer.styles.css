@@ -151,11 +151,11 @@
 }
 
 .footer-content .column-2 .socials-bar .socials {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(2.2rem, 1fr));
-    grid-auto-rows: 2.2rem;
-    place-items: center;
-    gap: 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 3.5rem;
+    column-gap: 2rem;
     width: 100%;
 }
 .footer-content .column-2 .socials-bar .socials .social {
