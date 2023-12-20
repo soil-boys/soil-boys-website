@@ -121,6 +121,7 @@
     color: var(--txt-clr-3) !important;
     transition: all 750ms linear;
     max-width: 90%;
+    margin-top: 4rem;
 }
 .section-3.visible {
     /* top: 3.5rem; */
