@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 import './Footer.styles.css'
 
@@ -32,7 +32,7 @@ const socials = [
     {
         id: 5,
         alt: 'linkedin',
-        link: 'https://www.linkedin.com/company/thesoilboys?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BI1iJq4x%2FQEGVlgpyrLtu4g%3D%3D',
+        link: 'https://www.linkedin.com/company/thesoilboys/',
         img: '/Resources/linkedin.svg'
     }
 ]
@@ -101,10 +101,17 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="copyright-bar" select="false">
-                <span onClick={() => setClickTimes(clickTimes + 1)}>
-                    © Soil Boys {new Date().getFullYear()}
-                </span>
+            <div className="bottom-bar" select="false">
+                <div className="copyright-bar">
+                    <span onClick={() => setClickTimes(clickTimes + 1)}>
+                        © Soil Boys {new Date().getFullYear()}
+                    </span>
+                </div>
+                <div className="policies-bar">
+                    <Link className="policy-link" to="/policies/terms-of-service" onClick={() => window.scroll(0, 0)}>Terms of Service</Link>
+                    <span className="separator"></span>
+                    <Link className="policy-link" to="/policies/privacy-policy" onClick={() => window.scroll(0, 0)}>Privacy Policy</Link>
+                </div>
             </div>
         </div>
     )

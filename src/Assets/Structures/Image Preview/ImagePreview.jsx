@@ -41,14 +41,17 @@ function ImagePreview({
             setImages(prevState => dropables.map((_, index) => ({
                 order: index + 1,
                 url: dropables[index].querySelector('.temp-img').src,
-                reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+                ref: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
             })))
             setChanges(prevState => ({
                 clicks: {
-                    initial: prevState.clicks.initial,
+                    initial: prevState.clicks.initial?.map((_, index) => ({
+                        order: index + 1,
+                        ref: _?.ref
+                    })),
                     final: dropables.map((_, index) => ({
                         order: index + 1,
-                        reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+                        ref: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
                     }))
                 }
             }))
@@ -60,14 +63,17 @@ function ImagePreview({
         setImages(prevState => dropables?.map((_, index) => ({
             order: index + 1,
             url: dropables[index].querySelector('.temp-img').src,
-            reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+            ref: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
         })))
         setChanges(prevState => ({
             clicks: {
-                initial: prevState.clicks.initial,
+                initial: prevState.clicks.initial?.map((_, index) => ({
+                    order: index + 1,
+                    ref: _?.ref
+                })),
                 final: dropables?.map((_, index) => ({
                     order: index + 1,
-                    reference: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
+                    ref: dropables[index].querySelector('.temp-img').getAttribute('data-reference')
                 }))
             }
         }))
@@ -106,18 +112,21 @@ function ImagePreview({
             setImages(prevState => prevState?.filter(__ => __.order !== order)?.map((_, index) => ({
                 order: index + 1,
                 url: _.url,
-                reference: reference
+                ref: reference
             })))
             setChanges(prevState => ({
                 clicks: {
-                    initial: prevState.clicks.initial,
+                    initial: prevState.clicks.initial?.map((_, index) => ({
+                        order: index + 1,
+                        ref: _?.ref
+                    })),
                     final: images?.filter(__ => __.order !== order)?.map((_, index) => ({
                         order: index + 1,
-                        reference: reference
+                        ref: reference
                     }))
                 }
             }))
-            console.log(changes)
+            console.log('a', changes)
             image.current.src = ''
         }
         else {
@@ -137,7 +146,6 @@ function ImagePreview({
                 ref={image}
                 data-reference={reference}
                 data-draggable={!empty}
-                // onLoad={() => URL.revokeObjectURL(image.current.src)}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
             />}

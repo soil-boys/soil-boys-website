@@ -13,7 +13,7 @@ async function getClicks(images = null) {
     const promises = imgs.map(async img => ({
         order: img.order,
         url: URL.createObjectURL(await getBlobURI(img.ref)),
-        reference: img.ref,
+        ref: img.ref,
         blob: await getBlobURI(img.ref)
     }))
     

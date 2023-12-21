@@ -1,0 +1,193 @@
+.policy {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.policy-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--txt-4);
+    color: var(--txt-clr-2);
+}
+.policy .heading-container {
+    --gradient-angle: 45deg;
+    --masking-angle: 0deg;
+    border-top-left-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem 0 0 1rem;
+    margin: 0;
+}
+.policy-heading {
+    display: inline-flex;
+    color: var(--txt-clr-2);
+    font-family: var(--txt-1);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 6vmin;
+    letter-spacing: 3px;
+    margin: 0;
+    align-self: flex-start;
+    letter-spacing: 3px !important;
+}
+
+.policy-divider {
+    height: 3px;
+    width: 98%;
+    background: var(--accent-clr-1);
+    padding: 0 3em 0 .8em;
+    border-radius: 1ex;
+}
+.policy-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    font-size: 1.05rem;
+    margin-top: 10px;
+}
+.policy-content a {
+    color: var(--txt-clr-3);
+    transition: all 250ms linear
+}
+.policy-content a:hover {
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+    filter: brightness(.9);
+    transition: all 250ms linear
+}
+
+.initial-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8vmax;
+}
+.policy-introduction {
+    display: flex;
+    width: fit-content;
+    /* width: 100%; */
+}
+.policy-dates {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 8px;
+    padding: 10px;
+    background: var(--nav-clr);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+}
+.policy-dates .date-field {
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 12px;
+    width: max-content;
+}
+.date-label {
+    display: inline-flex;
+    font-family: var(--txt-1);
+    font-weight: 700;
+    letter-spacing: .5px;
+    padding: 0;
+    margin: 0;
+    color: var(--accent-clr-4);
+    opacity: .9;
+}
+.date-value {
+    display: inline-flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.policy-clauses {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.policy-clauses .clause {
+    display: inline-flex;
+    flex-direction: column;
+}
+.policy-clauses .clause .clause-heading {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-family: var(--txt-1);
+    font-size: 1.3rem;
+}
+.policy-clauses .clause .clause-heading .clause-heading-point {
+    display: inline-flex;
+    color: var(--accent-clr-4);
+    padding-left: .8rem;
+}
+.policy-clauses .clause .clause-heading .clause-heading-text {
+    display: inline-flex;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+.policy-clauses .clause .clause-text {
+    padding-left: 2.5rem;
+}
+
+.contact-part {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.contact-part .contact-heading {
+    font-family: var(--txt-1);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.ending-text {
+    font-size: 1.25rem;
+    color: var(--accent-clr-4);
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-align: center;
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    .policy {
+        margin-top: 6%;
+    }
+    .policy .heading-container {
+        padding: 1rem 0 .5rem 1rem;
+        border-top-left-radius: 30px;
+    }
+    .initial-container {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    .policy {
+        margin-top: 6%;
+    }
+    .policy .heading-container {
+        padding: 1rem 0 .5rem 1rem;
+        border-top-left-radius: 30px;
+    }
+    .initial-container {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+}
