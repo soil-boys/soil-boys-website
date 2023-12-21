@@ -350,6 +350,16 @@
         margin-top: -3.5rem;
         font-size: .7rem !important;
     }
+    .section-1 .heading-container {
+        border-bottom-left-radius: 30px !important;
+    }
+    .section-2 .heading-container {
+        border-bottom-right-radius: 30px !important;
+    }
+    .section-3 .heading-container {
+        border-top-left-radius: 30px !important;
+        border-top-right-radius: 30px !important;
+    }
     h2.heading {
         font-size: 13vmin !important;
     }
@@ -421,6 +431,16 @@
     .heading-container {
         margin-top: -3.5rem;
         font-size: .7rem !important;
+    }
+    .section-1 .heading-container {
+        border-bottom-left-radius: 30px !important;
+    }
+    .section-2 .heading-container {
+        border-bottom-right-radius: 30px !important;
+    }
+    .section-3 .heading-container {
+        border-top-left-radius: 30px !important;
+        border-top-right-radius: 30px !important;
     }
     .section-3 {
         width: 100%;

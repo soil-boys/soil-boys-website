@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { AnimatePresence } from "framer-motion"
 
 import Home from './Pages/Home'
@@ -7,9 +7,12 @@ import Gallery from  './Pages/Gallery'
 import About from './Pages/About'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
-import AuthProvider, { useAuth } from '../Contexts/AuthContext'
+import AuthProvider from '../Contexts/AuthContext'
 import PrivateRoute from './PrivateRoute'
 import Code from './Pages/Code'
+import PrivacyPolicy from './Pages/Policies/PrivacyPolicy'
+import TermsOfService from './Pages/Policies/TermsOfService'
+import Page404 from './Pages/Page404'
 
 function AnimatedRoutes() {
 
@@ -23,6 +26,11 @@ function AnimatedRoutes() {
                     <Route path="/code" exact element={<Code />} />
                     <Route path="/gallery" exact element={<Gallery />} />
                     <Route path="/about" exact element={<About />} />
+                    <Route path="/policies/privacy-policy" exact element={<PrivacyPolicy />} />
+                    <Route path="/policies/terms-of-service" exact element={<TermsOfService />} />
+
+                    <Route path='/404' exact element={<Page404 />} />
+                    <Route path='*' element={<Navigate to="/404" replace="true" />} />
 
                     <Route path='/dashboard' exact element={
                         <PrivateRoute>

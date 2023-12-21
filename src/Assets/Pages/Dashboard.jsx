@@ -21,6 +21,13 @@ function Dashboard() {
     const previews = useRef(null)
     const dropper = useRef(null)
 
+    function checkEqual(arr1, arr2) {
+        if (!arr1 || !arr2) return true
+        if (![arr1, arr2].some(arr => typeof arr === 'object')) return true
+
+        return (JSON.stringify(arr1) === JSON.stringify(arr2))
+    }
+
     async function handleFiles(e) {
         e.preventDefault()
 
@@ -39,6 +46,7 @@ function Dashboard() {
         setImages(data)
     }
 
+    console.log(changes)
     useEffect(() => {
         fetchData()
     }, [])
@@ -62,7 +70,7 @@ function Dashboard() {
                                         index={index + 1}
                                         images={images}
                                         setImages={setImages}
-                                        reference={img.reference}
+                                        reference={img.ref}
                                         changes={changes}
                                         setChanges={setChanges}
                                     />
@@ -111,7 +119,7 @@ function Dashboard() {
                     <span className="dot"></span>
                     <span className="line right"></span>
                 </div>
-                {(changes.clicks.initial !== changes.clicks.final) && <div className="dialog-container">
+                {!checkEqual(changes.clicks.initial, changes.clicks.final) && <div className="dialog-container">
                     <div className="unsaved-changes-dialog-box" select="false">
                         <div className="dialog-text">You have unsaved changes.</div>
                         <div className="btn-container">
