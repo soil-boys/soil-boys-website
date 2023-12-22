@@ -33,7 +33,7 @@ function About() {
                 },
                 {
                     name: 'youtube',
-                    url: 'https://youtube.com/Bobsama'
+                    url: 'https://www.youtube.com/@bobsama_'
                 }
             ]
         },
