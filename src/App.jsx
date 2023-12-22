@@ -19,6 +19,7 @@ function App() {
     window.addEventListener('resize', (e) => {
         setWidth(document.body.clientWidth)
     })
+    console.log('%cAll images here are under strict copyright. Illegal hotlinking or sharing without attribution is forbidden.', "color: red; font-size: 2rem")
   }, [])
 
   return (
