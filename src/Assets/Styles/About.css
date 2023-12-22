@@ -221,6 +221,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    --min: 300px;
+    --max: 400px;
 }
 .founders-section .heading-container.center {
     --gradient-angle: 180deg !important;
@@ -235,7 +237,7 @@
     width: 100%;
     gap: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 450px));
+    grid-template-columns: repeat(auto-fit, minmax(var(--min), var(--max)));
     justify-content: center;
     padding: 0 1rem;
 }
@@ -343,6 +345,16 @@
     .department-icon {
         font-size: 1.8rem !important;
     }
+    .about-us-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-container {
+        shape-outside: none !important;
+        float: none !important;
+    }
     #about .heading-container {
         padding: 1rem 0 .5rem 1rem;
         border-top-left-radius: 30px;
@@ -354,6 +366,23 @@
     }
     .center {
         width: 100% !important;
+    }
+    .founders-section {
+        --min: 250px !important;
+        --max: 300px !important;
+    }
+    .founder-card {
+        flex-direction: column;
+    }
+    .founder-image {
+        max-width: 90px !important;
+        min-width: 90px !important;
+    }
+    .founder-name {
+        font-size: 1.1rem !important;
+    }
+    .founder-socials {
+        justify-content: center;
     }
 }
 

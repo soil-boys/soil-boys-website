@@ -15,9 +15,10 @@ function App() {
     const [width, setWidth] = useState('100vw')
 
     const location = useLocation()
+    ReactGA.initialize('G-8W78FTZKPV')
 
     useEffect(() => {
-        ReactGA.send({ hiyType: "pageView", page: location })
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search })
     }, [location])
 
     useEffect(() => {
@@ -30,9 +31,6 @@ function App() {
         console.log('%cAll images here are under strict copyright. Illegal hotlinking or sharing without attribution is forbidden.', "color: red; font-size: 2rem")
     }, [])
 
-    ReactGA.initialize('G-8W78FTZKPV')
-
-    ReactGA.send({ hiyType: "pageview", page: window.location.pathname })
 
     return (
         <>

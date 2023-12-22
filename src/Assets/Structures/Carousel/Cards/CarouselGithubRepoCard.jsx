@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import fork from './Assets/fork.svg'
 import star from './Assets/star.svg'
@@ -9,7 +10,7 @@ import './CarouselGithubRepoCard.styles.css'
 
 function CarouselGithubRepoCard(item, ariaHidden = false,) {
     return (
-        <div key={crypto.randomUUID()} aria-hidden={ariaHidden} className="carousel-box project-card">
+        <div key={uuidv4()} aria-hidden={ariaHidden} className="carousel-box project-card">
             <div className="banner">
             <div className="project-title-container">
                 <a href='https://github.com/soil-boys/Mentis' className="project-title">

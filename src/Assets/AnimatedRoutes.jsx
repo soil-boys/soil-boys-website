@@ -29,7 +29,8 @@ function AnimatedRoutes() {
                     <Route path="/policies/privacy-policy" exact element={<PrivacyPolicy />} />
                     <Route path="/policies/terms-of-service" exact element={<TermsOfService />} />
 
-                    <Route path='*' element={<Page404 />} />
+                    <Route path='*' element={<Navigate to="/404" replace="true" />} />
+                    <Route path='/404' element={<Page404 />} />
 
                     <Route path='/dashboard' exact element={
                         <PrivateRoute>
