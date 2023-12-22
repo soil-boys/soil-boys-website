@@ -57,15 +57,16 @@
 .about-us-text {
     color: var(--txt-clr-1);
     font-family: var(--txt-4);
-    font-size: 2.9vmin;
+    margin: 0;
+    font-size: 1.2rem;
 }
 .about-us-section .logo-container {
     shape-outside: circle(50%);
     float: right;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 .outer-circle {
-    width: 20.8vmax;
+    width: 20rem;
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
@@ -73,10 +74,11 @@
     border-radius: 100%;
     border-right: 2px dashed var(--accent-clr-1);
     border-bottom: 2px dashed var(--accent-clr-1);
+    --offset: 7rem;
 }
 .about-us-section .logo-container .center--logo {
     aspect-ratio: 1;
-    width: 15vmax;
+    width: 14.5rem;
     border-radius: 100%;
 }
 .about-us-section .logo-container .center--logo img {
@@ -85,7 +87,7 @@
 }
 .about-us-section .logo-container .department-logo {
     aspect-ratio: 1;
-    width: 3.5vmax;
+    width: 3.5rem;
     border-radius: 100%;
     position: absolute;
     display: inline-flex;
@@ -96,19 +98,19 @@
     cursor: pointer;
 }
 .about-us-section .logo-container .department-logo:nth-child(2) {
-    transform: translate(calc(sqrt(2) * 7.3 * 1vmax), 0);
+    transform: translate(calc(sqrt(2) * var(--offset)), 0);
     --pulse-color: hsla(233, 34%, 62%, 0.8);
 }
 .about-us-section .logo-container .department-logo:nth-child(3) {
-    transform: translate(7.3vmax, 7.3vmax);
+    transform: translate(var(--offset), var(--offset));
     --pulse-color: hsla(153, 87%, 40%, 0.8);
 }
 .about-us-section .logo-container .department-logo:nth-child(4) {
-    transform: translate(0, calc(sqrt(2) * 7.3 * 1vmax));
+    transform: translate(0, calc(sqrt(2) * var(--offset)));
     --pulse-color: hsla(0, 85%, 72%, 0.8);
 }
 .department-logo .department-icon {
-    font-size: 2.2vmax;
+    font-size: 2.2rem;
     color: var(--accent-clr-4);
     z-index: 2;
 }
@@ -132,15 +134,15 @@
     --pulse-color: hsla(0, 85%, 72%, 0.8);
 }
 .about-us-section .logo-container .department-logo:nth-child(2):hover {
-    transform: translate(calc(sqrt(2) * 7.3 * 1vmax), 0) scale(1.25) !important;
+    transform: translate(calc(sqrt(2) * var(--offset))) scale(1.25) !important;
     opacity: .9;
 }
 .about-us-section .logo-container .department-logo:nth-child(3):hover {
-    transform: translate(7.3vmax, 7.3vmax) scale(1.25) !important;
+    transform: translate(var(--offset), var(--offset)) scale(1.25) !important;
     opacity: .9;
 }
 .about-us-section .logo-container .department-logo:nth-child(4):hover {
-    transform: translate(0, calc(sqrt(2) * 7.3 * 1vmax)) scale(1.25) !important;
+    transform: translate(0, calc(sqrt(2) * var(--offset))) scale(1.25) !important;
     opacity: .9;
 }
 .department-logo:hover {
@@ -164,7 +166,7 @@
 .motive-section .motive-text {
     color: var(--bg-clr-1);
     font-family: var(--txt-4);
-    font-size: 3.8vmin;
+    font-size: 1.3rem;
     text-align: center;
 }
 .motive-section .bottom-divider {
@@ -195,7 +197,7 @@
     transition: width 2s linear;
 }
 .bottom-divider .bottom-heading h4 {
-    font-size: 3.2vmin;
+    font-size: 1.25rem;
     font-family: var(--txt-1);
     font-weight: 700;
     text-align: center;
@@ -219,20 +221,25 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    --min: 300px;
+    --max: 400px;
 }
-.founders-section .heading-container.right {
-    --gradient-angle: -45deg !important;
+.founders-section .heading-container.center {
+    --gradient-angle: 180deg !important;
     --masking-angle: 0deg !important;
-    justify-content: flex-end;
-    border-top-left-radius: 0;
+    justify-content: center;
+    border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    padding: 1rem 1rem .5rem 0 !important;
+    padding: 1rem 1rem .5rem 1rem !important;
+    width: 80%;
 }
 .founders-container {
     width: 100%;
     gap: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--min), var(--max)));
+    justify-content: center;
+    padding: 0 1rem;
 }
 .founder-card {
     display: inline-flex;
@@ -279,7 +286,7 @@
 }
 .founder-card .founder-details .founder-name {
     display: inline-flex;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-family: var(--txt-1);
     color: var(--txt-clr-3);
 }
@@ -287,7 +294,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    column-gap: 1rem;
+    column-gap: 1.1rem;
     row-gap: 1rem;
     width: 100%;
 }
@@ -296,8 +303,8 @@
     justify-content: center;
     align-items: center;
     aspect-ratio: 1;
-    max-width: 1.5rem;
-    min-width: 1.5rem;
+    max-width: 1.4rem;
+    min-width: 1.4rem;
     flex-shrink: 0;
 }
 .founder-card .founder-details .founder-socials .founder-social img {
@@ -320,5 +327,89 @@
     100% {
         transform: scale(1.4);
         opacity: 0;
+    }
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    .outer-circle {
+        width: 16.5rem;
+        --offset: 5.8rem;
+    }
+    .center--logo {
+        width: 11.5rem !important;
+    }
+    .department-logo {
+        width: 3rem !important;
+    }
+    .department-icon {
+        font-size: 1.8rem !important;
+    }
+    .about-us-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-container {
+        shape-outside: none !important;
+        float: none !important;
+    }
+    #about .heading-container {
+        padding: 1rem 0 .5rem 1rem;
+        border-top-left-radius: 30px;
+    }
+    #about .heading-container.center {
+        padding: 1rem !important;
+        border-top-left-radius: 30px !important;
+        border-top-right-radius: 30px !important;
+    }
+    .center {
+        width: 100% !important;
+    }
+    .founders-section {
+        --min: 250px !important;
+        --max: 300px !important;
+    }
+    .founder-card {
+        flex-direction: column;
+    }
+    .founder-image {
+        max-width: 90px !important;
+        min-width: 90px !important;
+    }
+    .founder-name {
+        font-size: 1.1rem !important;
+    }
+    .founder-socials {
+        justify-content: center;
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    .outer-circle {
+        width: 16.5rem;
+        --offset: 5.8rem;
+    }
+    .center--logo {
+        width: 11.5rem !important;
+    }
+    .department-logo {
+        width: 3rem !important;
+    }
+    .department-icon {
+        font-size: 1.8rem !important;
+    }
+    #about .heading-container {
+        padding: 1rem 0 .5rem 1rem;
+        border-top-left-radius: 30px;
+    }
+    #about .heading-container.center {
+        padding: 1rem !important;
+        border-top-left-radius: 30px !important;
+        border-top-right-radius: 30px !important;
+    }
+    .center {
+        width: 100% !important;
     }
 }

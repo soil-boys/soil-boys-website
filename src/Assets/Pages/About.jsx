@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { v4 as uuidv4 } from 'uuid';
 
 import '../Styles/About.css'
 
@@ -141,12 +142,12 @@ function About() {
                     </div>
                 </section>
                 <section className="founders-section">
-                    <div className="heading-container" animate="false">
+                    <div className="heading-container center" animate="false">
                         <h2 className="founders-heading" select="false">Our Cofounders</h2>
                     </div>
                     <div className="founders-container">
                         {founders.map(founder => (
-                            <div key={crypto.randomUUID()} className="founder-card" select="false">
+                            <div key={uuidv4()} className="founder-card" select="false">
                                 <div className="founder-image">
                                     {founder.pfp
                                         ?
@@ -159,7 +160,7 @@ function About() {
                                     <div className="founder-socials">
                                         {founder.socials.map(social => (
                                             <a
-                                                key={crypto.randomUUID()}
+                                                key={uuidv4()}
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
