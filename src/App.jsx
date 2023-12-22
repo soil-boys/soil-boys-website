@@ -32,7 +32,7 @@ function App() {
 
     ReactGA.initialize('G-8W78FTZKPV')
 
-    ReactGA.send({ hiyType: "pageView", page: window.location.pathname })
+    ReactGA.send({ hiyType: "pageview", page: window.location.pathname })
 
     return (
         <>

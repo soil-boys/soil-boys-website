@@ -141,7 +141,7 @@ function About() {
                     </div>
                 </section>
                 <section className="founders-section">
-                    <div className="heading-container" animate="false">
+                    <div className="heading-container center" animate="false">
                         <h2 className="founders-heading" select="false">Our Cofounders</h2>
                     </div>
                     <div className="founders-container">
