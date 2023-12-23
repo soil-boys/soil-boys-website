@@ -45,7 +45,8 @@ function Footer() {
 
     const [clickTimes, setClickTimes] = useState(0)
     const [height, setHeight] = useState('auto')
-    
+    const [width, setWidth] = useState('100vw')
+
     useEffect(() => {
         if (clickTimes >= 10 && ['/login', '/dashboard'].some(__ => __ !== location.pathname)) {
             navigate('/dashboard')
@@ -56,15 +57,16 @@ function Footer() {
 
     useEffect(() => {
         window.addEventListener('resize', (e) => {
-            setHeight(`${document.querySelector('#footer').clientHeight}px`)  
+            setHeight(`${document.querySelector('#footer').clientHeight}px`)
+            setWidth(`${document.querySelector("#footer").clientWidth}px`)
         })
-        setHeight(`${document.querySelector('#footer').clientHeight}px`)
+        setHeight(`${document.querySelector("#footer").clientHeight}px`)
+        setWidth(`${document.querySelector("#footer").clientWidth}px`)
     }, [])
-
 
     return (
         <div id='footer'>
-            <div className="footer-parallax" style={{ height: height }}>
+            <div className="footer-parallax" style={{ height: height, width: width }}>
                 <span className="dot"></span>
                 <span className="dot"></span>
             </div>
