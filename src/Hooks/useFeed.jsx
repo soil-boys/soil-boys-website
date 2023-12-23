@@ -15,6 +15,7 @@ function useFeed(limit: Number) {
             const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_types,permalink,media_type&limit=${limit}&access_token=${ACCESS_TOKEN}`
             const response = await fetch(url)
             const data = await response.json()
+            console.log(data)
             setFeed(data)
             setLoading(false)
         } catch (err) {
