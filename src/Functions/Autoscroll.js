@@ -8,7 +8,6 @@ const Autoscroll = () => {
     const bodyRect = body.getBoundingClientRect()
 
     const scrolling_const = window.getComputedStyle(wrapper)?.getPropertyValue('--carousel-const')
-    console.log(scrolling_const)
 }
 
 export default Autoscroll
