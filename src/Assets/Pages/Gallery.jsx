@@ -8,11 +8,11 @@ import '../Styles/Gallery.css'
 
 function Gallery() {
 
-    const { feed, loading, error } = useFeed(25)
+    const { feed, loading, error } = useFeed()
 
     const [deferredLoading, setDeferredLoading] = useState(true)
     
-    let formattedFeed = formatFeed(feed?.data)
+    let formattedFeed = formatFeed(feed)
 
     useEffect(() => {
         setTimeout(() => {

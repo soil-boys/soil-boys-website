@@ -8,14 +8,18 @@ function useFeed(limit: Number) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
+    const url = limit ? `https://instagram-scraper.onrender.com/feed?limit_given=true&limit=${limit}` : "https://instagram-scraper.onrender.com/feed"
+
     const fetchData = async () => {
         setLoading(true)
 
         try {
-            const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_types,permalink,media_type&limit=${limit}&access_token=${ACCESS_TOKEN}`
-            const response = await fetch(url)
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': ACCESS_TOKEN
+                }
+            })
             const data = await response.json()
-            console.log(data)
             setFeed(data)
             setLoading(false)
         } catch (err) {

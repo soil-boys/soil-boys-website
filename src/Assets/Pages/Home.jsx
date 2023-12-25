@@ -12,8 +12,9 @@ function Home() {
     
     const [images, setImages] = useState(Array(10).fill(0))
     const [loadingClicks, setLoadingClicks] = useState(false)
+    const [err, setErr] = useState('');
 
-    const { feed, loading, error } = useFeed(10)
+    const { feed, loading, error } = useFeed(4)
 
     const section1 = useRef(null)
     const section2 = useRef(null)
@@ -35,7 +36,7 @@ function Home() {
             setImages(data)
             setLoadingClicks(false)
         } catch (err) {
-            console.log(err)
+            setErr(err)
         } finally {
             setLoadingClicks(false)
         }
@@ -113,7 +114,7 @@ function Home() {
     const equipmentRegex = /^(📸|🎞️)(.+)$/gmi
     const authorRegex = /^\@(.+)$/gmi
 
-    let imageFeed = feed && feed.data.filter(_ => _.media_type === 'IMAGE').slice(0, 4)
+    let imageFeed = feed || null
     let latestContent = imageFeed && imageFeed.map(post => ({
         id: post.id,
         img: post.media_url,
@@ -122,36 +123,6 @@ function Home() {
         post_equipment: post.caption.match(equipmentRegex)[0].replace(/^(📸|🎞️)/gi, '')
     }))
 
-    // const latestContent = [
-    //     {
-    //         id: 0,
-    //         img: 'https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    //         post_name: 'Secrets in the foilage',
-    //         post_author: 'Anubhab Baruah',
-    //         post_equipment: 'fujifilm xt200 with 15-45mm kit lens'
-    //     },
-    //     {
-    //         id: 1,
-    //         img: 'https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    //         post_name: 'Sun setting into the red sky',
-    //         post_author: 'Angad Sankhla',
-    //         post_equipment: 'canon eos 1500d with 18-55mm lens'
-    //     },
-    //     {
-    //         id: 2,
-    //         img: 'https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    //         post_name: 'Life as a monotone aesthetic',
-    //         post_author: 'Krishnav Barman',
-    //         post_equipment: 'kodak ultramax (exp 2011) on pentax zoom 280p'
-    //     },
-    //     {
-    //         id: 3,
-    //         img: 'https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    //         post_name: 'Camera',
-    //         post_author: 'Daksh Singh Minhas',
-    //         post_equipment: 'Canon EOS M50 Mark II with 15-45mm lens'
-    //     },
-    // ]
     
     return(
         <motion.div
@@ -159,7 +130,7 @@ function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-        >
+            >
             <div id="quote" select="false">
                 <span className="quote-start">“</span>
                 <p className="quote-text">Technology, Photography, and Innovation for Positive Impact.</p>
@@ -201,7 +172,7 @@ function Home() {
                                     data-name={item.post_name}
                                     data-author={item.post_author}
                                     data-equip={item.post_equipment}    
-                                >
+                                    >
                                     <img src={item.img} alt="" />
                                 </div>
                             ))}
@@ -225,17 +196,33 @@ function Home() {
 }
 
 export default Home
-
-
-// try {
-//     const url = "https://api.unsplash.com/photos?page=1&per_page=10"
-//     const response = await fetch(url, {
-//         headers: {
-//             'Authorization': 'Client-ID eDyJr4X3MDuPISfgHCAUDyZ49BlIrosNA_shUgy9i9k'
-//         }
-//     })
-//     const res = await response.json()
-//     setImages(res)
-// } catch (err) {
-//     return
-// }
+                // const latestContent = [
+                //     {
+                //         id: 0,
+                //         img: 'https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                //         post_name: 'Secrets in the foilage',
+                //         post_author: 'Anubhab Baruah',
+                //         post_equipment: 'fujifilm xt200 with 15-45mm kit lens'
+                //     },
+                //     {
+                //         id: 1,
+                //         img: 'https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                //         post_name: 'Sun setting into the red sky',
+                //         post_author: 'Angad Sankhla',
+                //         post_equipment: 'canon eos 1500d with 18-55mm lens'
+                //     },
+                //     {
+                //         id: 2,
+                //         img: 'https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                //         post_name: 'Life as a monotone aesthetic',
+                //         post_author: 'Krishnav Barman',
+                //         post_equipment: 'kodak ultramax (exp 2011) on pentax zoom 280p'
+                //     },
+                //     {
+                //         id: 3,
+                //         img: 'https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                //         post_name: 'Camera',
+                //         post_author: 'Daksh Singh Minhas',
+                //         post_equipment: 'Canon EOS M50 Mark II with 15-45mm lens'
+                //     },
+                // ]
