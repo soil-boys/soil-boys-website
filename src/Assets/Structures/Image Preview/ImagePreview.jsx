@@ -112,7 +112,7 @@ function ImagePreview({
             setImages(prevState => prevState?.filter(__ => __.order !== order)?.map((_, index) => ({
                 order: index + 1,
                 url: _.url,
-                ref: reference
+                ref: _.ref
             })))
             setChanges(prevState => ({
                 clicks: {
@@ -122,7 +122,7 @@ function ImagePreview({
                     })),
                     final: images?.filter(__ => __.order !== order)?.map((_, index) => ({
                         order: index + 1,
-                        ref: reference
+                        ref: _.ref
                     }))
                 }
             }))

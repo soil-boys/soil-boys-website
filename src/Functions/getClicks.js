@@ -1,9 +1,9 @@
 import getData from "../Server/getData"
 import getBlobURI from "../Server/getBlobURI"
 
-async function getClicks(images = null) {
+async function getClicks(images = null, reset = false) {
 
-    if (images && images.some(img => img !== 0)) return images
+    if (!reset && images && images.some(img => img !== 0)) return images
     
     const data = await getData('images')
     if (!data) return Array(10).fill(0)

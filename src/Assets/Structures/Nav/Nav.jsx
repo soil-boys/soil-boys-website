@@ -24,7 +24,7 @@ function Nav() {
                     </div>
                 ))}
             </nav>
-            <button className="nav-btn material-symbols-rounded" onClick={ () => { navigation() } }>
+            <button className="nav-btn material-symbols-rounded" name="nav" onClick={ () => { navigation() } }>
                 <span className="line line-1"></span>
                 <span className="line line-2"></span>
                 <span className="line line-3"></span>
