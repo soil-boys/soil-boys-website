@@ -1,6 +1,6 @@
 #footer {
-    bottom: 0;
-    position: static;
+    top: 100%;
+    position: sticky;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    z-index: 110;
+    z-index: 100;
     margin-top: 5%;
 }
 
@@ -24,6 +24,7 @@
     align-items: center;
     overflow: hidden;
     position: absolute;
+    filter: opacity(.5);
 }
 .footer-parallax .dot {
     aspect-ratio: 1;

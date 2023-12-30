@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import useFeed from "../../Hooks/useFeed";
 import formatFeed from "../../Functions/formatFeed";
+
+import PhotoViewer from "../Structures/Photo Viewer/PhotoViewer";
 
 import '../Styles/Gallery.css'
 
@@ -11,6 +14,7 @@ function Gallery() {
     const { feed, loading, error } = useFeed()
 
     const [deferredLoading, setDeferredLoading] = useState(true)
+    const [viewing, setViewing] = useState(false)
     
     let formattedFeed = formatFeed(feed)
 
@@ -19,6 +23,10 @@ function Gallery() {
             setDeferredLoading(false)
         }, 5000)
     }, [])
+
+    function openViewer(img) {
+        setViewing(img)
+    }
     
     return (
         <motion.div
@@ -27,7 +35,8 @@ function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div className="gallery-sections">
+            {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />}
+            <div className="gallery-sections" select="false">
                 {!loading && formattedFeed?.map(section => (
                     <div key={section?.date} className="gallery-section">
                         <h3 className="date">
@@ -41,10 +50,10 @@ function Gallery() {
                         </h3>
                         <div className="img-wrapper">
                             {section?.images?.map(img => (
-                                <div key={img.id} className="gallery-img">
+                                <a key={img.id} className="gallery-img" onClick={() => !deferredLoading ? openViewer(img) : null}>
                                     <img src={img.media_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
                                     {deferredLoading && <div className="skeleton-loading"></div>}
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>

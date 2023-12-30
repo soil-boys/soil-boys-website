@@ -27,6 +27,16 @@ function Dashboard() {
 
         return (JSON.stringify(arr1) === JSON.stringify(arr2))
     }
+    
+    const fetchData = async () => {
+        const data = await getClicks(images)
+        setImages(data)
+    }
+
+    async function handleReset(e) {
+        fetchData()
+        console.log('b')
+    }
 
     async function handleFiles(e) {
         e.preventDefault()
@@ -41,10 +51,6 @@ function Dashboard() {
         e.target.value = null
     }
 
-    const fetchData = async () => {
-        const data = await getClicks(images)
-        setImages(data)
-    }
 
     console.log(changes)
     useEffect(() => {
@@ -123,8 +129,8 @@ function Dashboard() {
                     <div className="unsaved-changes-dialog-box" select="false">
                         <div className="dialog-text">You have unsaved changes.</div>
                         <div className="btn-container">
-                            <button className="dialog-btn save-btn">Save</button>
-                            <button className="dialog-btn reset-btn">Reset</button>
+                            <button className="dialog-btn save-btn" name='save'>Save</button>
+                            <button className="dialog-btn reset-btn" name='reset' onSubmit={handleReset}>Reset</button>
                         </div>
                     </div>
                 </div>}

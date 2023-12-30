@@ -35,7 +35,7 @@ function AnimatedRoutes() {
                     <Route path='/dashboard' exact element={
                         <PrivateRoute>
                             <Dashboard/>
-                        </PrivateRoute>    
+                        </PrivateRoute>
                     } />
                     <Route path='/login' exact element={<Login />} />
                 </Routes>

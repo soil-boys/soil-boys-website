@@ -1,0 +1,177 @@
+#photo-viewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    /* height: 100vh; */
+    position: fixed;
+    z-index: 105;
+    top: 0;
+    background: var(--bg-clr-2);
+    backdrop-filter: blur(8px);
+}
+#photo-viewer .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 65vmin;
+    height: 100vh;
+    transform-style: preserve-3d;
+    transform: perspective(200vh) translate3d(0px, 80vh, 80vw) scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    will-change: transform;
+    animation: pop 450ms linear forwards;
+}
+.photo-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    width: fit-content;
+}
+.photo-links {
+    padding: 15px 15px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--accent-clr-2);
+    border-top-right-radius: 15px;
+}
+.photo-btn {
+    aspect-ratio: 1;
+    outline: 0;
+    border: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background: var(--btn-color, var(--accent-clr-3));
+    color: var(--accent-clr-4) !important;
+    opacity: 1;
+    transform: rotate(90deg);
+    transition: opacity 300ms linear;
+    animation: spinMove 350ms linear forwards;
+    animation-delay: .8s;
+}
+.photo-btn:hover {
+    opacity: .8;
+    transition: opacity 300ms linear;
+}
+.close-btn {
+    --btn-color: var(--btn-clr-2);
+}
+.photo-permalink span {
+    transform: rotate(-45deg);
+}
+.photo {
+    display: inline-flex;
+    aspect-ratio: 1;
+}
+.photo img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+.photo-details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: var(--accent-clr-2);
+    padding: 1rem;
+    gap: .5rem;
+    height: max-content;
+    border-radius: 0 0 15px 15px;
+    justify-content: space-between;
+}
+.photo-details .photo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+}
+.photo-details .photo-name {
+    color: var(--txt-clr-3);
+    font-size: 4.2vmin;
+}
+.photo-details .photo-date {
+    color: var(--accent-clr-4);
+    opacity: .8;
+    font-size: 2.5vmin;
+    font-family: var(--txt-4);
+}
+.photo-details .photo-credit {
+    padding: 0 0 10px 0;
+    font-family: var(--txt-1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: fit-content;
+    gap: 5px;
+    color: var(--txt-clr-3);
+}
+.photo-details .photo-credit .photo-credit-line {
+    color: var(--accent-clr-1) !important;
+    text-decoration: none;
+    font-size: 2.5vmin;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.photo-details .photo-credit .photo-credit-author {
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-underline-offset: 4px;
+    text-decoration: none;
+    transition: all 250ms ease-out;
+    letter-spacing: .3px;
+    font-size: 2.5vmin;
+}
+.photo-details .photo-credit:hover .photo-credit-author,
+.photo-details .photo-credit:active .photo-credit-author,
+.photo-details .photo-credit:focus .photo-credit-author {
+    text-decoration: underline !important;
+    opacity: .8;
+    transition: all 250ms ease-out;
+}
+
+#photo-viewer [maskable='true'] {
+    display: inline;
+    position: relative;
+}
+
+#photo-viewer [maskable='true']::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--accent-clr-1);
+}
+#photo-viewer [maskable="true"]::after {
+    animation: shift 1s cubic-bezier(0.19, 1, 0.22, 1) normal forwards running 1;
+    animation-delay: .2s;
+}
+
+/* animations */
+@keyframes pop {
+    to {
+        transform: perspective(200vh) translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    }
+}
+@keyframes spinMove {
+    to {
+        transform: rotate(0);
+    }
+}

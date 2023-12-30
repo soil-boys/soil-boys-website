@@ -35,6 +35,9 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+#root {
+    min-height: 100vh;
+}
 #parallax {
     background: linear-gradient(-.64turn, var(--accent-clr-2), var(--accent-clr-5), var(--accent-clr-3));
     background-size: 300vw;
@@ -44,7 +47,7 @@ body {
     min-height: 100%;
     z-index: -1;
 }
-img {
+img:not(.img-holder img) {
     pointer-events: none !important;
 }
 a {
