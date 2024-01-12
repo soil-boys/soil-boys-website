@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import navigation from "../../../Functions/Navigation";
-import navigationonroutechange from "../../../Functions/NavigationOnRouteChange";
+import navigation from "../../../Functions/Navigation.ts";
+import navigationonroutechange from "../../../Functions/NavigationOnRouteChange.ts";
 
 import './Nav.styles.css'
 

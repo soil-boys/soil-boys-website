@@ -55,7 +55,6 @@ function ImagePreview({
                     }))
                 }
             }))
-            console.log(changes)
             setTempFiles(prevState => prevState?.filter(_ => _.id !== id))
             return
         }
@@ -77,7 +76,6 @@ function ImagePreview({
                 }))
             }
         }))
-        console.log(changes)
     }
 
     function handleDragOver(e) {
@@ -87,7 +85,7 @@ function ImagePreview({
         
         if (draggable.classList.contains('temp')) {
             const parent = e.target.classList.contains('img-holder') ? e.target : e.target.parentElement
-            if (!parent.classList.contains('empty') && !parent.classList.contains('temp')) return console.log('a')
+            if (!parent.classList.contains('empty') && !parent.classList.contains('temp')) return
 
             const emptyDroppables = [...document.querySelectorAll('.img-holder.empty')]
 
@@ -126,7 +124,6 @@ function ImagePreview({
                     }))
                 }
             }))
-            console.log('a', changes)
             image.current.src = ''
         }
         else {

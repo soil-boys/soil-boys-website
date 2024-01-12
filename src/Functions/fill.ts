@@ -1,4 +1,4 @@
-const fill = (arr: Array) => {
+const fill = (arr: Array<Object>) => {
     if (arr.length < 10) {
         const filler = Array(10 - arr.length).fill(0)
         const filledArr = arr.concat(filler)

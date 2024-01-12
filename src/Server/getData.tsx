@@ -1,7 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore'
-import { db } from '../Firebase'
+import { db } from '../Firebase.tsx'
 
-async function getData(document: String) {
+async function getData(document: string) {
 
     if (!document) return
 
