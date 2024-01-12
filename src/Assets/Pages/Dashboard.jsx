@@ -12,6 +12,7 @@ import checkEqual from '../../Functions/checkEqual.ts'
 import saveChanges from '../../Functions/saveChanges.ts'
 
 import '../Styles/Dashboard.css'
+import getData from '../../Server/getData.tsx'
 
 function Dashboard() {
 
@@ -39,7 +40,7 @@ function Dashboard() {
     }
     async function handleSubmit(e) {
         await saveChanges(images)
-        const data = await getClicks(images, true)
+        const data = await getData('images')
         const clicks = data?.images?.sort((a, b) => a.order < b.order)
         setChanges((prevState) => ({
             clicks: {
