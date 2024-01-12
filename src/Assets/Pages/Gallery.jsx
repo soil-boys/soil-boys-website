@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import useFeed from "../../Hooks/useFeed";
-import formatFeed from "../../Functions/formatFeed";
+import { useFeed } from "../../Hooks";
+
+import formatFeed from "../../Functions/formatFeed.ts";
 
 import PhotoViewer from "../Structures/Photo Viewer/PhotoViewer";
 

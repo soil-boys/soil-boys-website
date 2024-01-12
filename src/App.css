@@ -134,6 +134,24 @@ h2.heading {
     margin: 0;
 }
 
+/* maintenance */
+.maintenance {
+    color: var(--txt-clr-3);
+    font-family: var(--txt-1);
+    font-size: 4vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    flex-flow: row wrap;
+}
+.maintenance-icon {
+    font-size: 4vmax;
+    opacity: .5;
+    animation: beat 800ms infinite alternate-reverse;
+}
+
 /* animations */
 @keyframes radiance {
     0%, 100% {

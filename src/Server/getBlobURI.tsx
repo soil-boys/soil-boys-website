@@ -1,7 +1,7 @@
-import { storage } from "../Firebase";
+import { storage } from "../Firebase.tsx";
 import { getBlob, ref } from "firebase/storage";
 
-async function getBlobURI(reference: String) {
+async function getBlobURI(reference: string) {
 
     const fileRef = ref(storage, reference)
     const url = await getBlob(fileRef)

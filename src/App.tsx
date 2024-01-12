@@ -23,10 +23,10 @@ function App() {
 
     useEffect(() => {
         setInterval(() => {
-            setWidth(document.body.clientWidth)
+            setWidth(`${document.body.clientWidth}px`)
         }, 5000)
         window.addEventListener('resize', (e) => {
-            setWidth(document.body.clientWidth)
+            setWidth(`${document.body.clientWidth}px`)
         })
         console.log('%cAll images here are under strict copyright. Illegal hotlinking or sharing without attribution is forbidden.', "color: red; font-size: 2rem")
     }, [])

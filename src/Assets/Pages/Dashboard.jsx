@@ -1,41 +1,52 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-import useChanges from '../../Hooks/useChanges'
+import { useChanges } from "../../Hooks"
 
 import Carousel from '../Structures/Carousel/Carousel'
 import ImagePreview from '../Structures/Image Preview/ImagePreview'
 
-import getClicks from '../../Functions/getClicks'
-import fill from '../../Functions/fill'
+import getClicks from '../../Functions/getClicks.ts'
+import fill from '../../Functions/fill.ts'
+import checkEqual from '../../Functions/checkEqual.ts'
+import saveChanges from '../../Functions/saveChanges.ts'
 
 import '../Styles/Dashboard.css'
 
 function Dashboard() {
 
-    const { changes, setChanges } = useChanges()
+    const { changes, setChanges } = useChanges(false)
 
     const [images, setImages] = useState(Array(10).fill(0))
     const [tempFiles, setTempFiles] = useState([])
 
     const previews = useRef(null)
     const dropper = useRef(null)
-
-    function checkEqual(arr1, arr2) {
-        if (!arr1 || !arr2) return true
-        if (![arr1, arr2].some(arr => typeof arr === 'object')) return true
-
-        return (JSON.stringify(arr1) === JSON.stringify(arr2))
-    }
     
-    const fetchData = async () => {
-        const data = await getClicks(images)
+    const fetchData = async (reset = false) => {
+        const data = await getClicks(images, reset)
         setImages(data)
+        if (reset) setChanges(prevState => ({
+            clicks: {
+                initial: prevState.clicks.initial,
+                final: prevState.clicks.initial
+            }
+        }))
     }
 
     async function handleReset(e) {
-        fetchData()
-        console.log('b')
+        fetchData(true)
+    }
+    async function handleSubmit(e) {
+        await saveChanges(images)
+        const data = await getClicks(images, true)
+        const clicks = data?.images?.sort((a, b) => a.order < b.order)
+        setChanges((prevState) => ({
+            clicks: {
+                initial: clicks,
+                final: clicks
+            }
+        }))
     }
 
     async function handleFiles(e) {
@@ -51,8 +62,6 @@ function Dashboard() {
         e.target.value = null
     }
 
-
-    console.log(changes)
     useEffect(() => {
         fetchData()
     }, [])
@@ -129,8 +138,8 @@ function Dashboard() {
                     <div className="unsaved-changes-dialog-box" select="false">
                         <div className="dialog-text">You have unsaved changes.</div>
                         <div className="btn-container">
-                            <button className="dialog-btn save-btn" name='save'>Save</button>
-                            <button className="dialog-btn reset-btn" name='reset' onSubmit={handleReset}>Reset</button>
+                            <button className="dialog-btn save-btn" name='save' onClick={handleSubmit}>Save</button>
+                            <button className="dialog-btn reset-btn" name='reset' onClick={handleReset}>Reset</button>
                         </div>
                     </div>
                 </div>}

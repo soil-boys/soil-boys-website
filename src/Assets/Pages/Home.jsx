@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from 'framer-motion'
 
 import Carousel from "../Structures/Carousel/Carousel";
-import updateDetails from "../../Functions/UpdateDetails";
-import getClicks from "../../Functions/getClicks";
-import useFeed from "../../Hooks/useFeed";
+
+import updateDetails from "../../Functions/UpdateDetails.ts";
+import getClicks from "../../Functions/getClicks.ts";
+
+import { useFeed, useRepos } from "../../Hooks";
 
 import '../Styles/Home.css'
 
@@ -15,6 +17,7 @@ function Home() {
     const [err, setErr] = useState('');
 
     const { feed, loading, error } = useFeed(4)
+    const { repos, loadingRepos } = useRepos()
 
     const section1 = useRef(null)
     const section2 = useRef(null)
@@ -62,8 +65,8 @@ function Home() {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: 0.2 })
         latestObserver.observe(section3.current)
-        
-        
+
+
     }, [])
     
     useEffect(() => {
@@ -123,14 +126,13 @@ function Home() {
         post_equipment: post.caption.match(equipmentRegex)[0].replace(/^(📸|🎞️)/gi, '')
     }))
 
-    
     return(
         <motion.div
             id="home"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            >
+        >
             <div id="quote" select="false">
                 <span className="quote-start">“</span>
                 <p className="quote-text">Technology, Photography, and Innovation for Positive Impact.</p>
@@ -148,7 +150,7 @@ function Home() {
                 <span className="line right"></span>
             </div>
             <section className='section-2' style={{ '--speed': '10s' }} ref={section2}>
-                <Carousel content={content} type="repo" />
+                <Carousel content={loadingRepos ? content : [repos[0], repos[0], repos[0], repos[0], repos[0]]} type="repo" />
                 <div className="heading-container">
                     <h2 className="heading" select="false">Projects</h2>
                 </div>
