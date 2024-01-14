@@ -34,6 +34,12 @@ const socials = [
         alt: 'linkedin',
         link: 'https://www.linkedin.com/company/thesoilboys/',
         img: '/Resources/linkedin.svg'
+    },
+    {
+        id: 6,
+        alt: 'discord',
+        link: 'https://discord.gg/NTp9X5jrFq',
+        img: '/Resources/discord.svg'
     }
 ]
 
