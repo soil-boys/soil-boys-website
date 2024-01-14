@@ -71,6 +71,16 @@ function About() {
             ]
         },
         {
+            name: 'Angad Sankla',
+            pfp: '/Resources/admin/angad.jpg',
+            socials: [
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/ayeangad/'
+                }
+            ]
+        },
+        {
             name: 'Hreeth Gupta',
             pfp: '/Resources/admin/hreeth.jpg',
             socials: [
