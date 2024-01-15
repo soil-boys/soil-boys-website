@@ -201,7 +201,16 @@
     color: var(--txt-clr-3);
 }
 .content-links .content-link .link-icon {
-    color: var(--txt-clr-3);
+    display: inline-flex;
+    aspect-ratio: 1;
+    width: 24px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+.content-links .content-link .link-icon img {
+    width: 100%;
+    object-fit: contain;
 }
 .content-links .content-link:hover {
     opacity: .7;
