@@ -89,7 +89,7 @@ function Home() {
         title: "Mentis – Your Personal Mood Tracking App!",
         logo: mentis,
         labels: {
-            tools: ["React Native", "NodeJS"],
+            tools: ["React Native", "NodeJS", "TensorFlow"],
             type: ["App"]
         },
         links: [

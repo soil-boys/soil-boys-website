@@ -1,9 +1,8 @@
 import React from 'react'
 
-import mentis from '../Carousel/Cards/Assets/Mentis.svg'
+import getIcon from '../../../Functions/getIcon.ts'
 
 import './RecentCard.styles.css'
-import getIcon from '../../../Functions/getIcon.ts'
 
 function RecentCard({ animation = true, content }) {
 
@@ -34,7 +33,8 @@ function RecentCard({ animation = true, content }) {
                     {content.links.map(link => (
                         <a target='_blank' rel='noreferrer noopener' href={link.url} className="content-link">
                             <span className="link-text">{link.name}</span>
-                            <span className="link-icon material-icons-round">{link.icon}</span>
+                            <span className="link-icon">
+                                <img src={getIcon(`minimal:${link.icon}`)} alt={link.icon} /></span>
                         </a>
                     ))}
                 </div>
