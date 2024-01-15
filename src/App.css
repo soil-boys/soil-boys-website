@@ -47,7 +47,7 @@ body {
     min-height: 100%;
     z-index: -1;
 }
-img:not(.img-holder img) {
+img:not(.img-holder img):not(.preview-minimal-icon img) {
     pointer-events: none !important;
 }
 a {

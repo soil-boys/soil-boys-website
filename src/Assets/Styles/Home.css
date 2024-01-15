@@ -64,6 +64,9 @@
     animation-duration: 800ms !important;
     transform-origin: right bottom;
 }
+.section-2 .heading-container {
+    margin-top: -2.4rem !important;
+}
 
 /* divider */
 #divider {
