@@ -71,12 +71,16 @@ function About() {
             ]
         },
         {
-            name: 'Angad Sankla',
+            name: 'Angad Saini',
             pfp: '/Resources/admin/angad.jpg',
             socials: [
                 {
                     name: 'instagram',
                     url: 'https://www.instagram.com/ayeangad/'
+                },
+                {
+                    name: 'linkedin',
+                    url: 'https://www.linkedin.com/in/angad-saini/'
                 }
             ]
         },
