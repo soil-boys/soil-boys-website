@@ -1,0 +1,245 @@
+.recent-card {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 30px;
+    background: linear-gradient(115deg, var(--txt-clr-3) 20%, rgba(255,169,146,1) 80%);
+    background-size: 200vw;
+}
+.visible .recent-card {
+    animation: radiance 7s linear infinite;
+}
+.recent-card[animation="false"] {
+    animation: radiance 7s linear infinite;
+}
+.recent-card-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.recent-card-background img {
+    object-fit: contain;
+    width: 100%;
+}
+
+.recent-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+    padding: 2rem;
+    gap: 1rem;
+    backdrop-filter: brightness(.65);
+    border-radius: 30px;
+    width: 100%;
+}
+
+.content-header {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+}
+.content-header .content-logo {
+    z-index: 40;
+    width: 150px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 1rem;
+    transform: scale(0);
+}
+.recent-card[animation="false"] .content-logo {
+    transform: scale(1) !important;
+    animation: none !important;
+}
+.visible .content-header .content-logo {
+    animation: sizeUp 2s linear forwards;
+}
+.content-header .content-logo img {
+    object-fit: contain;
+    width: 100%;
+}
+.content-header .content-title {
+    font-family: var(--txt-4);
+    font-size: 4vmin;
+    font-weight: 700;
+    color: var(--txt-clr-3);
+    letter-spacing: 1px;
+    text-align: end;
+    text-transform: capitalize;
+}
+
+.content-labels {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+    flex-direction: row;
+    margin-right: 1rem;
+}
+.content-labels .content-tools {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+.content-tools .tool-icon {
+    display: inline-flex;
+    width: 50px;
+    aspect-ratio: 1;
+    padding: 10px;
+    background-color: #2a2a2a53;
+    border-radius: 1ex;
+    backdrop-filter: blur(5px);
+    transition: width 150ms linear;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.recent-card[animation="false"] .tool-icon {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    animation: none !important;
+}
+.visible .content-tools .tool-icon {
+    animation: appear 1s linear forwards;
+}
+.visible .content-tools .tool-icon:nth-child(2) {
+    animation-delay: 500ms;
+}
+.visible .content-tools .tool-icon:nth-child(1) {
+    animation-delay: 1s;
+}
+.content-tools .tool-icon img {
+    object-fit: contain;
+    width: 100%;
+}
+
+.content-tools .tool-icon:hover {
+    width: 55px;
+    transition: width 150ms linear;
+}
+
+.content-labels .content-labels-divider {
+    display: inline-flex;
+    height: 2.2rem;
+    width: 2.38px;
+    border-radius: 1ex;
+    background-color: var(--accent-clr-4);
+}
+
+.content-labels .content-type {
+    display: inline-flex;
+    background-color: var(--accent-clr-1);
+    padding: .3rem 1rem;
+    font-size: 1.2rem;
+    font-family: var(--txt-1);
+    font-weight: 700;
+    color: var(--accent-clr-2);
+    border-radius: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-description {
+    display: inline-flex;
+    font-size: 1.2rem;
+    font-family: var(--txt-4);
+    color: var(--accent-clr-4);
+    text-align: end;
+    letter-spacing: .5px;
+    position: relative;
+}
+.visible .content-description::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    letter-spacing: .5px;
+    color: var(--accent-clr-4);
+    text-align: end;
+    overflow: hidden;
+    animation: textColorize 1s linear forwards;
+}
+
+.content-links {
+    display: flex;
+    width: fit-content;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+}
+.content-links .content-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--accent-clr-5);
+    padding: 10px;
+    border-radius: 1ex;
+    opacity: 1;
+    backdrop-filter: blur(3px);
+    transition: opacity 200ms ease-in-out;
+}
+.content-links .content-link .link-text {
+    font-size: 1.1rem;
+    font-family: var(--txt-1);
+    color: var(--txt-clr-3);
+}
+.content-links .content-link .link-icon {
+    color: var(--txt-clr-3);
+}
+.content-links .content-link:hover {
+    opacity: .7;
+    transition: opacity 200ms ease-in-out;
+}
+
+/* animations */
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sizeUp {
+    0% {
+        transform: scale(0);
+        border-radius: 100%;
+    }
+    50% {
+        transform: scale(1);
+        border-radius: 100%;
+    }
+    100% {
+        transform: scale(1);
+        border-radius: 10px;
+    }
+}
+
+@keyframes textColorize {
+    to {
+        width: 100% !important;
+    }
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    .content-labels .content-type {
+        font-size: 1.1rem;
+    }
+}

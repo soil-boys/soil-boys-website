@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from 'framer-motion'
 
 import Carousel from "../Structures/Carousel/Carousel";
+import RecentCard from "../Structures/Recent Card/RecentCard.jsx";
 
 import updateDetails from "../../Functions/UpdateDetails.ts";
 import getClicks from "../../Functions/getClicks.ts";
+import mentis from "../Structures/Carousel/Cards/Assets/Mentis.svg"
 
 import { useFeed, useRepos } from "../../Hooks";
 
@@ -49,12 +51,15 @@ function Home() {
     useEffect(() => {
         fetchData()
         
-        const observer = new IntersectionObserver(entries => {
+        const clicksObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: .9 })
+        clicksObserver.observe(section1.current)
         
-        observer.observe(section1.current)
-        observer.observe(section2.current)
+        const recentObserver = new IntersectionObserver(entries => {
+            entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
+        }, { threshold: .5 })
+        recentObserver.observe(section2.current)
         
         const divisionObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
@@ -79,6 +84,28 @@ function Home() {
             });
         }
     }, [loading])
+    
+    const recentData = {
+        title: "Mentis – Your Personal Mood Tracking App!",
+        logo: mentis,
+        labels: {
+            tools: ["React Native", "NodeJS"],
+            type: ["App"]
+        },
+        links: [
+            {
+                name: "Download",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["download"]
+            },
+            {
+                name: "GitHub",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["github"]
+            }
+        ],
+        description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
+    }
 
     const content = [
         {
@@ -150,9 +177,10 @@ function Home() {
                 <span className="line right"></span>
             </div>
             <section className='section-2' style={{ '--speed': '10s' }} ref={section2}>
-                <Carousel content={loadingRepos ? content : [repos[0], repos[0], repos[0], repos[0], repos[0]]} type="repo" />
+                {/* <Carousel content={loadingRepos ? content : [repos[0], repos[0], repos[0], repos[0], repos[0]]} type="repo" /> */}
+                <RecentCard content={recentData} />
                 <div className="heading-container">
-                    <h2 className="heading" select="false">Projects</h2>
+                    <h2 className="heading" select="false">Recent</h2>
                 </div>
             </section>
             <section className="section-3" ref={section3}>
@@ -173,8 +201,9 @@ function Home() {
                                     ref={pictureRefArr[index]}
                                     data-name={item.post_name}
                                     data-author={item.post_author}
-                                    data-equip={item.post_equipment}    
-                                    >
+                                    data-equip={item.post_equipment}  
+                                    select="false"  
+                                >
                                     <img src={item.img} alt="" />
                                 </div>
                             ))}
