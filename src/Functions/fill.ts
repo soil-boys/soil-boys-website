@@ -1,6 +1,6 @@
-const fill = (arr: Array<Object>) => {
-    if (arr.length < 10) {
-        const filler = Array(10 - arr.length).fill(0)
+const fill = (arr: Array<Object>, limit: number = 10) => {
+    if (arr.length < limit) {
+        const filler = Array(limit - arr.length).fill(0)
         const filledArr = arr.concat(filler)
         return filledArr
     } else return arr

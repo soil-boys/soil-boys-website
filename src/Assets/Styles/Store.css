@@ -1,0 +1,102 @@
+#store {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 6%;
+    gap: 2rem;
+}
+
+.store-banner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    background: var(--accent-clr-3);
+    border-radius: 20px;
+    min-height: 200px;
+    overflow: hidden;
+    background: linear-gradient(115deg, #b6c3c7e7 20%, rgb(184, 123, 105) 80%);
+    background-size: 200vw;
+    animation: radiance 7s linear infinite;
+    flex-direction: row;
+    position: relative;
+}
+.store-banner-part {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    padding-right: 8rem;
+    width: 60%;
+    background-color: var(--bg-clr-3);
+    align-self: stretch;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    animation: skew 500ms linear forwards;
+    animation-delay: 800ms;
+    opacity: .9;
+    z-index: 30;
+}
+.store-banner-heading {
+    color: var(--accent-clr-4);
+    font-family: var(--txt-1);
+    letter-spacing: 1.2px;
+    margin-top: 4%;
+    font-weight: 700;
+    font-size: 6vmin;
+    opacity: .9;
+}
+.store-banner-heading .highlight {
+    color: var(--txt-clr-3);
+    opacity: 1;
+}
+.store-banner-text {
+    font-size: 1.2rem;
+    color: var(--accent-clr-4);
+    opacity: .8;
+    font-family: var(--txt-1);
+}
+.store-banner #tsparticles {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.store-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+/* animations */
+@keyframes skew {
+    to {
+        clip-path: polygon(0 0, 70% 0, 90% 100%, 0% 100%);
+    }
+}
+
+/* media queries */
+@media all and (max-width: 575px) {
+    .store-banner-part {
+        width: 80%;
+    }
+    .store-banner-heading {
+        font-size: 5vmin;
+    }
+    .store-banner-text {
+        font-size: 1rem;
+    }
+}
+
+@media all and (max-width: 767px) and (min-width: 576px) {
+    .store-banner-part {
+        width: 80%;
+    }
+    .store-banner-heading {
+        font-size: 5vmin;
+    }
+    .store-banner-text {
+        font-size: 1rem;
+    }
+}

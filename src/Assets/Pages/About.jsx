@@ -6,6 +6,8 @@ import '../Styles/About.css'
 
 function About() {
 
+    document.title = "Our Soily Journey"
+
     const motive = useRef(null)
 
     useEffect(() => {
@@ -124,15 +126,15 @@ function About() {
                                 </div>
                                 <a className="department-logo" target="_blank" rel="noopener noreferrer" href="https://github.com/soil-boys">
                                     <div className="pulse"></div>
-                                    <span className="material-icons-round department-icon">code</span>
+                                    <span className="material-symbols-rounded department-icon">code</span>
                                 </a>
                                 <a className="department-logo" target="_blank" rel="noopener noreferrer" href="https://instagram.com/soil.boys">
                                     <div className="pulse"></div>
-                                    <span className="material-icons-round department-icon">camera</span>
+                                    <span className="material-symbols-rounded department-icon">camera</span>
                                 </a>
                                 <a className="department-logo" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@Soilboys">
                                     <div className="pulse"></div>
-                                    <span className="material-icons-round department-icon">mic</span>
+                                    <span className="material-symbols-rounded department-icon">mic</span>
                                 </a>
                             </div>
                         </div>
@@ -167,7 +169,7 @@ function About() {
                                         ?
                                     <img src={founder.pfp} alt={founder.name} />
                                         :
-                                    <span className="default-img material-icons-round">person</span>}
+                                    <span className="default-img material-symbols-rounded">person</span>}
                                 </div>
                                 <div className="founder-details">
                                     <div className="founder-name">{founder.name}</div>

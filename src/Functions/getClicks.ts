@@ -9,7 +9,7 @@ async function getClicks(images: Object[] | null, reset = false) {
 
     if (!reset && images && images.some(img => img !== 0)) return images
     
-    const data = await getData('images')
+    const data = await getData('clicks','images')
     if (!data) return Array(10).fill(0)
     
     const imgs = data.images.sort((a: Image, b: Image) => a.order < b.order)

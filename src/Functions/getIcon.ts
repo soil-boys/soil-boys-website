@@ -158,7 +158,7 @@ const options: Option[] = [
 
 const getIcon = (query: string): string | undefined => {
     if (!query) return undefined
-    else return options.find(__ => __.name === query)?.icon
+    else return options.find(__ => __.name === query)?.icon || undefined
 }
 
 export default getIcon

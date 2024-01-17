@@ -11,11 +11,36 @@ import mentis from "../Structures/Carousel/Cards/Assets/Mentis.svg"
 import { useFeed, useRepos } from "../../Hooks";
 
 import '../Styles/Home.css'
+import getRecent from "../../Functions/getRecent.ts";
 
 function Home() {
+
+    document.title = "Soil Boys"
     
     const [images, setImages] = useState(Array(10).fill(0))
+    const [recent, setRecent] = useState({
+        title: "Mentis – Your Personal Mood Tracking App!",
+        logo: mentis,
+        labels: {
+            tools: ["React Native", "NodeJS"],
+            type: ["App"]
+        },
+        links: [
+            {
+                name: "Download",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["download"]
+            },
+            {
+                name: "GitHub",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["github"]
+            }
+        ],
+        description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
+    })
     const [loadingClicks, setLoadingClicks] = useState(false)
+    const [loadingRecent, setLoadingRecent] = useState(false)
     const [err, setErr] = useState('');
 
     const { feed, loading, error } = useFeed(4)
@@ -35,15 +60,21 @@ function Home() {
 
     const fetchData = async () => {
         setLoadingClicks(true)
+        setLoadingRecent(true)
 
         try {
             const data = await getClicks()
+            const recentData = await getRecent(null, true)
+            console.log(recentData)
             setImages(data)
+            setRecent(recentData)
             setLoadingClicks(false)
+            setLoadingRecent(false)
         } catch (err) {
             setErr(err)
         } finally {
             setLoadingClicks(false)
+            setLoadingRecent(false)
         }
 
     }
@@ -107,39 +138,6 @@ function Home() {
         description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
     }
 
-    const content = [
-        {
-            id: 1,
-            cover: true,
-            stars: 256,
-            forks: 200
-        },
-        {
-            id: 2,
-            cover: false,
-            stars: 222,
-            forks: 1000
-        },
-        {
-            id: 3,
-            cover: true,
-            stars: 2226,
-            forks: 2500
-        },
-        {
-            id: 4,
-            cover: true,
-            stars: 100,
-            forks: 200
-        },
-        {
-            id: 5,
-            cover: true,
-            stars: 521,
-            forks: 500
-        },
-    ]
-
     const defaultRegex = /^([^\n]+)$/gmi
     const equipmentRegex = /^(📸|🎞️)(.+)$/gmi
     const authorRegex = /^\@(.+)$/gmi
@@ -178,7 +176,7 @@ function Home() {
             </div>
             <section className='section-2' style={{ '--speed': '10s' }} ref={section2}>
                 {/* <Carousel content={loadingRepos ? content : [repos[0], repos[0], repos[0], repos[0], repos[0]]} type="repo" /> */}
-                <RecentCard content={recentData} />
+                {!loadingRecent && <RecentCard content={recent} />}
                 <div className="heading-container">
                     <h2 className="heading" select="false">Recent</h2>
                 </div>

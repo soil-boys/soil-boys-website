@@ -6,6 +6,8 @@ import "../Styles/Page404.css"
 
 function Page404() {
 
+    document.title = "Oops!"
+
     const navigate = useNavigate()
 
     const returningLink = useRef(null)
@@ -33,7 +35,7 @@ function Page404() {
                         <p className="text">Returning back to the </p>
                         <Link to="/" className='return-link' ref={returningLink}>
                             <p className="text">home page</p>
-                            <span className="material-icons-round">north_east</span>
+                            <span className="material-symbols-rounded">north_east</span>
                         </Link>
                     </div>
                 </div>

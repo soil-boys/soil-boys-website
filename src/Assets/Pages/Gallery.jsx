@@ -11,6 +11,8 @@ import '../Styles/Gallery.css'
 
 function Gallery() {
 
+    document.title = "Soil Gallery"
+
     const { feed, loading, error } = useFeed()
 
     const [deferredLoading, setDeferredLoading] = useState(true)

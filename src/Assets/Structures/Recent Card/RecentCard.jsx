@@ -7,13 +7,13 @@ import './RecentCard.styles.css'
 function RecentCard({ animation = true, content }) {
 
     return (
-        <div className='recent-card' select="false" animation={animation}>
+        <div className='recent-card' select="false" animation={animation.toString()}>
             <div className="recent-card-content">
                 <div className="content-header">
                     <div className="content-logo">
                         <img src={content.logo} alt="logo" />                                                                                                                                                                                                                                                                                                                                                                                                 
                     </div>
-                    <h5 className="content-title">Mentis – Your personal mood tracking app!</h5>
+                    <h5 className="content-title">{content.title}</h5>
                 </div>
                 <div className="content-labels">
                     <div className="content-tools">
@@ -34,7 +34,7 @@ function RecentCard({ animation = true, content }) {
                         <a target='_blank' rel='noreferrer noopener' href={link.url} className="content-link">
                             <span className="link-text">{link.name}</span>
                             <span className="link-icon">
-                                <img src={getIcon(`minimal:${link.icon}`)} alt={link.icon} /></span>
+                                <img src={getIcon(`minimal:${link.icon}`) || getIcon("minimal:link")} alt={link.icon} /></span>
                         </a>
                     ))}
                 </div>

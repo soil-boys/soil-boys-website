@@ -59,9 +59,14 @@ function IntuitiveSelectable({ defaultSelected, limit }) {
                         </div>
                     )) : <div className='placeholder-text' select="false">Add tools here</div>}
                 </div>
-                <div className="select-btn" onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)} select="false">
+                <button
+                    className="select-btn"
+                    onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)}
+                    select="false"
+                    disabled={selected.length >= limit}
+                >
                     <span className="material-icons-round">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
-                </div>
+                </button>
             </div>
             <div className={`select-menu${(active && selected.length < limit) ? ' active' : ''}`} data-type="intuitive">
                 {filter(options, selected).map(option => (

@@ -1,9 +1,12 @@
 import React from 'react'
 
 function Code() {
-  return (
-    <div>Code</div>
-  )
+
+    document.title = "Soil Code"
+
+    return (
+        <div>Code</div>
+    )
 }
 
 export default Code

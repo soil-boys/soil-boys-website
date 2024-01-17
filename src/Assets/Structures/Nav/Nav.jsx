@@ -10,7 +10,8 @@ function Nav() {
     const tabs = [
         { id: 1, name: "Gallery", to: "/gallery" },
         { id: 2, name: "Code", to: "/code" },
-        { id: 3, name: "About", to: "/about" },
+        { id: 3, name: "Store", to: "/store" },
+        { id: 4, name: "About", to: "/about" },
     ]
 
     return(

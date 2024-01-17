@@ -5,13 +5,14 @@ import { AnimatePresence } from "framer-motion"
 import Home from './Pages/Home'
 import Gallery from  './Pages/Gallery'
 import About from './Pages/About'
+import Store from './Pages/Store.jsx'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
-import PrivateRoute from './PrivateRoute'
 import Code from './Pages/Code'
 import PrivacyPolicy from './Pages/Policies/PrivacyPolicy'
 import TermsOfService from './Pages/Policies/TermsOfService'
 import Page404 from './Pages/Page404'
+import PrivateRoute from './PrivateRoute'
 
 import AuthProvider from '../Contexts/AuthContext.tsx'
 
@@ -40,8 +41,9 @@ function AnimatedRoutes() {
                             :
                         <>
                             <Route path="/" exact element={<Home />} />
-                            <Route path="/code" exact element={<Code />} />
                             <Route path="/gallery" exact element={<Gallery />} />
+                            <Route path="/code" exact element={<Code />} />
+                            <Route path='/store' exact element={<Store />} />
                             <Route path="/about" exact element={<About />} />
                             <Route path="/policies/privacy-policy" exact element={<PrivacyPolicy />} />
                             <Route path="/policies/terms-of-service" exact element={<TermsOfService />} />

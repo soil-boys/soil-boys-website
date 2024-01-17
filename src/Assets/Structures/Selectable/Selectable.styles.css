@@ -15,7 +15,7 @@
 .select-box .select-btn {
     display: flex;
     aspect-ratio: 1;
-    width: 2rem;
+    width: min-content;
     font-size: 1rem;
     color: var(--accent-clr-1);
     justify-content: center;
@@ -23,6 +23,10 @@
     align-items: center;
     cursor: pointer;
     padding-left: 1rem;
+    background: none !important;
+}
+.select-btn:disabled span {
+    filter: opacity(.5);
 }
 .select-box[data-type="text"] .select-btn {
     border-right: 1px solid var(--accent-clr-1);
@@ -43,6 +47,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-flow: row wrap;
+    background: none !important;
 }
 .select-preview .preview-icon {
     display: inline-flex;
@@ -219,4 +224,8 @@
     box-shadow: 0 0 15px 5px var(--accent-clr-1);
     background-color: #ffffff6a;
     border-radius: .5ex;
+}
+.select-menu.active[data-type="minimal"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }

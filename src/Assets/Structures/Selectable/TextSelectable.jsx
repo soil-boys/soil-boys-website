@@ -28,9 +28,14 @@ function TextSelectable({ defaultSelected, limit }) {
     return (
         <>
             <div className="select-box" data-type="text">
-                <div className="select-btn" onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)} select="false">
+                <button
+                    className="select-btn"
+                    onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)}
+                    disabled={selected.length >= limit}
+                    select="false"
+                >
                     <span className="material-icons-round">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
-                </div>
+                </button>
                 <div className="select-preview">
                     {selected.length !== 0 ? selected.map(item => (
                         <div className="preview-textbox" select="false">
