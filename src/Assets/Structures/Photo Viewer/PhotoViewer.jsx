@@ -34,10 +34,10 @@ function PhotoViewer({ photo, setViewing }) {
                         </div>
                         <div className="photo-links">
                             <a href={details.permalink} target="_blank" rel="noopener noreferrer" className="photo-btn photo-permalink">
-                                <span className="material-icons-round">link</span>
+                                <span className="material-symbols-rounded">link</span>
                             </a>
                             <button className="photo-btn close-btn" name='Close Button' onClick={() => setViewing(null)}>
-                                <span className="material-icons-round">close</span>
+                                <span className="material-symbols-rounded">close</span>
                             </button>
                         </div>
                     </div>

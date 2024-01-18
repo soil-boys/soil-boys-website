@@ -9,6 +9,10 @@
     box-shadow: 10px 10px 20px 2px var(--bg-clr-1);
     transform: scale(1);
     transition: transform 200ms ease;
+    /* opacity: 0;
+    animation: itemReveal linear forwards;
+    animation-timeline: view();
+    animation-range: cover; */
 }
 .store-item * {
     outline: none !important;
@@ -21,8 +25,14 @@
 }
 
 .store-item-img {
+    display: inline-flex;
     width: 100%;
     aspect-ratio: 1;
+    overflow: hidden;
+}
+.store-item-img img {
+    object-fit: contain;
+    width: 100%;
 }
 .store-item-details {
     display: flex;
@@ -144,3 +154,10 @@
     background-color: var(--accent-clr-3);
     transition: background-color 250ms linear;
 }
+
+/* animations */
+/* @keyframes itemReveal {
+    to {
+        opacity: 1;
+    }
+} */

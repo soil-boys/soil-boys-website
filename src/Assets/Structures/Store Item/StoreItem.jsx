@@ -22,20 +22,20 @@ function StoreItem({ item, cart, setCart }) {
 
     return (
         <div className='store-item'>
-            <Link className="store-item-img" to={`/store/${item.added}`}>
-                <img src={item.imageUrl} alt={item.name} />
+            <Link className="store-item-img" to={`/store/${item.pid}`}>
+                <img src={item.images[0]} alt={item.name} select="false" />
             </Link>
             <div className="store-item-details">
                 <div className="store-item-details-heading">
-                    <Link className="store-item-details-name" to={`/store/${item.added}`}>{item.name}</Link>
-                    <div className="store-item-details-manufacturer">{item.manufacturer}</div>
+                    <Link className="store-item-details-name" to={`/store/${item.pid}`}>{item.name}</Link>
+                    <div className="store-item-details-manufacturer">{item.seller}</div>
                 </div>
                 <div className="store-item-details-info">
                     <div className="store-item-details-pricing-container">
-                        <button className="store-item-cart-btn" onClick={(e) => handlePress(item)}>
+                        <button className="store-item-cart-btn" onClick={(e) => handlePress(item)} select="false">
                             <span className="material-symbols-rounded">{cart.indexOf(item) !== -1 ? "remove_shopping_cart" : "add_shopping_cart"}</span>
                         </button>
-                        <div className="store-item-details-price">$ {Math.round(item.price)}</div>
+                        <div className="store-item-details-price">₹ {Math.round(item.price)}</div>
                     </div>
                     <div className="store-item-details-tags">
                         {

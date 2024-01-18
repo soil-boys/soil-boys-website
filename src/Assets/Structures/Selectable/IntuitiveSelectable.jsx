@@ -65,7 +65,7 @@ function IntuitiveSelectable({ defaultSelected, limit }) {
                     select="false"
                     disabled={selected.length >= limit}
                 >
-                    <span className="material-icons-round">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
+                    <span className="material-symbols-rounded">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
                 </button>
             </div>
             <div className={`select-menu${(active && selected.length < limit) ? ' active' : ''}`} data-type="intuitive">

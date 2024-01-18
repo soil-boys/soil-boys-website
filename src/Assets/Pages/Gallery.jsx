@@ -6,6 +6,7 @@ import { useFeed } from "../../Hooks";
 import formatFeed from "../../Functions/formatFeed.ts";
 
 import PhotoViewer from "../Structures/Photo Viewer/PhotoViewer";
+import Loader from '../Structures/Loader/Loader'
 
 import '../Styles/Gallery.css'
 
@@ -60,6 +61,7 @@ function Gallery() {
                         </div>
                     </div>
                 ))}
+                {loading && <Loader />}
             </div>
         </motion.div>
     )

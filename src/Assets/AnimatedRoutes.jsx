@@ -15,6 +15,7 @@ import Page404 from './Pages/Page404'
 import PrivateRoute from './PrivateRoute'
 
 import AuthProvider from '../Contexts/AuthContext.tsx'
+import CartProvider from '../Contexts/CartContext.tsx'
 
 function MaintenanceText() {
     return (
@@ -43,7 +44,18 @@ function AnimatedRoutes() {
                             <Route path="/" exact element={<Home />} />
                             <Route path="/gallery" exact element={<Gallery />} />
                             <Route path="/code" exact element={<Code />} />
-                            <Route path='/store' exact element={<Store />} />
+                            <Route path='/store'>
+                                <Route index element={
+                                    <CartProvider>
+                                        <Store />
+                                    </CartProvider>
+                                } />
+                                <Route path=':pid' element={
+                                    <CartProvider>
+                                        <Store />
+                                    </CartProvider>
+                                } />
+                            </Route>
                             <Route path="/about" exact element={<About />} />
                             <Route path="/policies/privacy-policy" exact element={<PrivacyPolicy />} />
                             <Route path="/policies/terms-of-service" exact element={<TermsOfService />} />

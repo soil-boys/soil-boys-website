@@ -65,14 +65,80 @@
 
 .store-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+}
+
+.store-back-link {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.store-back-link .back-link {
+    display: flex;
+    background-color: var(--accent-clr-4);
+    background-repeat: no-repeat !important;
+    background-clip: text !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 1.05rem;
+    font-family: var(--txt-4);
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: transparent;
+}
+.store-back-link .back-link div {
+    display: inline-flex;
+    flex-direction: column;
+}
+.store-back-link .back-link div .back-link-underline {
+    height: 2px;
+    background: linear-gradient(270deg, var(--txt-clr-3) 20%, rgba(255,169,146,1) 80%);
+    width: 0;
+    transition: width 200ms linear;
+}
+.store-back-link .back-link.hovered {
+    background-color: transparent;
+    background: linear-gradient(270deg, var(--txt-clr-3) 20%, rgba(255,169,146,1) 80%);
+    animation: gradientReveal 300ms linear forwards;
+}
+.store-back-link .back-link.hovered div .back-link-underline {
+    width: 100%;
+    transition: width 200ms linear;
+    transition-delay: 250ms;
+}
+
+.search-result-header {
+    font-size: 1.4rem;
+    font-family: var(--txt-4);
+    color: var(--accent-clr-1);
+}
+.search-result-header span {
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: var(--txt-clr-3);
+}
+.search-result-header span:nth-child(3) {
+    padding: 0 2px;
 }
 
 /* animations */
 @keyframes skew {
     to {
         clip-path: polygon(0 0, 70% 0, 90% 100%, 0% 100%);
+    }
+}
+
+@keyframes gradientReveal {
+    0% {
+        background-size: 0% 100%;
+    }
+    100% {
+        background-size: 100% 100%;
     }
 }
 
@@ -85,7 +151,10 @@
         font-size: 5vmin;
     }
     .store-banner-text {
-        font-size: 1rem;
+        font-size: .9rem;
+    }
+    .store-items {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

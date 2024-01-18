@@ -5,11 +5,11 @@ import trim from '../../../Functions/trim.ts'
 
 import './SearchBar.styles.css'
 
-function SearchBar({ cart, setCart, items, setItems }) {
+function SearchBar({ cart, setCart, searchItems }) {
 
     const navigate = useNavigate()
 
-    const [searchQuery, setSearchQuery] = useState(null)
+    const [searchQuery, onChangeSearchQuery] = useState('')
     const [menuActive, setMenuActive] = useState(false)
 
     function handleRemove(item) {
@@ -29,6 +29,12 @@ function SearchBar({ cart, setCart, items, setItems }) {
 
         setCart([])
     }
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        navigate(searchQuery === '' ? '/store' : `?search=${encodeURIComponent(searchQuery)}`, { replace: searchQuery === '' ? true : false })
+        searchItems(searchQuery)
+    }
 
     function calculateTotalPrice() {
         let price = 0
@@ -46,23 +52,27 @@ function SearchBar({ cart, setCart, items, setItems }) {
         }, 1000);
     }, [])
 
+
     return (
         <div id="searchbar">
-            <div className="searchbox-container">
+            <form onSubmit={handleSubmit} className="searchbox-container">
                 <input
                     type="text"
                     className="search-input"
                     placeholder='What are you looking for?'
+                    value={searchQuery}
+                    onChange={(e) => onChangeSearchQuery(e.target.value)}
                 />
-                <a href="" className="search-btn" select="false">
+                <button type='submit' className="search-btn" select="false">
                     <span className="material-symbols-rounded">search</span>
-                </a>
-            </div>
+                </button>
+            </form>
             <div className="cart-container" select="false">
                 {(cart && cart.length > 0) && <span className="cart-count">{cart.length}</span>}
                 <button
                     className={`cart-btn${(cart && cart.length > 0) ? ' active' : ''}`}
                     onClick={() => (cart.length > 0) ? setMenuActive(prev => !prev) : setMenuActive(false)}
+                    disabled={!cart || cart.length === 0}
                 >
                     <span className="cart-btn-text">Cart</span>
                     <span className="material-symbols-rounded">shopping_cart</span>
@@ -70,14 +80,14 @@ function SearchBar({ cart, setCart, items, setItems }) {
                 <div className={`cart-list${(cart.length > 0 && menuActive) ? ' active' : ''}`}>
                     <div className="cart-items-container">
                         {cart.map(item => (
-                            <div key={item.added} className="cart-item">
+                            <div key={item.pid} className="cart-item">
                                 <div className="cart-item-logo">
-                                    <img src={item.imageUrl} alt={item.name} />
+                                    <img src={item.images[0]} alt={item.name} />
                                 </div>
                                 <div className="cart-item-details">
-                                    <div className="cart-item-name">{trim(item.name, 50)}</div>
+                                    <div className="cart-item-name">{trim(item.name, 30)}</div>
                                     <div className="cart-item-pricing-container">
-                                        <div className="cart-item-price">$ {item.price}</div>
+                                        <div className="cart-item-price">₹ {item.price}</div>
                                         <button className="cart-item-remove-btn" onClick={(e) => handleRemove(item)}>
                                             <span className="material-symbols-rounded">remove_shopping_cart</span>
                                         </button>
@@ -89,7 +99,7 @@ function SearchBar({ cart, setCart, items, setItems }) {
                     <div className="cart-details">
                         <div className="cart-price-container">
                             <div className="cart-price-label">Total</div>
-                            <div className="cart-price">$ {calculateTotalPrice()}</div>
+                            <div className="cart-price">₹ {calculateTotalPrice()}</div>
                         </div>
                         <div className="cart-buttons">
                             <button

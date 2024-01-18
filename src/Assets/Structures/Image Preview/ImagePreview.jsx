@@ -146,7 +146,7 @@ function ImagePreview({
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
             />}
-            {!empty && <button onClick={handlePress} className="remove-btn material-icons-round">delete_sweep</button>}
+            {!empty && <button onClick={handlePress} className="remove-btn material-symbols-rounded">delete_sweep</button>}
         </div>
     )
 }
