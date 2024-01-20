@@ -9,12 +9,18 @@ function About() {
     document.title = "Our Soily Journey"
 
     const motive = useRef(null)
+    const foundersContainer = useRef(null)
 
     useEffect(() => {
         const divisionObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: 1 })
         divisionObserver.observe(motive.current)
+
+        const foundersObserver = new IntersectionObserver(entries => {
+            entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
+        }, { threshold: .2 })
+        foundersObserver.observe(foundersContainer.current)
     }, [])
 
     const founders = [
@@ -42,11 +48,11 @@ function About() {
         },
         {
             name: 'Daksh Singh Minhas',
-            pfp: '/Resources/admin/daksh.png',
+            pfp: '/Resources/admin/daksh.jpg',
             socials: [
                 {
                     name: 'instagram',
-                    url: 'https://www.instagram.com/raaahduxx/'
+                    url: 'https://www.instagram.com/raahhdux/'
                 },
                 {
                     name: 'github',
@@ -106,7 +112,7 @@ function About() {
         }
     ]
 
-    return(
+    return (
         <motion.div
             id="about"
             initial={{ opacity: 0 }}
@@ -139,11 +145,13 @@ function About() {
                             </div>
                         </div>
                         <p className="about-us-text">
-                            Soil Boys is a dynamic and innovative international multi-sector startup committed to revolutionizing the modernization of services. Our mission is to innovate and create for the enhancement, convenience and efficiency of technology. Leveraging cutting-edge technology and a global perspective, Soil Boys aims to drive efficiency and deliver groundbreaking solutions to real-life problems, as well as to develop upon new ideas for commmon cases.
-                            <br />
-                            At Soil Boys, we take pride in our diverse team of experts who bring a wealth of experience and creativity to the table. Our commitment to excellence is reflected in our work. As a forward-thinking company, we are dedicated to staying at the forefront of industry trends and embracing a culture of continuous innovation.
-                            <br />
-                            Let us take you on our journey to redefine innovation through passion, expertise, and a global mindset. Together, we are Soil Boys — shaping the future, one piece at a time.
+                            <span>
+                                Soil Boys is a dynamic and innovative international multi-sector startup committed to revolutionizing the modernization of services. Our mission is to innovate and create for the enhancement, convenience and efficiency of technology. Leveraging cutting-edge technology and a global perspective, Soil Boys aims to drive efficiency and deliver groundbreaking solutions to real-life problems, as well as to develop upon new ideas for commmon cases.
+                                <br />
+                                At Soil Boys, we take pride in our diverse team of experts who bring a wealth of experience and creativity to the table. Our commitment to excellence is reflected in our work. As a forward-thinking company, we are dedicated to staying at the forefront of industry trends and embracing a culture of continuous innovation.
+                                <br />
+                                Let us take you on our journey to redefine innovation through passion, expertise, and a global mindset. Together, we are Soil Boys — shaping the future, one piece at a time.
+                            </span>
                         </p>
                     </div>
                 </section>
@@ -161,9 +169,9 @@ function About() {
                     <div className="heading-container center" animate="false">
                         <h2 className="founders-heading" select="false">Our Cofounders</h2>
                     </div>
-                    <div className="founders-container">
-                        {founders.map(founder => (
-                            <div key={uuidv4()} className="founder-card" select="false">
+                    <div className="founders-container" ref={foundersContainer}>
+                        {founders.map((founder, index) => (
+                            <div key={uuidv4()} className="founder-card" select="false" style={{ animationDelay: `${index * 300}ms` }}>
                                 <div className="founder-image">
                                     {founder.pfp
                                         ?
@@ -174,13 +182,14 @@ function About() {
                                 <div className="founder-details">
                                     <div className="founder-name">{founder.name}</div>
                                     <div className="founder-socials">
-                                        {founder.socials.map(social => (
+                                        {founder.socials.map((social, i) => (
                                             <a
                                                 key={uuidv4()}
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className='founder-social'
+                                                style={{ animationDelay: `${((index + 1) * 300) + ((i + 1) * 300)}ms` }}
                                             >
                                                 <img src={`/Resources/${social.name}.svg`} alt={social.name} />
                                             </a>
