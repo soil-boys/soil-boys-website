@@ -29,13 +29,21 @@ function MinimalSelectable({ defaultSelected, limit }) {
     return (
         <>
             <div className="select-box" data-type='minimal'>
-                <div className="select-preview" onClick={() => setActive(prevState => !prevState)}>
-                    {selected.length !== 0 ? selected.map(item => (
+                <button className="select-preview" onClick={() => setActive(prevState => !prevState)}>
+                    {
+                        selected.length !== 0
+                            ?
+                        selected.map(item => (
+                            <div className="preview-minimal-icon" select="false">
+                                <img src={getIcon(`minimal:${item}`)} alt={item} />
+                            </div>
+                        ))
+                            :
                         <div className="preview-minimal-icon" select="false">
-                            <img src={getIcon(`minimal:${item}`)} alt={item} />
+                            <img src={getIcon("minimal:link")} alt="link" />
                         </div>
-                    )) : <div className='placeholder-text' select="false">Add tools here</div>}
-                </div>
+                    }
+                </button>
             </div>
             <div className={`select-menu${(active) ? ' active' : ''}`} data-type="minimal">
                 {filter(options, selected).map(option => (

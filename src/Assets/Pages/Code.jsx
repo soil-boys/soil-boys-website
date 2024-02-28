@@ -1,9 +1,14 @@
 import React from 'react'
 
 function Code() {
-  return (
-    <div>Code</div>
-  )
+
+    document.title = "Soil Code"
+
+    return (
+        <div className='unavailable-text'>
+            <div className="text">Coming soon!</div>
+        </div>
+    )
 }
 
 export default Code

@@ -55,10 +55,17 @@
     display: flow-root;
 }
 .about-us-text {
-    color: var(--txt-clr-1);
+    color: #ffffff11;
     font-family: var(--txt-4);
     margin: 0;
     font-size: 1.2rem;
+}
+.about-us-text span {
+    background: linear-gradient(90deg, var(--txt-clr-1) 100%, transparent 0);
+    background-clip: text !important;
+    background-repeat: no-repeat;
+    animation: typewriterAnim 3s linear forwards;
+    animation-timing-function: steps(940);
 }
 .about-us-section .logo-container {
     shape-outside: circle(50%);
@@ -250,8 +257,12 @@
     border-radius: 15px;
     width: 100%;
     place-items: center;
+    opacity: 0;
     box-shadow: 5px 5px 10px 5px var(--bg-clr-1);
-    transition: transform 250ms ease-out;
+    transition: all 250ms ease-out;
+}
+.founders-container.visible .founder-card {
+    animation: cardReveal 1s ease forwards;
 }
 .founder-card:hover {
     transform: scale(1.05);
@@ -306,6 +317,10 @@
     max-width: 1.4rem;
     min-width: 1.4rem;
     flex-shrink: 0;
+    transform: scale(0);
+}
+.founders-container.visible .founder-card .founder-details .founder-socials .founder-social {
+    animation: socialPop 300ms cubic-bezier(0.68,-0.55, 0.15, 1.45) forwards;
 }
 .founder-card .founder-details .founder-socials .founder-social img {
     width: 100%;
@@ -327,6 +342,16 @@
     100% {
         transform: scale(1.4);
         opacity: 0;
+    }
+}
+@keyframes cardReveal {
+    to {
+        opacity: 1;
+    }
+}
+@keyframes socialPop {
+    to {
+        transform: scale(1);
     }
 }
 

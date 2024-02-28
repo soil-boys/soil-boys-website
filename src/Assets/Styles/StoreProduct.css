@@ -1,0 +1,19 @@
+#store-product {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#store-product .store-back-link .back-link {
+    gap: 10px;
+    animation-timing-function: steps(7) !important;
+}
+
+#store-product .store-product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

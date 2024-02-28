@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-import './Selectable.styles.css'
 import IntuitiveSelectable from './IntuitiveSelectable.jsx'
 import TextSelectable from './TextSelectable.jsx'
 import MinimalSelectable from './MinimalSelectable.jsx'
+
+import './Selectable.styles.css'
 
 function Selectable({ limit = 1, defaultSelected = [], type = "intuitive" }) {
 

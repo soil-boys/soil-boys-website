@@ -28,15 +28,20 @@ function TextSelectable({ defaultSelected, limit }) {
     return (
         <>
             <div className="select-box" data-type="text">
-                <div className="select-btn" onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)} select="false">
-                    <span className="material-icons-round">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
-                </div>
+                <button
+                    className="select-btn"
+                    onClick={() => setActive(prevState => selected.length < limit ? !prevState : false)}
+                    disabled={selected.length >= limit}
+                    select="false"
+                >
+                    <span className="material-symbols-rounded">{(active && selected.length < limit) ? "expand_less" : "expand_more"}</span>
+                </button>
                 <div className="select-preview">
                     {selected.length !== 0 ? selected.map(item => (
                         <div className="preview-textbox" select="false">
                             <span className="preview-text">{item}</span>
                             <div className="preview-textbox-close-btn" onClick={() => setSelected(prev => prev.filter(_ => _ !== item))}>
-                                <span className="material-icons-round">close</span>
+                                <span className="material-symbols-rounded">close</span>
                             </div>
                         </div>
                     )) : <div className='placeholder-text' select="false">State type here</div>}

@@ -1,0 +1,58 @@
+.recent-form-links-container .link-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    background-color: var(--accent-clr-2);
+    padding: 15px;
+    border-radius: 15px;
+}
+.recent-form-links-container .link-field-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: start;
+    font-size: 1.2rem;
+    font-family: var(--txt-1);
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: var(--accent-clr-1);
+}
+.recent-form-links-container .link-appearance-field,
+.recent-form-links-container .link-url-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+.recent-form-links-container .appearance-container {
+    display: inline-flex;
+    flex-direction: row;
+    border-radius: 1ex;
+    border: 3px solid var(--accent-clr-1);
+    width: 100%;
+}
+.recent-form-links-container .appearance-container .link-name {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 40px;
+    color: var(--txt-clr-3);
+    font-family: var(--txt-1);
+    margin-left: 5px;
+    width: 100%;
+}
+.recent-form-links-container .link-url {
+    border-radius: 1ex;
+    border: 3px solid var(--accent-clr-1);
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    color: var(--txt-clr-3);
+    font-family: var(--txt-1);
+    width: 100%;
+}

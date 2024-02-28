@@ -7,8 +7,10 @@ import Carousel from '../Structures/Carousel/Carousel'
 import ImagePreview from '../Structures/Image Preview/ImagePreview'
 import RecentCard from '../Structures/Recent Card/RecentCard.jsx'
 import Selectable from '../Structures/Selectable/Selectable.jsx'
+import LinkBox from '../Structures/Link Box/LinkBox.jsx'
 
 import getClicks from '../../Functions/getClicks.ts'
+import getRecent from '../../Functions/getRecent.ts'
 import fill from '../../Functions/fill.ts'
 import checkEqual from '../../Functions/checkEqual.ts'
 import saveChanges from '../../Functions/saveChanges.ts'
@@ -20,17 +22,43 @@ import '../Styles/Dashboard.css'
 
 function Dashboard() {
 
+    document.title = "Soil Dashboard"
+
     const { changes, setChanges } = useChanges(false)
 
     const [images, setImages] = useState(Array(10).fill(0))
     const [tempFiles, setTempFiles] = useState([])
+    
+    const [recent, setRecent] = useState({
+        title: "Mentis – Your Personal Mood Tracking App!",
+        logo: mentis,
+        labels: {
+            tools: ["React Native", "NodeJS"],
+            type: ["App"]
+        },
+        links: [
+            {
+                name: "Download",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["download"]
+            },
+            {
+                name: "GitHub",
+                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+                icon: ["github"]
+            }
+        ],
+        description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
+    })
 
     const previews = useRef(null)
     const dropper = useRef(null)
     
     const fetchData = async (reset = false) => {
-        const data = await getClicks(images, reset)
-        setImages(data)
+        const clicksData = await getClicks(images, reset)
+        const recentData = await getRecent(recent, reset)
+        setRecent(recentData)
+        setImages(clicksData)
         if (reset) setChanges(prevState => ({
             clicks: {
                 initial: prevState.clicks.initial,
@@ -44,8 +72,8 @@ function Dashboard() {
     }
     async function handleSubmit(e) {
         await saveChanges(images)
-        const data = await getData('images')
-        const clicks = data?.images?.sort((a, b) => a.order < b.order)
+        const clicksData = await getData('clicks', 'images')
+        const clicks = clicksData?.images?.sort((a, b) => a.order < b.order)
         setChanges((prevState) => ({
             clicks: {
                 initial: clicks,
@@ -71,34 +99,17 @@ function Dashboard() {
         fetchData()
     }, [])
 
-    const recentData = {
-        title: "Mentis – Your Personal Mood Tracking App!",
-        logo: {mentis},
-        labels: {
-            tools: ["React Native", "NodeJS"],
-            type: ["App"]
-        },
-        links: [
-            {
-                name: "Download",
-                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
-                icon: ["download"]
-            },
-            {
-                name: "GitHub",
-                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
-                icon: ["github"]
-            }
-        ],
-        description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
-    }
-
     return (
-        <motion.div id="dashboard">
+        <motion.div
+            id="dashboard"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="dashboard-container">
                 <section className='carousel-section'>
                     <div className="heading-container" animate="false" select="false">
-                        <span className='material-icons-round settings-icon'>settings</span>
+                        <span className='material-symbols-rounded settings-icon'>settings</span>
                         <h2 className="heading settings-heading">Clicks</h2>
                     </div>
                     <div className={`editing-container${(tempFiles.length === 10 || images.length === 10) ? ' disabled' : ''}`}>
@@ -164,22 +175,29 @@ function Dashboard() {
                 <section className="recent-section">
                     <div className="heading-container right" animate="false" select="false">
                         <h2 className="heading settings-heading">Recent</h2>
-                        <span className='material-icons-round settings-icon'>settings</span>
+                        <span className='material-symbols-rounded settings-icon'>settings</span>
                     </div>
                     <div className={`editing-container${(tempFiles.length === 10 || images.length === 10) ? ' disabled' : ''}`}>
-                        <form action="" className="recent-form">
+                        <div className="recent-form">
                             <div className="recent-form-row">
                                 <div className="recent-form-col-1">
                                     <div className="recent-form-title recent-form-field">
                                         <label className='recent-form-field-label' htmlFor="Title">Title</label>
-                                        <input type="text" name="Title" id="recent-title" placeholder='Title of your product' />
+                                        <input
+                                            value={recent.title}
+                                            type="text"
+                                            name="Title"
+                                            id="recent-title"
+                                            placeholder='Title of your product'
+                                            onChange={(e) => setRecent(prev => ({ ...prev, title: e.target.value }))}
+                                        />
                                     </div>
                                     <div className="recent-form-labels">
                                         <div className="recent-form-tools recent-form-field">
                                             <label className='recent-form-field-label'>Tools</label>
                                             <Selectable
                                                 limit={3}
-                                                defaultSelected={recentData.labels.tools}
+                                                defaultSelected={recent.labels.tools}
                                                 type='Intuitive'
                                             />
                                         </div>
@@ -187,7 +205,7 @@ function Dashboard() {
                                             <label className='recent-form-field-label right' htmlFor="Type">Type</label>
                                             <Selectable
                                                 limit={1}
-                                                defaultSelected={recentData.labels.type}
+                                                defaultSelected={recent.labels.type}
                                                 type='Text'
                                             />
                                         </div>
@@ -198,7 +216,7 @@ function Dashboard() {
                                         <label className='recent-form-field-label right' htmlFor="Logo">Logo</label>
                                         <div className="recent-logo-container">
                                             <input type="file" name="Logo" id="recent-logo" />
-                                            <img src={mentis} alt="" />
+                                            <img src={recent.logo} alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -207,43 +225,35 @@ function Dashboard() {
                                 <div className="recent-form-col-1">
                                     <div className="recent-form-desc recent-form-field">
                                             <label className='recent-form-field-label' htmlFor="Description">Type</label>
-                                            <textarea type="text" name="Description" id="recent-desc" placeholder='Description of your product' />
+                                            <textarea
+                                                value={recent.description}
+                                                type="text" name="Description"
+                                                id="recent-desc"
+                                                placeholder='Description of your product'
+                                                onChange={(e) => setRecent(prev => ({ ...prev, description: e.target.value }))}
+                                            />
                                     </div>
                                 </div>
-                                <div className="recent-form-col-2">
+                            </div>
+                            <div className="recent-form-row">
+                                <div className="recent-form-col-1">
                                     <div className="recent-form-links recent-form-field">
-                                        <label className='recent-form-field-label right'>Links</label>
+                                        <label className='recent-form-field-label'>Links</label>
                                         <div className="recent-form-links-container">
-                                            {recentData.links.map(link => (
-                                                <div className="link-field">
-                                                    <div className="link-appearance-field">
-                                                        <label className="link-field-label">Name</label>
-                                                        <div className="appearance-container">
-                                                            <Selectable
-                                                                type='Minimal'
-                                                                limit={1}
-                                                                defaultSelected={link.icon}
-                                                            />
-                                                            <input value={link.name} type="text" name="Name" className='link-name' placeholder='Name of your link' />
-                                                        </div>
-                                                    </div>
-                                                    <div className="link-url-field">
-                                                        <label className="link-field-label">URL</label>
-                                                        <input value={link.url} type="url" name="URL" className='link-url' placeholder='URL to destination' />
-                                                    </div>
-                                                </div>
+                                            {fill(recent.links, 4).map(link => (
+                                                <LinkBox link={link} />
                                             ))}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div className="preview-container" select="false">
                         <h5 className="preview-heading">Preview:</h5>
                         <RecentCard
                             animation="false"
-                            content={recentData}
+                            content={recent}
                         />
                     </div>
                 </section>

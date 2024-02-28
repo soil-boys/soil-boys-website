@@ -50,8 +50,8 @@
     gap: 5px;
     flex-direction: column !important;
     justify-content: center;
-    align-items: center;
-    width: 40px;
+    align-items: flex-end;
+    width: 45px;
     aspect-ratio: 1;
     background-color: transparent;
     font-size: 2rem;
@@ -65,37 +65,41 @@
     display: inline-flex;
     flex-grow: 0;
     flex-shrink: 0;
-    width: 100%;
+    width: calc(90% - (var(--decrement) * 15%));
     min-height: 2.5px;
     max-height: 2.5px;
     border-radius: 10px;
     background-color: #fff;
 }
 .line-1 {
-    transform-origin: top left;
+    --decrement: 0;
+    transform-origin: center;
     transition: transform 300ms ease-in;
 }
 .line-3 {
-    transform-origin: bottom left;
+    --decrement: 1;
+    transform-origin: center;
     transition: transform 300ms ease-in;
 }
 .line-2 {
-    filter: opacity(1);
-    transition: filter 150ms ease-in;
+    --decrement: 2;
+    transform-origin: center center;
+    transition: transform 150ms ease-in;
 }
 .nav-btn.menu-active .line-1 {
-    width: 81%;
-    transform: rotate(45deg);
+    width: 68%;
+    transform: rotate(-45deg) translateY(0.5px);
     transition: transform 300ms ease-in;
 }
 .nav-btn.menu-active .line-3 {
-    width: 81%;
-    transform: rotate(-45deg);
+    width: 68%;
+    transform: rotate(45deg) translateY(-0.5px);
     transition: transform 300ms ease-in;
 }
 .nav-btn.menu-active .line-2 {
-    filter: opacity(0);
-    transition: filter 150ms ease-in;
+    width: 93%;
+    transform: rotate(90deg) translateY(-11.5px);
+    transition: transform 150ms ease-in;
 }
 .nav-item {
     display: inline-flex;
@@ -161,7 +165,7 @@
     }
 }
 
-@media all and (max-width: 767px) and (min-width: 576px) {
+@media all and (max-width: 767px) and (min-width: 575px) {
     #nav.menu {
         position: fixed;
         width: 100vw;
