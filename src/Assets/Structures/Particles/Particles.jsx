@@ -12,7 +12,7 @@ function Particles() {
             particles.forEach(particle => {
                 particle.setAttribute('style', `--ty: ${Math.random() > .8 ? '-' : ''}${Math.random() * (parent.clientHeight / 2)}px; --tx: ${Math.random() > .5 ? '-' : ''}${Math.random() * (parent.clientWidth / 2)}px`)
             });
-        }, 5000);
+        }, 10000);
     }, [])
 
     return (

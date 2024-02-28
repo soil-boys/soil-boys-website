@@ -78,6 +78,25 @@ button {
     animation: none !important;
 }
 
+.\@container {
+    container-type: inline-size;
+}
+
+::-webkit-scrollbar {
+    width: 3.5px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent-clr-3);
+    border-radius: 1ex;
+}
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-clr-1);
+}
+
 /* main */
 #main {
     margin-top: 4%;

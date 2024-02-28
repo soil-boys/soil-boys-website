@@ -64,7 +64,7 @@
     background: linear-gradient(90deg, var(--txt-clr-1) 100%, transparent 0);
     background-clip: text !important;
     background-repeat: no-repeat;
-    animation: typewriterAnim 4s linear forwards;
+    animation: typewriterAnim 3s linear forwards;
     animation-timing-function: steps(940);
 }
 .about-us-section .logo-container {

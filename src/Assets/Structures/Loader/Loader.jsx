@@ -12,7 +12,7 @@ function Loader() {
         const n = fragments.length
         const centerX = loaderEl.offsetWidth / 2
         const centerY = loaderEl.offsetHeight / 2
-        const r1 = 25
+        const r1 = 30
         const r2 = 8
 
         for (let i = 0; i < n; i++) {

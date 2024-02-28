@@ -55,10 +55,10 @@ function Dashboard() {
     const dropper = useRef(null)
     
     const fetchData = async (reset = false) => {
-        const data = await getClicks(images, reset)
+        const clicksData = await getClicks(images, reset)
         const recentData = await getRecent(recent, reset)
         setRecent(recentData)
-        setImages(data)
+        setImages(clicksData)
         if (reset) setChanges(prevState => ({
             clicks: {
                 initial: prevState.clicks.initial,
@@ -72,8 +72,8 @@ function Dashboard() {
     }
     async function handleSubmit(e) {
         await saveChanges(images)
-        const data = await getData('clicks', 'images')
-        const clicks = data?.images?.sort((a, b) => a.order < b.order)
+        const clicksData = await getData('clicks', 'images')
+        const clicks = clicksData?.images?.sort((a, b) => a.order < b.order)
         setChanges((prevState) => ({
             clicks: {
                 initial: clicks,

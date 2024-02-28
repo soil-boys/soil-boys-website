@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { useCart } from '../../../Contexts/StoreProvider.tsx'
 import trim from '../../../Functions/trim.ts'
 
 import './SearchBar.styles.css'
 
-function SearchBar({ cart, setCart, searchItems }) {
+function SearchBar() {
 
     const navigate = useNavigate()
 
     const [searchQuery, onChangeSearchQuery] = useState('')
     const [menuActive, setMenuActive] = useState(false)
+
+    const { cart, setCart, resetCart } = useCart()
 
     function handleRemove(item) {
 
@@ -27,13 +30,12 @@ function SearchBar({ cart, setCart, searchItems }) {
     function handleDelete(e) {
         e.preventDefault()
 
-        setCart([])
+        resetCart()
     }
     function handleSubmit(e) {
         e.preventDefault()
 
         navigate(searchQuery === '' ? '/store' : `?search=${encodeURIComponent(searchQuery)}`, { replace: searchQuery === '' ? true : false })
-        searchItems(searchQuery)
     }
 
     function calculateTotalPrice() {
@@ -45,6 +47,17 @@ function SearchBar({ cart, setCart, searchItems }) {
     }
 
     useEffect(() => {
+        const searchBar = document.querySelector('.search-input')
+        if (document.documentElement.clientWidth <= 575) searchBar.placeholder = "Search..."
+        else searchBar.placeholder = "What are you looking for?"
+
+        document.addEventListener('resize', (e) => {
+            console.log(document.documentElement.clientWidth)
+            if (document.documentElement.clientWidth <= 575) searchBar.placeholder = "Search..."
+            else searchBar.placeholder = "What are you looking for?" 
+        })
+
+
         const cartButtons = document.querySelectorAll('.cart-container button')
         setInterval(() => {
             if (document.activeElement && [...cartButtons].some(btn => btn === document.activeElement)) return

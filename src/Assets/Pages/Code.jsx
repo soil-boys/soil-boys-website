@@ -5,7 +5,9 @@ function Code() {
     document.title = "Soil Code"
 
     return (
-        <div>Code</div>
+        <div className='unavailable-text'>
+            <div className="text">Coming soon!</div>
+        </div>
     )
 }
 

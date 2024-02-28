@@ -30,7 +30,7 @@ function About() {
             socials: [
                 {
                     name: 'instagram',
-                    url: 'https://www.instagram.com/bobsama__/'
+                    url: 'https://www.instagram.com/bobsama__'
                 },
                 {
                     name: 'github',
@@ -52,7 +52,7 @@ function About() {
             socials: [
                 {
                     name: 'instagram',
-                    url: 'https://www.instagram.com/raahhdux/'
+                    url: 'https://www.instagram.com/raahhdux'
                 },
                 {
                     name: 'github',
@@ -60,7 +60,7 @@ function About() {
                 },
                 {
                     name: 'linkedin',
-                    url: 'https://www.linkedin.com/in/daksh-singh-minhas-65606227b/'
+                    url: 'https://www.linkedin.com/in/daksh-singh-minhas-65606227b'
                 },
             ]
         },
@@ -70,11 +70,11 @@ function About() {
             socials: [
                 {
                     name: 'instagram',
-                    url: 'https://www.instagram.com/kr1shnav/'
+                    url: 'https://www.instagram.com/kr1shnav'
                 },
                 {
                     name: 'linkedin',
-                    url: 'https://www.linkedin.com/in/krishnav-barman/'
+                    url: 'https://www.linkedin.com/in/krishnav-barman'
                 }
             ]
         },
@@ -84,11 +84,11 @@ function About() {
             socials: [
                 {
                     name: 'instagram',
-                    url: 'https://www.instagram.com/ayeangad/'
+                    url: 'https://www.instagram.com/ayeangad'
                 },
                 {
                     name: 'linkedin',
-                    url: 'https://www.linkedin.com/in/angad-saini/'
+                    url: 'https://www.linkedin.com/in/angad-saini'
                 }
             ]
         },

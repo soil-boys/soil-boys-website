@@ -5,7 +5,8 @@ import { AnimatePresence } from "framer-motion"
 import Home from './Pages/Home'
 import Gallery from  './Pages/Gallery'
 import About from './Pages/About'
-import Store from './Pages/Store.jsx'
+import Store from './Pages/Store'
+import StoreProduct from './Pages/Store/StoreProduct'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import Code from './Pages/Code'
@@ -15,7 +16,7 @@ import Page404 from './Pages/Page404'
 import PrivateRoute from './PrivateRoute'
 
 import AuthProvider from '../Contexts/AuthContext.tsx'
-import CartProvider from '../Contexts/CartContext.tsx'
+import StoreProvider from '../Contexts/StoreProvider.tsx'
 
 function MaintenanceText() {
     return (
@@ -46,14 +47,14 @@ function AnimatedRoutes() {
                             <Route path="/code" exact element={<Code />} />
                             <Route path='/store'>
                                 <Route index element={
-                                    <CartProvider>
+                                    <StoreProvider>
                                         <Store />
-                                    </CartProvider>
+                                    </StoreProvider>
                                 } />
                                 <Route path=':pid' element={
-                                    <CartProvider>
-                                        <Store />
-                                    </CartProvider>
+                                    <StoreProvider>
+                                        <StoreProduct />
+                                    </StoreProvider>
                                 } />
                             </Route>
                             <Route path="/about" exact element={<About />} />

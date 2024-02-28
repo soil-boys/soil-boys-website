@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { useFeed } from "../../Hooks";
-
-import formatFeed from "../../Functions/formatFeed.ts";
+import { useGallery } from "../../Hooks";
 
 import PhotoViewer from "../Structures/Photo Viewer/PhotoViewer";
 import Loader from '../Structures/Loader/Loader'
@@ -14,18 +12,30 @@ function Gallery() {
 
     document.title = "Soil Gallery"
 
-    const { feed, loading, error } = useFeed()
+    const { groupedPosts, currentPage, loading, refetch } = useGallery(1);
 
     const [deferredLoading, setDeferredLoading] = useState(true)
     const [viewing, setViewing] = useState(false)
     
-    let formattedFeed = formatFeed(feed)
-
     useEffect(() => {
         setTimeout(() => {
             setDeferredLoading(false)
         }, 5000)
     }, [])
+
+    useEffect(() => {
+        if (!groupedPosts.length || groupedPosts.length === 0) return
+
+        let elements = [...document.querySelectorAll(".gallery-section")]
+        if (!elements.length || elements.length === 0) return
+        let target = elements[elements.length - 1]
+        if (!target) return
+
+        const sectionObserver = new IntersectionObserver(() => {
+            refetch(currentPage + 1)
+        }, { threshold: 0.8 })
+        sectionObserver.observe(target)
+    }, [loading])
 
     function openViewer(img) {
         setViewing(img)
@@ -40,19 +50,19 @@ function Gallery() {
         >
             {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />}
             <div className="gallery-sections" select="false">
-                {!loading && formattedFeed?.map(section => (
+                {groupedPosts.map(section => (
                     <div key={section?.date} className="gallery-section">
                         <h3 className="date">
                             <div className="date-container">
-                                <span>{section?.date?.split('/')[0]}</span>
+                                <span>{section?.date?.split('-')[0]}</span>
                                 <span> / </span>
-                                <span>{section?.date?.split('/')[1]}</span>
+                                <span>{section?.date?.split('-')[1]}</span>
                                 <span> / </span>
-                                <span>{section?.date?.split('/')[2]}</span>
+                                <span>{section?.date?.split('-')[2]}</span>
                             </div>
                         </h3>
                         <div className="img-wrapper">
-                            {section?.images?.map(img => (
+                            {section?.posts?.map(img => (
                                 <a key={img.id} className="gallery-img" onClick={() => !deferredLoading ? openViewer(img) : null}>
                                     <img src={img.media_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
                                     {deferredLoading && <div className="skeleton-loading"></div>}

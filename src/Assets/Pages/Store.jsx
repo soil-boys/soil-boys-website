@@ -7,7 +7,7 @@ import StoreItem from '../Structures/Store Item/StoreItem'
 import Particles from '../Structures/Particles/Particles'
 import Loader from '../Structures/Loader/Loader'
 
-import { useCart } from '../../Contexts/CartContext.tsx'
+import { useCart } from '../../Contexts/StoreProvider.tsx'
 
 import data from "../items.json"
 import data2 from "../items2.json"
@@ -27,46 +27,63 @@ function Store() {
 
     const { cart, setCart } = useCart()
     
+    const randomText = [
+        "Launching shortly!",
+        "Next in Line!",
+        "Arriving shortly...",
+        "Sneak Peak Alert!",
+    ]
+
     const generateData = () => {
         const sliced = data2.slice(20, 100)
         let formattedData = []
-        for (let i = 0; i < sliced.length; i++) {
-            let obj = {
-                pid: sliced[i].pid,
-                name: sliced[i].title,
-                seller: sliced[i].seller,
-                description: sliced[i].description,
-                images: sliced[i].images,
-                price: parseFloat(sliced[i].actual_price.replace(/[^\d.]/g, '')),
-                tags: data[i].tags
-            }
-            formattedData.push(obj)
-        }
+        // for (let i = 0; i < sliced.length; i++) {
+        //     let obj = {
+        //         pid: sliced[i].pid,
+        //         name: sliced[i].title,
+        //         seller: sliced[i].seller,
+        //         description: sliced[i].description,
+        //         images: sliced[i].images,
+        //         price: parseFloat(sliced[i].actual_price.replace(/[^\d.]/g, '')),
+        //         tags: data[i].tags
+        //     }
+        //     formattedData.push(obj)
+        // }
         return formattedData
     }
 
-    const searchItems = (query) => {
-        setLoading(true)
+    
+    const filterItems = (query) => {
         setItems([])
-        const filtered = generateData().filter(item => {
-            return (
-                item.name.toLowerCase().includes(query) ||
-                item.tags.some((tag) => tag.toLowerCase().includes(query))
-            )
+
+        if (!query) return setItems(generateData())
+
+        const normalizedQuery = query.trim().toLowerCase()
+        if (!normalizedQuery) return items
+
+        const searchTerms = normalizedQuery.split(/\s+/g)
+
+        const filtered = generateData().filter((item) => {
+            return searchTerms.every((term) => {
+                return (
+                    item.name.toLowerCase().includes(term) ||
+                    item.tags.some((tag) => tag.toLowerCase().includes(term))
+                )
+            })
         })
-        setTimeout(() => {
-            setItems(filtered)
-            setLoading(false)
-        }, 5000);
+        setItems(filtered)
+        const str = `Found ${filtered.length} products for ❝${searchQuery}❞`
+        document.querySelector('#store').setAttribute("style", `--queryLength: ${str.length}`)
     }
 
     useEffect(() => {
+        setItems([])
         setLoading(true)
         setTimeout(() => {
-            setItems(generateData())
+            filterItems(searchQuery)
             setLoading(false)
         }, 5000);
-    }, [])
+    }, [searchQuery])
 
     return (
         <motion.div
@@ -75,7 +92,7 @@ function Store() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <SearchBar cart={cart} setCart={setCart} searchItems={searchItems} />
+            <SearchBar />
             {!searchQuery && <div className="store-banner" select="false">
                 <div className="store-banner-part">
                     <h1 className="store-banner-heading">Welcome to <span className="highlight">Soil Store</span></h1>
@@ -90,7 +107,7 @@ function Store() {
             {
                 searchQuery
                     &&
-                    <div className="store-back-link">
+                    <div className="store-back-link" select="false">
                         <Link
                             className={`back-link${(searchQuery && hovered) ? ' hovered' : ''}`}
                             to='/store'
@@ -110,12 +127,38 @@ function Store() {
                         </Link>
                     </div>
             }
-            {(searchQuery && !loading) && <div className="search-result-header">Found <span>{(!items || items.length === 0) ? 0 : items.length}</span> products for <br />❝<span>{searchQuery}</span>❞</div>}
-            <div className="store-items">
-                {items.map(item => (
-                    <StoreItem key={item.pid} item={item} cart={cart} setCart={setCart} />
-                ))}
-            </div>
+            {(searchQuery && !loading) && <div className="search-result-header"><span>Found <span className={(!items || items.length === 0) && 'zero'}>{(!items || items.length === 0) ? 0 : items.length}</span> products for<br />❝<span>{searchQuery}</span>❞</span></div>}
+            {/* <div className="@container">
+                <div className="store-items">
+                    {items.map(item => (
+                        <StoreItem key={item.pid} item={item} cart={cart} setCart={setCart} />
+                    ))}
+                </div>
+            </div> */}
+            {!loading && <div className="unavailable-text" select="false">
+                <div className="decoration-container">
+                    <div className="icons-container">
+                        <div className="icon-box"><span className="material-symbols-rounded">skateboarding</span></div>
+                        <div className="icon-box"><span className="material-symbols-rounded">apparel</span></div>
+                        <div className="icon-box"><span className="material-symbols-rounded">party_mode</span></div>
+                        <div className="icon-box"><span className="material-symbols-rounded">browse_activity</span></div>
+                        <div className="icon-box"><span className="material-symbols-rounded">deployed_code</span></div>
+                        <div className="icon-box"><span className="material-symbols-rounded">style</span></div>
+                    </div>
+                    <div className="connectors">
+                        <span className="dot"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                    </div>
+                </div>
+                <div className="text">
+                    {randomText[Math.floor(Math.random() * randomText.length)]}
+                </div>
+            </div>}
             {loading && <Loader />}
         </motion.div>
     )

@@ -12,18 +12,18 @@ export interface Feed {
 }
 
 interface UseFeedResult {
-    feed: Feed[] | null,
+    feed: Feed[],
     loading: boolean,
     error: string
 }
 
 function useFeed(limit: number): UseFeedResult {
 
-    const [feed, setFeed] = useState<Feed[] | null>(null)
+    const [feed, setFeed] = useState<Feed[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>('')
 
-    const url = limit ? `https://instagram-scraper.onrender.com/feed?limit_given=true&limit=${limit}` : "https://instagram-scraper.onrender.com/feed"
+    let url: string = `https://instagram-scraper.onrender.com/feed?limit=${limit}`
 
     const fetchData = async () => {
         setLoading(true)
@@ -35,10 +35,11 @@ function useFeed(limit: number): UseFeedResult {
                 }
             })
             const data = await response.json()
-            setFeed(data)
+            setFeed(data || [])
             setLoading(false)
         } catch (err) {
             setError(err)
+            setFeed([])
             console.error(err)
         } finally {
             setLoading(false)

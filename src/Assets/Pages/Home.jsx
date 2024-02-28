@@ -6,12 +6,12 @@ import RecentCard from "../Structures/Recent Card/RecentCard.jsx";
 
 import updateDetails from "../../Functions/UpdateDetails.ts";
 import getClicks from "../../Functions/getClicks.ts";
+import getRecent from "../../Functions/getRecent.ts";
 import mentis from "../Structures/Carousel/Cards/Assets/Mentis.svg"
 
 import { useFeed, useRepos } from "../../Hooks";
 
 import '../Styles/Home.css'
-import getRecent from "../../Functions/getRecent.ts";
 
 function Home() {
 
@@ -65,7 +65,6 @@ function Home() {
         try {
             const data = await getClicks()
             const recentData = await getRecent(null, true)
-            console.log(recentData)
             setImages(data)
             setRecent(recentData)
             setLoadingClicks(false)
@@ -102,7 +101,6 @@ function Home() {
         }, { threshold: 0.2 })
         latestObserver.observe(section3.current)
 
-
     }, [])
     
     useEffect(() => {
@@ -111,39 +109,17 @@ function Home() {
         }, { threshold: 1 })
         if (feed) {
             pictureRefArr.forEach(ref => {
+                if (!ref.current) return
                 pictureObserver.observe(ref.current)
             });
         }
     }, [loading])
-    
-    const recentData = {
-        title: "Mentis – Your Personal Mood Tracking App!",
-        logo: mentis,
-        labels: {
-            tools: ["React Native", "NodeJS", "TensorFlow"],
-            type: ["App"]
-        },
-        links: [
-            {
-                name: "Download",
-                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
-                icon: ["download"]
-            },
-            {
-                name: "GitHub",
-                url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
-                icon: ["github"]
-            }
-        ],
-        description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
-    }
 
     const defaultRegex = /^([^\n]+)$/gmi
     const equipmentRegex = /^(📸|🎞️)(.+)$/gmi
     const authorRegex = /^\@(.+)$/gmi
 
-    let imageFeed = feed || null
-    let latestContent = imageFeed && imageFeed.map(post => ({
+    let latestContent = feed.map(post => ({
         id: post.id,
         img: post.media_url,
         post_name: post.caption.match(defaultRegex)[0],
@@ -175,7 +151,6 @@ function Home() {
                 <span className="line right"></span>
             </div>
             <section className='section-2' style={{ '--speed': '10s' }} ref={section2}>
-                {/* <Carousel content={loadingRepos ? content : [repos[0], repos[0], repos[0], repos[0], repos[0]]} type="repo" /> */}
                 {!loadingRecent && <RecentCard content={recent} />}
                 <div className="heading-container">
                     <h2 className="heading" select="false">Recent</h2>
@@ -192,7 +167,7 @@ function Home() {
                     </div>
                     <div className="section-container">
                         <div className="picture-section">
-                            {imageFeed && latestContent.map((item, index) => (
+                            {latestContent.map((item, index) => (
                                 <div
                                     key={item.id}
                                     className="img-container"
@@ -225,33 +200,26 @@ function Home() {
 }
 
 export default Home
-                // const latestContent = [
-                //     {
-                //         id: 0,
-                //         img: 'https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                //         post_name: 'Secrets in the foilage',
-                //         post_author: 'Anubhab Baruah',
-                //         post_equipment: 'fujifilm xt200 with 15-45mm kit lens'
-                //     },
-                //     {
-                //         id: 1,
-                //         img: 'https://images.pexels.com/photos/3685271/pexels-photo-3685271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                //         post_name: 'Sun setting into the red sky',
-                //         post_author: 'Angad Sankhla',
-                //         post_equipment: 'canon eos 1500d with 18-55mm lens'
-                //     },
-                //     {
-                //         id: 2,
-                //         img: 'https://images.pexels.com/photos/3640930/pexels-photo-3640930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                //         post_name: 'Life as a monotone aesthetic',
-                //         post_author: 'Krishnav Barman',
-                //         post_equipment: 'kodak ultramax (exp 2011) on pentax zoom 280p'
-                //     },
-                //     {
-                //         id: 3,
-                //         img: 'https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                //         post_name: 'Camera',
-                //         post_author: 'Daksh Singh Minhas',
-                //         post_equipment: 'Canon EOS M50 Mark II with 15-45mm lens'
-                //     },
-                // ]
+
+
+const _recentData = {
+    title: "Mentis – Your Personal Mood Tracking App!",
+    logo: mentis,
+    labels: {
+        tools: ["React Native", "NodeJS", "TensorFlow"],
+        type: ["App"]
+    },
+    links: [
+        {
+            name: "Download",
+            url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+            icon: ["download"]
+        },
+        {
+            name: "GitHub",
+            url: "https://github.com/soil-boys/Mentis/releases/tag/v1.0.0",
+            icon: ["github"]
+        }
+    ],
+    description: "Thrilled to announce the android launch of Mentis, our groundbreaking mood tracking app!"
+}

@@ -16,20 +16,15 @@
     background-color: var(--accent-clr-4);
     filter: brightness(.9) opacity(.4);
     transform: translateX(var(--tx)) translateY(var(--ty));
-    transition: transform 5s linear;
+    transition: transform 10s linear;
     opacity: 0;
-    animation: explode 100ms linear forwards;
-    animation-delay: 4.9999s;
+    animation: explode 200ms linear forwards;
+    animation-delay: 10s;
 }
 
 @keyframes explode {
     to {
-        opacity: 1;
-    }
-}
-@keyframes set {
-    to {
-        display: block;
-        box-shadow: 0 0 30px .4px var(--accent-clr-4);
+        opacity: .8;
+        box-shadow: 0 0 25px 3.5px var(--accent-clr-4);
     }
 }
