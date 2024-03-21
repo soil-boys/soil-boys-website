@@ -15,10 +15,10 @@ async function getClicks(images: Object[] | null, reset = false) {
     const imgs = data.images.sort((a: Image, b: Image) => a.order < b.order)
     
     const promises = imgs.map(async (img: Image) => ({
-        order: <string> img.order,
-        url: <string> URL.createObjectURL(await getBlobURI(img.ref)),
-        ref: <string> img.ref,
-        blob: <Blob> await getBlobURI(img.ref)
+        order: img.order as string,
+        url: URL.createObjectURL(await getBlobURI(img.ref)) as string,
+        ref: img.ref as string,
+        blob: await getBlobURI(img.ref) as Blob
     }))
     
     const functionalImgs = await Promise.all(promises)
