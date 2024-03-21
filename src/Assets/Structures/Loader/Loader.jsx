@@ -21,7 +21,7 @@ function Loader() {
             const py = Math.sin(angle) * r1 + centerY
             const sx = Math.cos(angle) * r2 + centerX
             const sy = Math.sin(angle) * r2 + centerY
-            fragments[i].setAttribute('style', `--px: ${px}px; --py: ${py}px; --sx: ${sx}px; --sy: ${sy}px; animation-delay: ${(i % 2 == 0) ? 2 : 0}s`)
+            fragments[i].setAttribute('style', `--px: ${px}px; --py: ${py}px; --sx: ${sx}px; --sy: ${sy}px; animation-delay: ${(i % 2 === 0) ? 2 : 0}s`)
         }
 
     }, [])

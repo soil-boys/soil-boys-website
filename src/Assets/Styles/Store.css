@@ -326,7 +326,7 @@
 /* media queries */
 @media all and (max-width: 575px) {
     .store-banner-part {
-        width: 90%;
+        width: 60%;
         padding-right: 5rem;
     }
     .store-banner-heading {
