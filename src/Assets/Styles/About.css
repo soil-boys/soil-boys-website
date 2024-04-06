@@ -247,6 +247,7 @@
     padding: 0 1rem;
 }
 .founder-card {
+    position: relative;
     display: inline-flex;
     flex-direction: row;
     background: #0000007d;
@@ -257,14 +258,16 @@
     place-items: center;
     opacity: 0;
     box-shadow: 5px 5px 10px 5px var(--bg-clr-1);
+    overflow: hidden;
     transition: all 250ms ease-out;
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 .founders-container.visible .founder-card {
     animation: cardReveal 1s ease forwards;
 }
 .founder-card:hover {
-    transform: scale(1.05);
-    transition: transform 250ms ease-out;
+    transform: scale(1.05) rotateX(var(--angle-x)) rotateY(var(--angle-y));
 }
 .founder-card .founder-image {
     display: inline-flex;
@@ -329,6 +332,25 @@
 .founder-card .founder-details .founder-socials .founder-social:hover img {
     filter: contrast(1);
     transition: filter 250ms ease-in;
+}
+
+.founder-card:hover .reflection {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.founder-card:hover .reflection .mouse-shadow {
+    border-radius: 50%;
+    width: 100px;
+    aspect-ratio: 1;
+    filter: blur(2rem) opacity(.2);
+    background-color: #ffffff;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    pointer-events: inherit;
+    position: absolute;
+    transform: translate(-60%, -60%);
 }
 
 /* animations */

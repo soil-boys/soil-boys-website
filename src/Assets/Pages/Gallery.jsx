@@ -64,7 +64,7 @@ function Gallery() {
                         <div className="img-wrapper">
                             {section?.posts?.map(img => (
                                 <a key={img.id} className="gallery-img" onClick={() => !deferredLoading ? openViewer(img) : null}>
-                                    <img src={img.media_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
+                                    <img loading="lazy" src={img.media_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
                                     {deferredLoading && <div className="skeleton-loading"></div>}
                                 </a>
                             ))}
