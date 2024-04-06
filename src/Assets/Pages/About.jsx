@@ -114,7 +114,6 @@ function About() {
 
     function morph(e) {
         const shadow = e.currentTarget.querySelector('.mouse-shadow')
-        console.log(shadow)
 
         let rect = e.currentTarget.getBoundingClientRect()
         let mouseX = e.clientX - rect.left
@@ -133,7 +132,6 @@ function About() {
         shadow.setAttribute('style', `--mouse-x: ${mouseX}px; --mouse-y: ${mouseY}px`)
         e.currentTarget.setAttribute('style', e.currentTarget.getAttribute('style') + `; --angle-x: ${ty}deg; --angle-y: ${tx}deg`)
     }
-
 
     return (
         <motion.div
