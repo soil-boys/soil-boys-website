@@ -29,16 +29,16 @@ function About() {
             pfp: '/Resources/admin/anubhab.jpg',
             socials: [
                 {
-                    name: 'instagram',
-                    url: 'https://www.instagram.com/bobsama__'
-                },
-                {
                     name: 'github',
                     url: 'https://github.com/yago955'
                 },
                 {
                     name: 'linkedin',
                     url: 'https://www.linkedin.com/in/anubhab-baruah'
+                },
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/bobsama__'
                 },
                 {
                     name: 'youtube',
@@ -51,10 +51,6 @@ function About() {
             pfp: '/Resources/admin/daksh.jpg',
             socials: [
                 {
-                    name: 'instagram',
-                    url: 'https://www.instagram.com/raahhdux'
-                },
-                {
                     name: 'github',
                     url: 'https://github.com/ducx2'
                 },
@@ -62,6 +58,10 @@ function About() {
                     name: 'linkedin',
                     url: 'https://www.linkedin.com/in/daksh-singh-minhas-65606227b'
                 },
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/raahhdux'
+                }
             ]
         },
         {
@@ -69,12 +69,12 @@ function About() {
             pfp: '/Resources/admin/krishnav.jpg',
             socials: [
                 {
-                    name: 'instagram',
-                    url: 'https://www.instagram.com/kr1shnav'
-                },
-                {
                     name: 'linkedin',
                     url: 'https://www.linkedin.com/in/krishnav-barman'
+                },
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/kr1shnav'
                 }
             ]
         },
@@ -83,12 +83,12 @@ function About() {
             pfp: '/Resources/admin/angad.jpg',
             socials: [
                 {
-                    name: 'instagram',
-                    url: 'https://www.instagram.com/ayeangad'
-                },
-                {
                     name: 'linkedin',
                     url: 'https://www.linkedin.com/in/angad-saini'
+                },
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/ayeangad'
                 }
             ]
         },
@@ -97,20 +97,43 @@ function About() {
             pfp: '/Resources/admin/hreeth.jpg',
             socials: [
                 {
-                    name: 'instagram',
-                    url: 'https://www.instagram.com/risuleia'
-                },
-                {
                     name: 'github',
                     url: 'https://github.com/Risuleia'
                 },
                 {
                     name: 'linkedin',
                     url: 'https://www.github.com/hreeth-gupta'
+                },
+                {
+                    name: 'instagram',
+                    url: 'https://www.instagram.com/risuleia'
                 }
             ]
         }
     ]
+
+    function morph(e) {
+        const shadow = e.currentTarget.querySelector('.mouse-shadow')
+        console.log(shadow)
+
+        let rect = e.currentTarget.getBoundingClientRect()
+        let mouseX = e.clientX - rect.left
+        let mouseY = e.clientY - rect.top
+        let h = rect.height
+        let w = rect.width
+
+        let px = Math.abs(Math.floor(100 / w * mouseX) - 100)
+        let py = Math.abs(Math.floor(100 / h * mouseY) - 100)
+
+        let lp = 50 + (px - 50) / 1.5
+        let tp = 50 + (py - 50) / 1.5
+        let tx = ((lp - 50) / 1.5) * .8
+        let ty = ((tp - 50) / 2) * -1
+
+        shadow.setAttribute('style', `--mouse-x: ${mouseX}px; --mouse-y: ${mouseY}px`)
+        e.currentTarget.setAttribute('style', e.currentTarget.getAttribute('style') + `; --angle-x: ${ty}deg; --angle-y: ${tx}deg`)
+    }
+
 
     return (
         <motion.div
@@ -167,11 +190,11 @@ function About() {
                 </section>
                 <section className="founders-section">
                     <div className="heading-container center" animate="false">
-                        <h2 className="founders-heading" select="false">Our Cofounders</h2>
+                        <h2 className="founders-heading" select="false">Founding Team</h2>
                     </div>
                     <div className="founders-container" ref={foundersContainer}>
                         {founders.map((founder, index) => (
-                            <div key={uuidv4()} className="founder-card" select="false" style={{ animationDelay: `${index * 300}ms` }}>
+                            <div key={uuidv4()} className="founder-card" select="false" style={{ animationDelay: `${index * 300}ms` }} onMouseMove={morph}>
                                 <div className="founder-image">
                                     {founder.pfp
                                         ?
@@ -195,6 +218,9 @@ function About() {
                                             </a>
                                         ))}
                                     </div>
+                                </div>
+                                <div className="reflection">
+                                    <div className="mouse-shadow"></div>
                                 </div>
                             </div>
                         ))}
