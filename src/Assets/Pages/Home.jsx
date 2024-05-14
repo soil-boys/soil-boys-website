@@ -161,7 +161,10 @@ function Home() {
                     <h2 className="heading" select="false">Latest</h2>
                 </div>
                 <div className="content-wrapper">
-                    <div className="side-bar">
+                    <div className="err-text">
+                        Down for the time being.
+                    </div>
+                    {/* <div className="side-bar">
                         <span className="dot"></span>
                         <span className="line"></span>
                     </div>
@@ -191,7 +194,7 @@ function Home() {
                                 <div className="post-equipment"><span>Shot on</span><span maskable="true">equipment used</span></div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </motion.div>

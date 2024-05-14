@@ -4,6 +4,9 @@ import { motion } from 'framer-motion'
 import '../../Styles/Policies/PolicyPage.css'
 
 function TermsOfService() {
+
+    document.title = "Terms of Service"
+
   return (
     <motion.div
         id="terms-of-service"

@@ -12,6 +12,9 @@ function About() {
     const foundersContainer = useRef(null)
 
     useEffect(() => {
+        const founderCards = [...document.querySelectorAll('.founder-card')]
+        founderCards.forEach(founderCard => founderCard.setAttribute('style', founderCard.getAttribute('style') + "--angle-x: 0.0deg; --angle-y: 0.0deg"))
+
         const divisionObserver = new IntersectionObserver(entries => {
             entries[0].target.classList.toggle('visible', entries[0].isIntersecting)
         }, { threshold: 1 })
@@ -129,8 +132,11 @@ function About() {
         let tx = ((lp - 50) / 1.5) * .8
         let ty = ((tp - 50) / 2) * -1
 
+        const regex = /--angle-x:\s(-?\d+)\.?(\d+)?deg;\s--angle-y:\s(-?\d+)\.?(\d+)?deg/g
+
         shadow.setAttribute('style', `--mouse-x: ${mouseX}px; --mouse-y: ${mouseY}px`)
-        e.currentTarget.setAttribute('style', e.currentTarget.getAttribute('style') + `; --angle-x: ${ty}deg; --angle-y: ${tx}deg`)
+        console.log(e.currentTarget.getAttribute('style').replace(regex, `--angle-x: ${ty}deg; --angle-y: ${tx}deg`))
+        e.currentTarget.setAttribute('style', e.currentTarget.getAttribute('style').replace(regex, `--angle-x: ${ty}deg; --angle-y: ${tx}deg`))
     }
 
     return (
