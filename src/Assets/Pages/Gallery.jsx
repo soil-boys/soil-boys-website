@@ -48,8 +48,11 @@ function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />}
-            <div className="gallery-sections" select="false">
+            <div className="err-text">
+                Down for the time being.
+            </div>
+            {/* {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />} */}
+            {/* <div className="gallery-sections" select="false">
                 {groupedPosts.map(section => (
                     <div key={section?.date} className="gallery-section">
                         <h3 className="date">
@@ -72,7 +75,7 @@ function Gallery() {
                     </div>
                 ))}
                 {loading && <Loader />}
-            </div>
+            </div> */}
         </motion.div>
     )
     

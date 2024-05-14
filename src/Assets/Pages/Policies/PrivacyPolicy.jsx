@@ -4,6 +4,9 @@ import { motion } from 'framer-motion'
 import '../../Styles/Policies/PolicyPage.css'
 
 function PrivacyPolicy() {
+
+    document.title = "Privacy Policy"
+
   return (
     <motion.div
         id="privacy-policy"

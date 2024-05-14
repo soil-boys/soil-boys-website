@@ -138,6 +138,7 @@ section.visible .heading-container {
         transparent,
         white 80%
     );
+    pointer-events: none;
 }
 .heading-container:not([animate="false"]) {
     opacity: 0;
@@ -170,6 +171,13 @@ h2.heading {
     font-size: 4vmax;
     opacity: .5;
     animation: beat 800ms infinite alternate-reverse;
+}
+.err-text {
+    font-size: 1.5rem;
+    color: var(--txt-clr-2);
+    font-family: var(--txt-4);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 /* animations */
