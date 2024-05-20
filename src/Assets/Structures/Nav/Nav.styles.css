@@ -142,7 +142,7 @@
         min-height: 100vh;
         justify-content: space-evenly;
         flex-direction: column;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px) brightness(.4);
         transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
     }
     #nav:not(.menu) .navbar {
@@ -172,7 +172,7 @@
         min-height: 100vh;
         justify-content: space-evenly;
         flex-direction: column;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px) brightness(.4);
         transition: min-height 200ms, width 100ms, backdrop-filter 300ms ease-in;
     }
     #nav:not(.menu) .navbar {
