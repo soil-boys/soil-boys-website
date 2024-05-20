@@ -2,11 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: stretch;
     width: 100vw;
-    /* height: 100vh; */
+    height: 100%;
     position: fixed;
     z-index: 105;
     top: 0;
+    left: 0;
     background: var(--bg-clr-2);
     backdrop-filter: blur(8px);
 }
@@ -19,13 +21,16 @@
     border-radius: 20px;
     width: fit-content;
 }
+#photo-viewer .wrapper.loading {
+    display: none;
+}
 
 .photo-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 65vmin;
+    width: 70vmin;
     height: 100vh;
     transform-style: preserve-3d;
     transform: perspective(200vh) translate3d(0px, 80vh, 80vw) scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
