@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-const ACCESS_TOKEN = process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN
+const ACCESS_TOKEN = process.env.REACT_APP_API_ACCESS_TOKEN
 
 export interface Feed {
     id: number,
-    media_type: string,
-    media_url: string,
+    low_res_url: string,
+    high_res_url: string,
     caption: string,
     permalink: string,
     timestamp: string

@@ -30,7 +30,7 @@ function PhotoViewer({ photo, setViewing }) {
                 <div className="photo-wrapper">
                     <div className="photo-content">
                         <div className="photo">
-                            <img src={photo.media_url} alt={details.post_name} />
+                            <img src={photo.high_res_url} alt={details.post_name} />
                         </div>
                         <div className="photo-links">
                             <a href={details.permalink} target="_blank" rel="noopener noreferrer" className="photo-btn photo-permalink">

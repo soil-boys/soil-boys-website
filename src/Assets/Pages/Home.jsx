@@ -117,11 +117,13 @@ function Home() {
 
     const defaultRegex = /^([^\n]+)$/gmi
     const equipmentRegex = /^(📸|🎞️)(.+)$/gmi
-    const authorRegex = /^\@(.+)$/gmi
+    const authorRegex = /^@(.+)$/gmi
+
+    console.log(feed)
 
     let latestContent = feed.map(post => ({
         id: post.id,
-        img: post.media_url,
+        img: post.high_res_url,
         post_name: post.caption.match(defaultRegex)[0],
         post_author: post.caption.match(authorRegex)[0].replace(/@|@(\s+)/gi, ''),
         post_equipment: post.caption.match(equipmentRegex)[0].replace(/^(📸|🎞️)/gi, '')
@@ -161,10 +163,10 @@ function Home() {
                     <h2 className="heading" select="false">Latest</h2>
                 </div>
                 <div className="content-wrapper">
-                    <div className="err-text">
+                    {/* <div className="err-text">
                         Down for the time being.
-                    </div>
-                    {/* <div className="side-bar">
+                    </div> */}
+                    <div className="side-bar">
                         <span className="dot"></span>
                         <span className="line"></span>
                     </div>
@@ -194,7 +196,7 @@ function Home() {
                                 <div className="post-equipment"><span>Shot on</span><span maskable="true">equipment used</span></div>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </section>
         </motion.div>

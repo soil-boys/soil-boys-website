@@ -48,11 +48,11 @@ function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div className="err-text">
+            {/* <div className="err-text">
                 Down for the time being.
-            </div>
-            {/* {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />} */}
-            {/* <div className="gallery-sections" select="false">
+            </div> */}
+            {viewing && <PhotoViewer photo={viewing} setViewing={setViewing} />}
+            <div className="gallery-sections" select="false">
                 {groupedPosts.map(section => (
                     <div key={section?.date} className="gallery-section">
                         <h3 className="date">
@@ -67,7 +67,7 @@ function Gallery() {
                         <div className="img-wrapper">
                             {section?.posts?.map(img => (
                                 <a key={img.id} className="gallery-img" onClick={() => !deferredLoading ? openViewer(img) : null}>
-                                    <img loading="lazy" src={img.media_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
+                                    <img loading="lazy" src={img.low_res_url} alt={img.caption.match(/^([^\n]+)$/gmi)[0]} />
                                     {deferredLoading && <div className="skeleton-loading"></div>}
                                 </a>
                             ))}
@@ -75,7 +75,7 @@ function Gallery() {
                     </div>
                 ))}
                 {loading && <Loader />}
-            </div> */}
+            </div>
         </motion.div>
     )
     
